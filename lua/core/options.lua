@@ -1,3 +1,11 @@
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = true
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -31,7 +39,7 @@ vim.o.breakindent = true
 
 -- Adjust indentation
 -- use two spaces for indent (https://www.reddit.com/r/neovim/comments/zxlbc0/how_do_i_force_neovim_to_always_give_me_two_space/)
-vim.opt.tabstop = 8
+vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true

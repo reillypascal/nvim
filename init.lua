@@ -1,5 +1,4 @@
 -- [[ Import lua modules in lua/core ]]
-require("core.global")
 require("core.options")
 require("core.keymaps")
 require("core.commands")
