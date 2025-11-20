@@ -10,6 +10,7 @@ return { -- Highlight, edit, and navigate code
 			"cpp",
 			"css",
 			"diff",
+			"haskell",
 			"html",
 			"javascript",
 			"json",
@@ -32,7 +33,7 @@ return { -- Highlight, edit, and navigate code
 			"xml",
 		},
 		-- Autoinstall languages that are not installed
-		auto_install = true,
+		auto_install = false,
 		highlight = {
 			enable = true,
 			-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
