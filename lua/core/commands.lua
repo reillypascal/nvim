@@ -1,8 +1,4 @@
--- [[ User commands ]]
--- options {} argument required, but left empty here
-vim.api.nvim_create_user_command("IsoDate", "pu=strftime('%Y-%m-%dT%H:%M:%S%z')", {})
-
--- [[ Basic Autocommands ]]
+-- [[ Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
 -- Highlight when yanking (copying) text
@@ -15,3 +11,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
+
+-- [[ User commands ]]
+-- options {} argument required, but left empty here
+vim.api.nvim_create_user_command("IsoDate", "pu=strftime('%Y-%m-%dT%H:%M:%S%z')", {})

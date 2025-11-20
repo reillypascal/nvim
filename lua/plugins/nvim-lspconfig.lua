@@ -306,8 +306,7 @@ return {
 			-- 'pyrefly', -- python; basedpyright replacement? in rust
 			-- 'python-lsp-server',
 			"ruff",
-			-- DON'T install via Mason; ends up running twice
-			-- 'rust-analyzer',
+			-- DON'T install rust-analyzer via Mason; ends up running twice
 			"stylelint",
 			"stylua", -- Used to format Lua code
 			"tombi", -- TOML - new, but seems nicer than taplo
