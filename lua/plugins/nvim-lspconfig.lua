@@ -1,5 +1,12 @@
 return {
 	-- Main LSP Configuration
+	-- https://github.com/neovim/nvim-lspconfig
+	-- :h lspconfig
+	-- :h lspconfig-all
+	-- :h lsp-quickstart (no nvim-lspconfig)
+	-- :checkhealth vim.lsp
+	-- [How to Setup Neovim LSP Like A Pro in 2025 (v0.11+)](https://www.youtube.com/watch?v=oBiBEx7L000)
+
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		-- Automatically install LSPs and related tools to stdpath for Neovim
@@ -193,6 +200,9 @@ return {
 			},
 		})
 
+		-- [[ LSP config functions ]]
+
+		-- [[ ltex setup ]]
 		-- reference: https://github.com/miikanissi/dotfiles/blob/cfe7c149baca373c9109d997cfac3ca1eb0e29e0/.config/nvim/init.lua#L540 and https://miikanissi.com/blog/grammar-and-spell-checker-in-nvim/
 		local words = {}
 		for word in io.open(vim.fn.stdpath("config") .. "/spell/en.utf-8.add", "r"):lines() do
@@ -208,6 +218,30 @@ return {
 				},
 			},
 		})
+
+		-- [[ rust_analyzer setup ]]
+		-- [Rust Setup For Neovim (ft BashBunni) #bash2basics](https://www.youtube.com/watch?v=Mccy6wuq3JE) (note older pre-0.11.x API)
+		-- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/rust_analyzer.lua
+		vim.lsp.config("rust_analyzer", {
+			settings = {
+				["rust-analyzer"] = {
+					-- diagnostics = {
+					-- 	enable = false,
+					-- },
+					check = {
+						command = "clippy",
+						extraArgs = { "--no-deps" },
+					},
+					checkOnSave = true,
+					files = {
+						watcher = "server",
+					},
+				},
+			},
+		})
+
+		vim.lsp.enable("rust_analyzer")
+
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
 		--  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
