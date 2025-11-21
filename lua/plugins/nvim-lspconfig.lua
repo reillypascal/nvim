@@ -5,7 +5,6 @@ return {
 	-- :h lspconfig-all
 	-- :h lsp-quickstart (no nvim-lspconfig)
 	-- :checkhealth vim.lsp
-	-- [How to Setup Neovim LSP Like A Pro in 2025 (v0.11+)](https://www.youtube.com/watch?v=oBiBEx7L000)
 
 	"neovim/nvim-lspconfig",
 	dependencies = {
@@ -220,7 +219,6 @@ return {
 		})
 
 		-- [[ rust_analyzer setup ]]
-		-- [Rust Setup For Neovim (ft BashBunni) #bash2basics](https://www.youtube.com/watch?v=Mccy6wuq3JE) (note older pre-0.11.x API)
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/rust_analyzer.lua
 		vim.lsp.config("rust_analyzer", {
 			settings = {
@@ -257,6 +255,7 @@ return {
 		--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
 		local servers = {
 			-- clangd = {},
 			-- gopls = {},
@@ -282,6 +281,16 @@ return {
 				},
 			},
 
+			-- ltex = {
+			-- 	settings = {
+			-- 		ltex = {
+			-- 			dictionary = {
+			-- 				["en-US"] = words,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
+
 			lua_ls = {
 				-- cmd = { ... },
 				-- filetypes = { ... },
@@ -301,6 +310,24 @@ return {
 			--   settings = {
 			--     filetypes = { 'python' },
 			--   },
+			-- },
+
+			-- rust_analyzer = {
+			-- 	settings = {
+			-- 		["rust-analyzer"] = {
+			-- 			-- diagnostics = {
+			-- 			-- 	enable = false,
+			-- 			-- },
+			-- 			check = {
+			-- 				command = "clippy",
+			-- 				extraArgs = { "--no-deps" },
+			-- 			},
+			-- 			checkOnSave = true,
+			-- 			files = {
+			-- 				watcher = "server",
+			-- 			},
+			-- 		},
+			-- 	},
 			-- },
 		}
 
@@ -341,6 +368,7 @@ return {
 			-- 'python-lsp-server',
 			"ruff",
 			-- DON'T install rust-analyzer via Mason; ends up running twice
+			"rust_analyzer",
 			"stylelint",
 			"stylua", -- Used to format Lua code
 			"tombi", -- TOML - new, but seems nicer than taplo
