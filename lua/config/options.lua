@@ -100,3 +100,6 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+
+-- new to 0.11: adds rounded border on overlay windows
+-- vim.opt.winborder = "rounded"
