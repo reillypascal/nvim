@@ -219,26 +219,25 @@ return {
 		})
 
 		-- [[ rust_analyzer setup ]]
-		-- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/rust_analyzer.lua
-		vim.lsp.config("rust_analyzer", {
-			settings = {
-				["rust-analyzer"] = {
-					-- diagnostics = {
-					-- 	enable = false,
-					-- },
-					check = {
-						command = "clippy",
-						extraArgs = { "--no-deps" },
-					},
-					checkOnSave = true,
-					files = {
-						watcher = "server",
-					},
-				},
-			},
-		})
-
-		vim.lsp.enable("rust_analyzer")
+		-- vim.lsp.config("rust_analyzer", {
+		-- 	settings = {
+		-- 		["rust-analyzer"] = {
+		-- 			-- diagnostics = {
+		-- 			-- 	enable = false,
+		-- 			-- },
+		-- 			check = {
+		-- 				command = "clippy",
+		-- 				extraArgs = { "--no-deps" },
+		-- 			},
+		-- 			checkOnSave = true,
+		-- 			files = {
+		-- 				watcher = "server",
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+		--
+		-- vim.lsp.enable("rust_analyzer")
 
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
