@@ -199,10 +199,7 @@ return {
 			},
 		})
 
-		-- [[ LSP config functions ]]
-
-		-- [[ ltex_plus setup ]]
-		-- reference: https://github.com/miikanissi/dotfiles/blob/cfe7c149baca373c9109d997cfac3ca1eb0e29e0/.config/nvim/init.lua#L540 and https://miikanissi.com/blog/grammar-and-spell-checker-in-nvim/
+		-- [[ ltex_plus dictionary ]]
 		local words = {}
 		for word in io.open(vim.fn.stdpath("config") .. "/spell/en.utf-8.add", "r"):lines() do
 			table.insert(words, word)
@@ -217,27 +214,6 @@ return {
 				},
 			},
 		})
-
-		-- [[ rust_analyzer setup ]]
-		-- vim.lsp.config("rust_analyzer", {
-		-- 	settings = {
-		-- 		["rust-analyzer"] = {
-		-- 			-- diagnostics = {
-		-- 			-- 	enable = false,
-		-- 			-- },
-		-- 			check = {
-		-- 				command = "clippy",
-		-- 				extraArgs = { "--no-deps" },
-		-- 			},
-		-- 			checkOnSave = true,
-		-- 			files = {
-		-- 				watcher = "server",
-		-- 			},
-		-- 		},
-		-- 	},
-		-- })
-		--
-		-- vim.lsp.enable("rust_analyzer")
 
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -280,9 +256,9 @@ return {
 				},
 			},
 
-			-- ltex = {
+			-- ltex_plus = {
 			-- 	settings = {
-			-- 		ltex = {
+			-- 		ltex_plus = {
 			-- 			dictionary = {
 			-- 				["en-US"] = words,
 			-- 			},
@@ -310,24 +286,6 @@ return {
 			--     filetypes = { 'python' },
 			--   },
 			-- },
-
-			-- rust_analyzer = {
-			-- 	settings = {
-			-- 		["rust-analyzer"] = {
-			-- 			-- diagnostics = {
-			-- 			-- 	enable = false,
-			-- 			-- },
-			-- 			check = {
-			-- 				command = "clippy",
-			-- 				extraArgs = { "--no-deps" },
-			-- 			},
-			-- 			checkOnSave = true,
-			-- 			files = {
-			-- 				watcher = "server",
-			-- 			},
-			-- 		},
-			-- 	},
-			-- },
 		}
 
 		-- Ensure the servers and tools above are installed
@@ -353,18 +311,14 @@ return {
 			"codelldb",
 			"cpptools",
 			"curlylint",
-			-- 'eslint-lsp', -- old, seems abandoned
-			-- 'eslint_d',
 			-- "gopls",
 			-- 'js-debug-adapter',
 			"json-lsp",
 			"ltex-ls-plus",
 			"lua-language-server",
 			"marksman",
-			-- 'prettier', -- redundant (?) with prettierd
 			"prettierd",
 			-- 'pyrefly', -- python; basedpyright replacement? in rust
-			-- 'python-lsp-server',
 			"ruff",
 			-- DON'T install rust-analyzer via Mason; ends up running twice
 			"rust_analyzer",
@@ -373,7 +327,7 @@ return {
 			"tombi", -- TOML - new, but seems nicer than taplo
 			-- 'typescript-language-server',
 			-- 'ty', -- python: replacement for basedpyright; same people as ruff; alpha but promising
-			-- people on Reddit say it's better than ts_ls
+			-- people on Reddit say vtsls is better than ts_ls
 			"vtsls",
 			"yaml-language-server",
 		})
