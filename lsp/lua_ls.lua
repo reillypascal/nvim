@@ -8,6 +8,10 @@ return {
 				version = "LuaJIT",
 			},
 			signatureHelp = { enabled = true },
+			-- get the language server to recognize the 'vim' and 'require' globals
+			diagnostics = {
+				globals = { "vim", "require" },
+			},
 		},
 	},
 }
