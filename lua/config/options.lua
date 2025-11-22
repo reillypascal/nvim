@@ -102,4 +102,4 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 -- new to 0.11: adds rounded border on overlay windows
--- vim.opt.winborder = "rounded"
+vim.opt.winborder = "rounded"
