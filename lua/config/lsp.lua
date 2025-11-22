@@ -39,7 +39,7 @@ vim.diagnostic.config({
 	-- 		return diagnostic_message[diagnostic.severity]
 	-- 	end,
 	-- },
-	virtual_lines = {
-		current_line = true,
-	},
+	-- virtual_lines = {
+	-- 	current_line = true,
+	-- },
 })
