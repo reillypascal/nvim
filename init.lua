@@ -5,5 +5,11 @@ require("config.lsp")
 require("config.lsp.commands")
 require("config.plugins")
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+require("nvim-highlight-colors").turnOff()
+--[[
+:HighlightColors On 	Turn highlights on
+:HighlightColors Off 	Turn highlights off
+:HighlightColors Toggle 	Toggle highlights
+:HighlightColors IsActive 	Highlights active / disabled
+]]
+--
