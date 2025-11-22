@@ -1,5 +1,6 @@
 return {
 	cmd = { "curlylint" },
 	filetypes = { "liquid", "nunjucks", "jinja" },
-	-- root_markers = { ".git" },
+	root_markers = { ".git" },
+	workspace_required = false,
 }

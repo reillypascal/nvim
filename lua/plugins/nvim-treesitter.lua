@@ -10,7 +10,7 @@ return { -- Highlight, edit, and navigate code
 			"cpp",
 			"css",
 			"diff",
-			"haskell",
+			-- "haskell",
 			"html",
 			"javascript",
 			"json",
