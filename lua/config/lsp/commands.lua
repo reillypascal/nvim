@@ -1,3 +1,5 @@
+-- see Marco Peluso's discussion of 0.11 changes wrt LspAttach:
+--		https://www.youtube.com/watch?v=tdhxpn1XdjQ&t=6m45s
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)

@@ -3,7 +3,7 @@
 --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
 --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
 
--- want plugins, LSP -> then this so that blink is loaded,
+-- order: plugins, LSP -> then this so that blink is loaded,
 -- and LSPs are there for it to get capabilities
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 

@@ -9,6 +9,7 @@ end
 -- -@type vim.lsp.Config
 return {
 	cmd = { "ltex-ls-plus" },
+	-- removed html/xhtml since they seemed to conflict w/ biome
 	filetypes = {
 		"bib",
 		"context",
