@@ -1,5 +1,9 @@
 -- see Marco Peluso's discussion of 0.11 changes wrt LspAttach:
 --		https://www.youtube.com/watch?v=tdhxpn1XdjQ&t=6m45s
+
+-- https://neovim.io/doc/user/lsp.html#lsp-attach
+-- global default keymaps
+-- https://neovim.io/doc/user/lsp.html#gra
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
