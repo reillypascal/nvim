@@ -34,11 +34,15 @@ return { -- Autoformat
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			-- javascript = { "prettierd", "prettier", stop_after_first = true },
 			c = { "clang-format" },
+			cmake = { "gersemi" },
 			cpp = { "clang-format" },
 			css = { "biome" },
 			-- haskell = { "ormolu" },
 			html = { "biome" },
 			javascript = { "biome" },
+			-- https://shopify.dev/docs/storefronts/themes/tools/liquid-prettier-plugin
+			-- liquid = { "prettier" },
+			liquid = { "prettierd" },
 			lua = { "stylua" },
 			markdown = { "prettierd" },
 			python = { "ruff" },

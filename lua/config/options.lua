@@ -39,9 +39,9 @@ vim.o.breakindent = true
 
 -- Adjust indentation
 -- use two spaces for indent (https://www.reddit.com/r/neovim/comments/zxlbc0/how_do_i_force_neovim_to_always_give_me_two_space/)
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 -- vim.opt.expandtab = true
 vim.opt.autoindent = true
