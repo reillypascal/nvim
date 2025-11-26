@@ -10,6 +10,19 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist, { desc = "Add all [d]iagnostics to the location list." })
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.setqflist, { desc = "Add all [d]iagnostics to the quickfix list." })
 
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>gd",
+	"<cmd>lua vim.lsp.buf.definition()<CR>",
+	{ desc = "LSP: [g]o to [d]efinition" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>gi",
+	"<cmd>lua vim.lsp.buf.implementation()<CR>",
+	{ desc = "LSP: [g]o to [i]mplementation" }
+)
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
