@@ -40,6 +40,7 @@ return { -- Autoformat
 			-- haskell = { "ormolu" },
 			html = { "biome" },
 			javascript = { "biome" },
+			json = { "biome" },
 			-- https://shopify.dev/docs/storefronts/themes/tools/liquid-prettier-plugin
 			-- liquid = { "prettier" },
 			liquid = { "prettierd" },

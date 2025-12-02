@@ -8,15 +8,15 @@ return {
 			-- "clang-format",
 			-- "clangd",
 			"codelldb",
-			"cpptools",
-			"cssls",
+			-- "cpptools", -- microsoft: don't seem needed for dap/lsp/formatting
+			-- "cssls",
 			-- "curlylint",
 			--"gopls",
 			-- "haskell-language-server",
 			-- note this takes a *long* time to install!
 			-- "haskell-debug-adapter",
 			-- 'js-debug-adapter',
-			"json-lsp",
+			-- "json-lsp",
 			-- "ltex-ls-plus",
 			-- "lua-language-server",
 			-- "marksman",
@@ -32,7 +32,7 @@ return {
 			-- 'typescript-language-server',
 			-- 'ty', -- python: replacement for basedpyright; same people as ruff; alpha but promising
 			-- people on Reddit say vtsls is better than ts_ls
-			"vtsls",
+			-- "vtsls",
 			-- "yaml-language-server",
 		},
 	},
