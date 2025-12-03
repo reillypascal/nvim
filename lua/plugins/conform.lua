@@ -42,11 +42,13 @@ return { -- Autoformat
 			javascript = { "biome" },
 			json = { "biome" },
 			-- https://shopify.dev/docs/storefronts/themes/tools/liquid-prettier-plugin
-			-- liquid = { "prettier" },
 			liquid = { "prettierd" },
 			lua = { "stylua" },
 			markdown = { "prettierd" },
 			python = { "ruff" },
+			rust = { "rustfmt" },
+			toml = { "tombi" },
+			zig = { "zigfmt" },
 		},
 	},
 }
