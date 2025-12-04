@@ -104,3 +104,7 @@ vim.o.confirm = true
 -- new to 0.11: adds rounded border on overlay windows
 -- unfortunately also on Lazy window!
 -- vim.opt.winborder = "rounded"
+
+-- :help statusline
+-- vim.cmd([[set statusline=%f%m%=%y\ %l:%c\ %p%%]])
+-- vim.cmd([[set statusline=%<%f\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P]])
