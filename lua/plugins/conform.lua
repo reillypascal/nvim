@@ -45,6 +45,7 @@ return { -- Autoformat
 			liquid = { "prettierd" },
 			lua = { "stylua" },
 			markdown = { "prettierd" },
+			nunjucks = { "prettierd" },
 			python = { "ruff" },
 			rust = { "rustfmt" },
 			toml = { "tombi" },
