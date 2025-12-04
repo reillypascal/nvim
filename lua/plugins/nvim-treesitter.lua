@@ -7,9 +7,11 @@ return { -- Highlight, edit, and navigate code
 		ensure_installed = {
 			"bash",
 			"c",
+			"cmake",
 			"cpp",
 			"css",
 			"diff",
+			"faust",
 			-- "haskell",
 			"html",
 			"javascript",
@@ -31,6 +33,7 @@ return { -- Highlight, edit, and navigate code
 			"vim",
 			"vimdoc",
 			"xml",
+			"yaml",
 		},
 		-- Autoinstall languages that are not installed
 		auto_install = false,
