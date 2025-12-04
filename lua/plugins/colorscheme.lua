@@ -1,5 +1,4 @@
 return {
-	-- "reillypascal/perf",
 	"reillypascal/perf.nvim",
 	-- dir = "~/Dev/Neovim/perf.nvim",
 	lazy = false,
