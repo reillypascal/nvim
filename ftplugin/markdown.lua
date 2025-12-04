@@ -17,17 +17,17 @@ vim.api.nvim_buf_set_keymap(0, "n", "k", "gk", { noremap = true, silent = true }
 vim.api.nvim_buf_set_keymap(0, "v", "j", "gj", { noremap = true, silent = true })
 vim.api.nvim_buf_set_keymap(0, "v", "k", "gk", { noremap = true, silent = true })
 
--- Map <Down> and <Up> to move by visual lines
-vim.api.nvim_buf_set_keymap(0, "n", "<Down>", "g<Down>", { noremap = true, silent = true })
-vim.api.nvim_buf_set_keymap(0, "n", "<Up>", "g<Up>", { noremap = true, silent = true })
-vim.api.nvim_buf_set_keymap(0, "v", "<Down>", "g<Down>", { noremap = true, silent = true })
-vim.api.nvim_buf_set_keymap(0, "v", "<Up>", "g<Up>", { noremap = true, silent = true })
-
 -- Map $ and 0 to move by visual lines
 vim.api.nvim_buf_set_keymap(0, "n", "$", "g$", { noremap = true, silent = true })
 vim.api.nvim_buf_set_keymap(0, "n", "0", "g0", { noremap = true, silent = true })
 vim.api.nvim_buf_set_keymap(0, "v", "$", "g$", { noremap = true, silent = true })
 vim.api.nvim_buf_set_keymap(0, "v", "0", "g0", { noremap = true, silent = true })
+
+-- Map <Down> and <Up> to move by visual lines
+vim.api.nvim_buf_set_keymap(0, "n", "<Down>", "g<Down>", { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, "n", "<Up>", "g<Up>", { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, "v", "<Down>", "g<Down>", { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, "v", "<Up>", "g<Up>", { noremap = true, silent = true })
 
 -- Map <Home> and <End> to move by visual lines
 vim.api.nvim_buf_set_keymap(0, "n", "<End>", "g<End>", { noremap = true, silent = true })
