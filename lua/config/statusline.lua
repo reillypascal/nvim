@@ -116,6 +116,7 @@ end
 
 local function lsp()
 	local clients = vim.lsp.get_clients()
+	-- https://stackoverflow.com/a/1407187
 	local client_names = {}
 	for k, v in ipairs(clients) do
 		client_names[#client_names + 1] = tostring(v.name)
