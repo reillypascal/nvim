@@ -1,29 +1,6 @@
 -- https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
 -- https://elianiva.my.id/posts/neovim-lua-statusline/
 
--- local modes = {
--- 	["n"] = "N",
--- 	["no"] = "N•P",
--- 	["v"] = "V",
--- 	["V"] = "V•L",
--- 	[""] = "V•B",
--- 	["s"] = "S",
--- 	["S"] = "S•L",
--- 	[""] = "S•B",
--- 	["i"] = "I",
--- 	["ic"] = "I",
--- 	["R"] = "R",
--- 	["Rv"] = "V•R",
--- 	["c"] = "C",
--- 	["cv"] = "V•E",
--- 	["ce"] = "E",
--- 	["r"] = "P",
--- 	["rm"] = "M",
--- 	["r?"] = "C",
--- 	["!"] = "S",
--- 	["t"] = "T",
--- }
-
 local modes = {
 	["n"] = "NORMAL",
 	["no"] = "NORMAL",
@@ -195,7 +172,7 @@ Statusline.active = function()
 		lsp_diag(),
 		"%#Statusline#",
 		-- lsp(),
-		filepath(),
+		-- filepath(),
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
