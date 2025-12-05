@@ -92,6 +92,10 @@ local function lsp_diag()
 		info = " %#LspDiagnosticsDefaultInformation#󰋽 " .. count["info"]
 	end
 
+	if errors == "" and warnings == "" and hints == "" and info == "" then
+		return ""
+	end
+
 	return " " .. errors .. warnings .. hints .. info .. " "
 end
 
@@ -126,7 +130,7 @@ local function filename()
 	if fname == "" then
 		return ""
 	end
-	return fname .. " "
+	return " " .. fname .. " "
 end
 
 local function filetype()
