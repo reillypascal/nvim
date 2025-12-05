@@ -34,9 +34,11 @@ local function vcs()
 	if not git_info or git_info.head == "" then
 		return ""
 	end
+
 	local added = git_info.added and (" %#GitSignsAdd#+" .. git_info.added) or ""
 	local changed = git_info.changed and (" %#GitSignsChange#~" .. git_info.changed) or ""
 	local removed = git_info.removed and (" %#GitSignsDelete#-" .. git_info.removed) or ""
+
 	if git_info.added == 0 then
 		added = ""
 	end
@@ -46,6 +48,12 @@ local function vcs()
 	if git_info.removed == 0 then
 		removed = ""
 	end
+
+	local end_padding = ""
+	if git_info.added ~= 0 or git_info.changed ~= 0 or git_info.removed ~= 0 then
+		end_padding = " "
+	end
+
 	return table.concat({
 		" %#GitSignsAdd# ",
 		git_info.head,
@@ -53,6 +61,7 @@ local function vcs()
 		added,
 		changed,
 		removed,
+		end_padding,
 		"%#StatusLine#",
 	})
 end
@@ -130,7 +139,7 @@ local function filename()
 	if fname == "" then
 		return ""
 	end
-	return " " .. fname .. " "
+	return fname .. " "
 end
 
 local function filetype()
@@ -176,6 +185,7 @@ Statusline.active = function()
 		lsp_diag(),
 		"%#Statusline#",
 		-- lsp(),
+		" ",
 		-- filepath(),
 		filename(),
 		"%=%#StatusLineExtra#",
