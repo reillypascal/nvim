@@ -99,16 +99,20 @@ local function lsp_diag()
 	end
 
 	if count["errors"] ~= 0 then
-		errors = " %#LspDiagnosticsSignError#󰅚 " .. count["errors"]
+		-- errors = " %#LspDiagnosticsSignError#󰅚 " .. count["errors"]
+		errors = " %#LspDiagnosticsDefaultError#󰅚 " .. count["errors"]
 	end
 	if count["warnings"] ~= 0 then
-		warnings = " %#LspDiagnosticsSignWarning#󰀪 " .. count["warnings"]
+		-- warnings = " %#LspDiagnosticsSignWarning#󰀪 " .. count["warnings"]
+		warnings = " %#LspDiagnosticsDefaultWarning#󰀪 " .. count["warnings"]
 	end
 	if count["hints"] ~= 0 then
-		hints = " %#LspDiagnosticsSignHint#󰋽 " .. count["hints"]
+		-- hints = " %#LspDiagnosticsSignHint#󰌶 " .. count["hints"]
+		hints = " %#LspDiagnosticsDefaultHint#󰌶 " .. count["hints"]
 	end
 	if count["info"] ~= 0 then
-		info = " %#LspDiagnosticsSignInformation#󰌶 " .. count["info"]
+		-- info = " %#LspDiagnosticsSignInformation#󰋽 " .. count["info"]
+		info = " %#LspDiagnosticsDefaultInformation#󰋽 " .. count["info"]
 	end
 
 	return " " .. errors .. warnings .. hints .. info .. " "
@@ -118,7 +122,7 @@ local function lsp()
 	local clients = vim.lsp.get_clients()
 	-- https://stackoverflow.com/a/1407187
 	local client_names = {}
-	for k, v in ipairs(clients) do
+	for _, v in ipairs(clients) do
 		client_names[#client_names + 1] = tostring(v.name)
 	end
 
@@ -186,6 +190,7 @@ Statusline.active = function()
 		mode(),
 		vcs(),
 		lsp_diag(),
+		"%#Statusline#",
 		-- lsp(),
 		filepath(),
 		filename(),
