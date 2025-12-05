@@ -10,6 +10,7 @@ end
 vim.lsp.enable(lsp_configs)
 
 -- [[ LSP diagnostic config ]]
+-- for gutter, not statusline
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config({
 	severity_sort = true,
