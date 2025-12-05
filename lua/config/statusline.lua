@@ -135,11 +135,21 @@ local function filetype()
 	return string.format(" %s ", vim.bo.filetype) --:upper()
 end
 
+local function eol()
+	local formats = {
+		dos = "crlf",
+		unix = "lf",
+		mac = "cr",
+	}
+	return string.format(" %s ", formats[vim.bo.fileformat])
+	-- return string.format(" %s ", vim.bo.fileformat)
+end
+
 local function lineinfo()
 	if vim.bo.filetype == "alpha" then
 		return ""
 	end
-	return " %P %l:%c "
+	return " %l:%c " .. " %P "
 end
 
 Statusline = {}
@@ -155,6 +165,7 @@ Statusline.active = function()
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
+		eol(),
 		lineinfo(),
 	})
 end
