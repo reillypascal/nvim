@@ -176,9 +176,8 @@ Statusline.active = function()
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
-		-- encoding(),
-		-- eol(),
-		-- tabstop(),
+		encoding(),
+		eol(),
 		lineinfo(),
 	})
 end
