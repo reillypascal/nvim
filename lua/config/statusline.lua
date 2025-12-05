@@ -165,13 +165,13 @@ local function encoding()
 end
 
 local function eol()
-	-- local formats = {
-	-- 	dos = "crlf",
-	-- 	unix = "lf",
-	-- 	mac = "cr",
-	-- }
-	-- return string.format(" %s ", formats[vim.bo.fileformat])
-	return string.format(" %s ", vim.bo.fileformat)
+	local formats = {
+		dos = "crlf",
+		unix = "lf",
+		mac = "cr",
+	}
+	return string.format(" %s ", formats[vim.bo.fileformat])
+	-- return string.format(" %s ", vim.bo.fileformat)
 end
 
 local function lineinfo()
@@ -188,6 +188,9 @@ Statusline.active = function()
 		"%#Statusline#",
 		-- update_mode_colors(),
 		mode(),
+		-- "%#LineNr#",
+		-- "|",
+		-- "%#Statusline#",
 		vcs(),
 		lsp_diag(),
 		"%#Statusline#",
@@ -196,9 +199,9 @@ Statusline.active = function()
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
+		-- encoding(),
+		-- eol(),
 		-- tabstop(),
-		encoding(),
-		eol(),
 		lineinfo(),
 	})
 end
