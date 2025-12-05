@@ -52,7 +52,7 @@ local function mode()
 	return string.format(" %s ", modes[current_mode]):upper()
 end
 
-local vcs = function()
+local function vcs()
 	local git_info = vim.b.gitsigns_status_dict
 	if not git_info or git_info.head == "" then
 		return ""
@@ -80,7 +80,7 @@ local vcs = function()
 	})
 end
 
-local function lsp()
+local function lsp_diag()
 	local count = {}
 	local levels = {
 		errors = "Error",
@@ -114,6 +114,22 @@ local function lsp()
 	return " " .. errors .. warnings .. hints .. info .. " "
 end
 
+local function lsp()
+	local clients = vim.lsp.get_clients()
+	local client_names = {}
+	for k, v in ipairs(clients) do
+		client_names[#client_names + 1] = tostring(v.name)
+	end
+
+	local client_str = string.format("%s", table.concat(client_names, ", "))
+
+	if client_str == "" then
+		return ""
+	end
+
+	return " " .. client_str .. " "
+end
+
 local function filepath()
 	local fpath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:h")
 	if fpath == "" or fpath == "." then
@@ -135,22 +151,22 @@ local function filetype()
 	return string.format(" %s ", vim.bo.filetype) --:upper()
 end
 
-local function tabstop()
-	return string.format(" ts=%s ", vim.bo.tabstop)
-end
+-- local function tabstop()
+-- 	return string.format(" ts=%s ", vim.bo.tabstop)
+-- end
 
 local function encoding()
 	return string.format(" %s ", vim.bo.fileencoding)
 end
 
 local function eol()
-	local formats = {
-		dos = "crlf",
-		unix = "lf",
-		mac = "cr",
-	}
-	return string.format(" %s ", formats[vim.bo.fileformat])
-	-- return string.format(" %s ", vim.bo.fileformat)
+	-- local formats = {
+	-- 	dos = "crlf",
+	-- 	unix = "lf",
+	-- 	mac = "cr",
+	-- }
+	-- return string.format(" %s ", formats[vim.bo.fileformat])
+	return string.format(" %s ", vim.bo.fileformat)
 end
 
 local function lineinfo()
@@ -168,13 +184,14 @@ Statusline.active = function()
 		-- update_mode_colors(),
 		mode(),
 		vcs(),
-		lsp(),
+		lsp_diag(),
+		-- lsp(),
 		filepath(),
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
 		-- tabstop(),
-		-- encoding(),
+		encoding(),
 		eol(),
 		lineinfo(),
 	})
