@@ -135,6 +135,14 @@ local function filetype()
 	return string.format(" %s ", vim.bo.filetype) --:upper()
 end
 
+local function tabstop()
+	return string.format(" ts=%s ", vim.bo.tabstop)
+end
+
+local function encoding()
+	return string.format(" %s ", vim.bo.fileencoding)
+end
+
 local function eol()
 	local formats = {
 		dos = "crlf",
@@ -165,6 +173,8 @@ Statusline.active = function()
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
+		-- tabstop(),
+		-- encoding(),
 		eol(),
 		lineinfo(),
 	})
