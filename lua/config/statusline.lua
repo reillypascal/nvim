@@ -107,7 +107,7 @@ local function lsp_diag()
 		return ""
 	end
 
-	return " " .. errors .. warnings .. hints .. info .. " "
+	return errors .. warnings .. hints .. info .. " "
 end
 
 local function lsp()
