@@ -55,7 +55,9 @@ local function vcs()
 	end
 
 	return table.concat({
-		" %#GitSignsAdd# ",
+		-- " %#GitSignsAdd# ",
+		-- " %#GitBranch# ",
+		" %#StatusLine# ",
 		git_info.head,
 		" ",
 		added,
@@ -69,10 +71,10 @@ end
 local function lsp_diag()
 	local count = {}
 	local levels = {
-		errors = "Error",
-		warnings = "Warn",
-		info = "Info",
-		hints = "Hint",
+		errors = vim.diagnostic.severity.ERROR,
+		warnings = vim.diagnostic.severity.WARN,
+		info = vim.diagnostic.severity.INFO,
+		hints = vim.diagnostic.severity.HINT,
 	}
 
 	local errors = ""
