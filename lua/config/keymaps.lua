@@ -47,12 +47,6 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
--- Diagnostic keybinds to replace tiny-inline-diagnostic
--- https://www.reddit.com/r/neovim/comments/megnhx/comment/gshmeik/
-vim.keymap.set("n", "<leader>]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>wd", "<cmd> lua vim.diagnostic.open_float()<CR>", { silent = true, noremap = true })
-
 -- Close floating windows
 -- https://www.reddit.com/r/neovim/comments/1335pfc/comment/jwl13zy/
 vim.keymap.set("n", "<esc>", function()
@@ -62,3 +56,20 @@ vim.keymap.set("n", "<esc>", function()
 		end
 	end
 end)
+
+-- Close floating windows if not focused - currently gives error!
+-- https://www.reddit.com/r/neovim/comments/1335pfc/comment/jiaagyi/
+-- vim.keymap.set("n", "<esc>", function()
+-- 	local inactive_floating_wins = vim.fn.filter(vim.api.nvim_list_wins(), function(_, v)
+-- 		return vim.api.nvim_win_get_config(v).relative ~= "" and v ~= vim.api.nvim_get_current_win()
+-- 	end)
+-- 	for _, w in ipairs(inactive_floating_wins) do
+-- 		pcall(vim.api.nvim_win_close, w, false)
+-- 	end
+-- end)
+
+-- Diagnostic keybinds to replace tiny-inline-diagnostic
+-- https://www.reddit.com/r/neovim/comments/megnhx/comment/gshmeik/
+-- vim.keymap.set("n", "<leader>]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<leader>[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<leader>wd", "<cmd> lua vim.diagnostic.open_float()<CR>", { silent = true, noremap = true })
