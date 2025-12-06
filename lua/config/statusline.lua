@@ -57,7 +57,7 @@ local function vcs()
 	return table.concat({
 		-- " %#GitSignsAdd# ",
 		-- " %#GitBranch# ",
-		" %#StatusLine# ",
+		" %#StatusLine# ",
 		git_info.head,
 		" ",
 		added,
@@ -170,7 +170,7 @@ local function lineinfo()
 	if vim.bo.filetype == "alpha" then
 		return ""
 	end
-	return " %l:%c " .. " %P "
+	return " %P " .. " %l:%c "
 end
 
 Statusline = {}
@@ -187,7 +187,7 @@ Statusline.active = function()
 		lsp_diag(),
 		"%#Statusline#",
 		-- lsp(),
-		" ",
+		" ", -- don't want to put this in filename(); keep compatibility w/ filepath()
 		-- filepath(),
 		filename(),
 		"%=%#StatusLineExtra#",
