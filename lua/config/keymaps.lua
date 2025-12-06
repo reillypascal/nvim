@@ -10,13 +10,8 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist, { desc = "Add all [d]iagnostics to the location list." })
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.setqflist, { desc = "Add all [d]iagnostics to the quickfix list." })
 
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>gd",
-	"<cmd>lua vim.lsp.buf.definition()<CR>",
-	{ desc = "LSP: [g]o to [d]efinition" }
-)
-vim.api.nvim_set_keymap(
+vim.keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP: [g]o to [d]efinition" })
+vim.keymap.set(
 	"n",
 	"<leader>gi",
 	"<cmd>lua vim.lsp.buf.implementation()<CR>",
@@ -51,3 +46,19 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+-- Diagnostic keybinds to replace tiny-inline-diagnostic
+-- https://www.reddit.com/r/neovim/comments/megnhx/comment/gshmeik/
+vim.keymap.set("n", "<leader>]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>wd", "<cmd> lua vim.diagnostic.open_float()<CR>", { silent = true, noremap = true })
+
+-- Close floating windows
+-- https://www.reddit.com/r/neovim/comments/1335pfc/comment/jwl13zy/
+vim.keymap.set("n", "<esc>", function()
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		if vim.api.nvim_win_get_config(win).relative == "win" then
+			vim.api.nvim_win_close(win, false)
+		end
+	end
+end)
