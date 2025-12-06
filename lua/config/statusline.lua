@@ -217,3 +217,7 @@ augroup Statusline
 	]],
 	false
 )
+
+-- :h ruler - position info (redundant bc in statusline)
+-- :h showcmd - current key command; can turn off on slower computers
+vim.o.ruler = false

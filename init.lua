@@ -1,9 +1,9 @@
+require("config.statusline")
 require("config.options")
 require("config.keymaps")
 require("config.commands")
 require("config.lsp")
 require("config.lsp.commands")
-require("config.statusline")
 require("config.plugins")
 
 require("nvim-highlight-colors").turnOff()
