@@ -2,6 +2,7 @@
 return {
 	-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
 	-- used for completion, annotations and signatures of Neovim apis
+	-- requirement for blink - separate file for options
 	"folke/lazydev.nvim",
 	ft = "lua",
 	opts = {

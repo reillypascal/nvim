@@ -108,3 +108,10 @@ vim.o.confirm = true
 -- :help statusline
 -- vim.cmd([[set statusline=%f%m%=%y\ %l:%c\ %p%%]])
 -- vim.cmd([[set statusline=%<%f\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P]])
+
+-- adds subdirectories to path
+-- :set path?
+-- :h starstar
+-- :h fin
+-- :h sf
+vim.cmd([[set path+=,**]])
