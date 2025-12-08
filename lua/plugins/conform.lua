@@ -37,7 +37,7 @@ return { -- Autoformat
 			cmake = { "gersemi" },
 			cpp = { "clang-format" },
 			css = { "biome" },
-			-- haskell = { "ormolu" },
+			haskell = { "ormolu" },
 			html = { "biome" },
 			javascript = { "biome" },
 			json = { "biome" },
