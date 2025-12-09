@@ -4,7 +4,11 @@ local lsp_configs = {}
 
 for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	local server_name = vim.fn.fnamemodify(f, ":t:r")
-	table.insert(lsp_configs, server_name)
+	-- if moxide root not in cwd/ancestor, don't activate moxide
+	if server_name == "markdown_oxide" and vim.fs.root(0, { "obsidian", ".moxide.toml" }) == nil then
+	else
+		table.insert(lsp_configs, server_name)
+	end
 end
 
 vim.lsp.enable(lsp_configs)

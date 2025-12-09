@@ -1,6 +1,6 @@
 vim.opt.linebreak = true
 
--- set conceallevel only for Obsidian
+-- set conceallevel only for note vaults
 local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
 if
 	string.match(dir, "~/Sync/Notes/*.*")

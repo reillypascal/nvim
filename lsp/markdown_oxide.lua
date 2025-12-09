@@ -25,6 +25,15 @@ return {
 	root_markers = { ".obsidian", ".moxide.toml" },
 	filetypes = { "markdown" },
 	cmd = { "markdown-oxide" },
+	capabilities = {
+		{
+			workspace = {
+				didChangeWatchedFiles = {
+					dynamicRegistration = true,
+				},
+			},
+		},
+	},
 	on_attach = function(client, bufnr)
 		for _, cmd in ipairs({ "today", "tomorrow", "yesterday" }) do
 			vim.api.nvim_buf_create_user_command(

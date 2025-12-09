@@ -11,14 +11,14 @@ vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist, { desc = "Add all [
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.setqflist, { desc = "Add all [d]iagnostics to the quickfix list." })
 
 -- vim.keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP: [g]o to [d]efinition" })
-vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP: [g]o to [d]efinition" })
-vim.keymap.set(
-	"n",
-	-- "<leader>gi",
-	"gi",
-	"<cmd>lua vim.lsp.buf.implementation()<CR>",
-	{ desc = "LSP: [g]o to [i]mplementation" }
-)
+-- vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP: [g]o to [d]efinition" })
+-- vim.keymap.set(
+-- 	"n",
+-- 	-- "<leader>gi",
+-- 	"gi",
+-- 	"<cmd>lua vim.lsp.buf.implementation()<CR>",
+-- 	{ desc = "LSP: [g]o to [i]mplementation" }
+-- )
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
