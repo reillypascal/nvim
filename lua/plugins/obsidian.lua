@@ -13,6 +13,14 @@ return {
 	---@module 'obsidian'
 	---@type obsidian.config
 	opts = {
+		-- callbacks = {
+		-- 	enter_note = function(note)
+		-- 		vim.keymap.set("n", "<leader>oi", "<cmd>Obsidian toc<cr>", {
+		-- 			buffer = note.bufnr,
+		-- 			desc = "Obsidian TOC",
+		-- 		})
+		-- 	end,
+		-- },
 		legacy_commands = false, -- this will be removed in the next major release
 		workspaces = {
 			{
