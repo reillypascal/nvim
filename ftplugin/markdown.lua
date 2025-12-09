@@ -2,8 +2,14 @@ vim.opt.linebreak = true
 
 -- set conceallevel only for Obsidian
 -- fnamemodify() with ":~" will reduce path relative to home
+-- string.match() + wildcards matches subdirectories as well
+-- https://www.lua.org/pil/20.2.html
 local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
-if dir == "~/Sync/Notes" or dir == "~/Sync/Personal" or dir == "~/Sync (Household)" then
+if
+	string.match(dir, "~/Sync/Notes/*.*")
+	or string.match(dir, "~/Sync/Personal/*.*")
+	or string.match(dir, "~/Sync (Household)/*.*")
+then
 	vim.opt.conceallevel = 2
 end
 
