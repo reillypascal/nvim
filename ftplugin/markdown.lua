@@ -1,4 +1,6 @@
 vim.opt.linebreak = true
+-- also in options.lua - why needed here?
+vim.opt.autoindent = true
 
 -- set conceallevel only for note vaults
 local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
