@@ -10,10 +10,12 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist, { desc = "Add all [d]iagnostics to the location list." })
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.setqflist, { desc = "Add all [d]iagnostics to the quickfix list." })
 
-vim.keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP: [g]o to [d]efinition" })
+-- vim.keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP: [g]o to [d]efinition" })
+vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP: [g]o to [d]efinition" })
 vim.keymap.set(
 	"n",
-	"<leader>gi",
+	-- "<leader>gi",
+	"gi",
 	"<cmd>lua vim.lsp.buf.implementation()<CR>",
 	{ desc = "LSP: [g]o to [i]mplementation" }
 )
