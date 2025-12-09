@@ -34,7 +34,8 @@ return {
 			{ name = "Household", path = "~/Sync (Household)" },
 		},
 		ui = {
-			enable = false,
+			-- requires conceallevel = 2/3
+			enable = true,
 		},
 	},
 }
