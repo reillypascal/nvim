@@ -148,6 +148,14 @@ local function filetype()
 	return string.format(" %s ", vim.bo.filetype) --:upper()
 end
 
+local function wordcount()
+	if vim.bo.filetype == "markdown" then
+		return tostring(" " .. vim.fn.wordcount().words) .. " words "
+	else
+		return ""
+	end
+end
+
 -- local function tabstop()
 -- 	return string.format(" ts=%s ", vim.bo.tabstop)
 -- end
@@ -192,6 +200,7 @@ Statusline.active = function()
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
+		wordcount(),
 		encoding(),
 		eol(),
 		lineinfo(),

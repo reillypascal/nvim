@@ -103,11 +103,49 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			})
 		end
 
+		-- setup Markdown Oxide daily note commands
+		-- if client and client.name == "markdown_oxide" then
+		-- 	vim.api.nvim_create_user_command("Daily", function(args)
+		-- 		local input = args.args
+		--
+		-- 		client.exec_cmd({ command = "jump", arguments = { input } })
+		-- 	end, { desc = "Open daily note", nargs = "*" })
+		-- end
+
+		-- via https://gist.github.com/adibhanna/faf21a3b4f2df807c2b7bbbcbf1ba56d#file-init-lua-L630
+		-- Markdown Oxide specific features
+		if client and client.name == "markdown_oxide" then
+			-- Enable code lens for reference counts (if supported)
+			if client_supports_method(client, vim.lsp.protocol.Methods.textDocument_codeLens, event.buf) then
+				local function check_codelens_support()
+					local clients = vim.lsp.get_clients({ bufnr = 0 })
+					for _, c in ipairs(clients) do
+						if c.server_capabilities.codeLensProvider then
+							return true
+						end
+					end
+					return false
+				end
+
+				vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "CursorHold", "LspAttach", "BufEnter" }, {
+					buffer = event.buf,
+					callback = function()
+						if check_codelens_support() then
+							vim.lsp.codelens.refresh({ bufnr = 0 })
+						end
+					end,
+				})
+
+				-- Trigger codelens refresh
+				vim.api.nvim_exec_autocmds("User", { pattern = "LspAttached" })
+			end
+		end
+
 		-- The following code creates a keymap to toggle inlay hints in your
 		-- code, if the language server you are using supports them
 		--
 		-- This may be unwanted, since they displace some of your code
-		if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+		if client then --and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
 			map("<leader>th", function()
 				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 			end, "[T]oggle Inlay [H]ints")

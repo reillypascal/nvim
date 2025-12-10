@@ -78,6 +78,12 @@ return { -- Autocompletion
 			default = { "lsp", "path", "snippets", "lazydev" },
 			providers = {
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+				-- lsp = {
+				-- 	-- Configure markdown_oxide for better keyword matching
+				-- 	markdown_oxide = {
+				-- 		keyword_pattern = [[\(\k\| \|\/\|#\)\+]],
+				-- 	},
+				-- },
 			},
 		},
 
