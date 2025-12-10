@@ -2,10 +2,19 @@
 
 local lsp_configs = {}
 
+-- return path if moxide dir
+-- return nil if not
+local is_moxide_dir = function()
+	return vim.fs.root(0, { "obsidian", ".moxide.toml" })
+end
+
 for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	local server_name = vim.fn.fnamemodify(f, ":t:r")
-	-- if moxide root not in cwd/ancestor, don't activate moxide
-	if server_name == "markdown_oxide" and vim.fs.root(0, { "obsidian", ".moxide.toml" }) == nil then
+	if server_name == "markdown_oxide" and is_moxide_dir() == nil then
+		-- if moxide root not in cwd/ancestor, don't activate moxide
+	elseif server_name == "marksman" and is_moxide_dir() ~= nil then
+		-- if moxide root _is_ in cwd/ancester, don't also use marksman
+		-- this avoids "A" on gO
 	else
 		table.insert(lsp_configs, server_name)
 	end

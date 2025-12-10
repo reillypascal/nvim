@@ -3,14 +3,14 @@ vim.opt.linebreak = true
 vim.opt.autoindent = true
 
 -- set conceallevel only for note vaults
-local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
-if
-	string.match(dir, "~/Sync/Notes/*.*")
-	or string.match(dir, "~/Sync/Personal/*.*")
-	or string.match(dir, "~/Sync (Household)/*.*")
-then
-	vim.opt.conceallevel = 2
-end
+-- local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
+-- if
+-- 	string.match(dir, "~/Sync/Notes/*.*")
+-- 	or string.match(dir, "~/Sync/Personal/*.*")
+-- 	or string.match(dir, "~/Sync (Household)/*.*")
+-- then
+-- 	vim.opt.conceallevel = 2
+-- end
 
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
