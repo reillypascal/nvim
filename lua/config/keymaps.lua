@@ -75,3 +75,18 @@ end)
 -- vim.keymap.set("n", "<leader>]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
 -- vim.keymap.set("n", "<leader>[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
 -- vim.keymap.set("n", "<leader>wd", "<cmd> lua vim.diagnostic.open_float()<CR>", { silent = true, noremap = true })
+
+-- vim.keymap.set("n", "<leader>p", function()
+-- 	local ok, _ = pcall(function()
+-- 		local clipboard_content = vim.fn.getreg("*")
+--
+-- 		local cmd = "pandoc -f html -t markdown"
+-- 		local cmd_output = vim.fn.system(cmd, clipboard_content)
+-- 		local markdown_text = vim.split(cmd_output, "\n")
+--
+-- 		vim.api.nvim_put(markdown_text, "l", true, true)
+-- 	end)
+-- 	if not ok then
+-- 		vim.notify("Can't convert the passed HTML", vim.log.levels.WARN)
+-- 	end
+-- end, { desc = "Paste HTML as Markdown" })

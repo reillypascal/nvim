@@ -118,4 +118,6 @@ vim.cmd([[set path+=,**]])
 
 -- turns off startup message
 -- :h shortmess
-vim.o.shortmess = "I"
+-- appending keeps default settings as well
+-- https://github.com/folke/noice.nvim/wiki/A-Guide-to-Messages#handling-hit-enter-messages
+vim.opt.shortmess:append("I")

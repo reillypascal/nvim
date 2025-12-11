@@ -12,6 +12,22 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- macOS doesn't send capslock to terminal as keypress (?)
+-- vim.api.nvim_create_autocmd("VimEnter", {
+-- 	desc = "Remap caps lock to escape",
+-- 	group = vim.api.nvim_create_augroup("capslock-maps", { clear = true }),
+-- 	callback = function()
+-- 		vim.cmd("!setxkbmap -option caps:swapescape")
+-- 	end,
+-- })
+--
+-- vim.api.nvim_create_autocmd("VimLeave", {
+-- 	group = vim.api.nvim_create_augroup("capslock-maps", { clear = true }),
+-- 	callback = function()
+-- 		vim.cmd("!setxkbmap -option")
+-- 	end,
+-- })
+
 -- [[ User commands ]]
 -- options {} argument required, but left empty here
 -- insert ISO date: https://vi.stackexchange.com/a/21826
