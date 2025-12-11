@@ -8,6 +8,9 @@
 --- ```
 ---
 --- Language server for bash, written using tree sitter in typescript.
+---
+--- Recommended to install shellcheck: https://github.com/bash-lsp/bash-language-server?tab=readme-ov-file#dependencies
+--- Also good to have shfmt for formatting
 
 ---@type vim.lsp.Config
 return {

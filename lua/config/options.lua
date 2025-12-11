@@ -115,3 +115,7 @@ vim.o.confirm = true
 -- :h fin
 -- :h sf
 vim.cmd([[set path+=,**]])
+
+-- turns off startup message
+-- :h shortmess
+vim.o.shortmess = "I"

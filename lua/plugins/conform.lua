@@ -33,6 +33,7 @@ return { -- Autoformat
 			--
 			-- You can use 'stop_after_first' to run the first available formatter from the list
 			-- javascript = { "prettierd", "prettier", stop_after_first = true },
+			bash = { "shfmt" },
 			c = { "clang-format" },
 			cmake = { "gersemi" },
 			cpp = { "clang-format" },
@@ -48,8 +49,10 @@ return { -- Autoformat
 			nunjucks = { "prettierd" },
 			python = { "ruff" },
 			rust = { "rustfmt" },
+			sh = { "shfmt" },
 			toml = { "tombi" },
 			zig = { "zigfmt" },
+			zsh = { "shfmt" },
 		},
 	},
 }

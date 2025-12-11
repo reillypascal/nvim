@@ -75,14 +75,15 @@ return { -- Autocompletion
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "lazydev" },
+			default = { "lsp", "path", "snippets", "lazydev" }, -- seems to need "markdown_oxide" in order to use
 			providers = {
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
 				-- lsp = {
-				-- 	-- Configure markdown_oxide for better keyword matching
-				-- 	markdown_oxide = {
-				-- 		keyword_pattern = [[\(\k\| \|\/\|#\)\+]],
-				-- 	},
+				-- Configure markdown_oxide for better keyword matching
+				-- markdown_oxide = {
+				-- 	module = "", -- seems to want this
+				-- 	keyword_pattern = [[\(\k\| \|\/\|#\)\+]],
+				-- },
 				-- },
 			},
 		},

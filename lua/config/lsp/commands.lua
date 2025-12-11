@@ -103,18 +103,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			})
 		end
 
-		-- setup Markdown Oxide daily note commands
-		-- if client and client.name == "markdown_oxide" then
-		-- 	vim.api.nvim_create_user_command("Daily", function(args)
-		-- 		local input = args.args
-		--
-		-- 		client.exec_cmd({ command = "jump", arguments = { input } })
-		-- 	end, { desc = "Open daily note", nargs = "*" })
-		-- end
-
 		-- via https://gist.github.com/adibhanna/faf21a3b4f2df807c2b7bbbcbf1ba56d#file-init-lua-L630
 		-- Markdown Oxide specific features
 		if client and client.name == "markdown_oxide" then
+			-- setup Markdown Oxide daily note commands
+			vim.api.nvim_create_user_command("Daily", function(args)
+				local input = args.args
+
+				-- info on using client:exec_cmd() to replace vim.lsp.buf.execute_command()
+				-- https://www.reddit.com/r/neovim/comments/1jnm529/comment/mmr6nm7/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+				client:exec_cmd({
+					title = "Daily",
+					command = "jump",
+					arguments = { input },
+				}, { bufnr = vim.api.nvim_get_current_buf() })
+			end, { desc = "Open daily note", nargs = "*" })
+
 			-- Enable code lens for reference counts (if supported)
 			if client_supports_method(client, vim.lsp.protocol.Methods.textDocument_codeLens, event.buf) then
 				local function check_codelens_support()

@@ -12,6 +12,15 @@ vim.opt.autoindent = true
 -- 	vim.opt.conceallevel = 2
 -- end
 
+-- local is_moxide_dir = function()
+-- 	return vim.fs.root(0, { "obsidian", ".moxide.toml" })
+-- end
+--
+-- if is_moxide_dir() ~= nil then
+-- 	-- needed for moxide transclusions
+-- 	vim.lsp.inlay_hint.enable()
+-- end
+
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 
