@@ -9,6 +9,10 @@ return {
 			view_options = {
 				show_hidden = true,
 			},
+			-- used for oil-git-status
+			win_options = {
+				signcolumn = "yes:2",
+			},
 		})
 	end,
 	-- Optional dependencies

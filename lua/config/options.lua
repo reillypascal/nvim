@@ -47,7 +47,6 @@ vim.opt.shiftround = true
 vim.opt.autoindent = true
 
 -- NOTE: smartindent causes issues with tidal files! Also tried cindent, which was removing existing indent when moving to new line
-
 -- https://vi.stackexchange.com/questions/9553/how-do-i-turn-off-the-feature-where-the-pound-sign-is-forced-to-0-position
 -- https://www.reddit.com/r/neovim/comments/14n6iiy/if_you_have_treesitter_make_sure_to_disable/
 -- vim.opt.smartindent = true
