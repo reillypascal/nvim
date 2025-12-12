@@ -50,8 +50,3 @@ vim.diagnostic.config({
 		},
 	} or {},
 })
-
--- https://www.reddit.com/r/neovim/comments/megnhx/comment/gshk79c/
--- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float()]])
--- in article, but didn't work for me:
--- vim.cmd([[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]])

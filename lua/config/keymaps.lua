@@ -5,20 +5,20 @@
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- Close floating windows
+-- https://www.reddit.com/r/neovim/comments/1335pfc/comment/jwl13zy/
+vim.keymap.set("n", "<leader><esc>", function()
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		if vim.api.nvim_win_get_config(win).relative == "win" then
+			vim.api.nvim_win_close(win, false)
+		end
+	end
+end)
+
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist, { desc = "Add all [d]iagnostics to the location list." })
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.setqflist, { desc = "Add all [d]iagnostics to the quickfix list." })
-
--- covered in lsp/commands.lua, LspAttach event
--- vim.keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "LSP: [g]o to [d]efinition" })
--- vim.keymap.set(
--- 	"n",
--- 	-- "<leader>gi",
--- 	"gi",
--- 	"<cmd>lua vim.lsp.buf.implementation()<CR>",
--- 	{ desc = "LSP: [g]o to [i]mplementation" }
--- )
+vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist, { desc = "Add all [d]iagnostics to the location list." })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -48,45 +48,3 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
-
--- Close floating windows
--- https://www.reddit.com/r/neovim/comments/1335pfc/comment/jwl13zy/
-vim.keymap.set("n", "<esc>", function()
-	for _, win in ipairs(vim.api.nvim_list_wins()) do
-		if vim.api.nvim_win_get_config(win).relative == "win" then
-			vim.api.nvim_win_close(win, false)
-		end
-	end
-end)
-
--- Close floating windows if not focused - currently gives error!
--- https://www.reddit.com/r/neovim/comments/1335pfc/comment/jiaagyi/
--- vim.keymap.set("n", "<esc>", function()
--- 	local inactive_floating_wins = vim.fn.filter(vim.api.nvim_list_wins(), function(_, v)
--- 		return vim.api.nvim_win_get_config(v).relative ~= "" and v ~= vim.api.nvim_get_current_win()
--- 	end)
--- 	for _, w in ipairs(inactive_floating_wins) do
--- 		pcall(vim.api.nvim_win_close, w, false)
--- 	end
--- end)
-
--- Diagnostic keybinds to replace tiny-inline-diagnostic
--- https://www.reddit.com/r/neovim/comments/megnhx/comment/gshmeik/
--- vim.keymap.set("n", "<leader>]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
--- vim.keymap.set("n", "<leader>[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
--- vim.keymap.set("n", "<leader>wd", "<cmd> lua vim.diagnostic.open_float()<CR>", { silent = true, noremap = true })
-
--- vim.keymap.set("n", "<leader>p", function()
--- 	local ok, _ = pcall(function()
--- 		local clipboard_content = vim.fn.getreg("*")
---
--- 		local cmd = "pandoc -f html -t markdown"
--- 		local cmd_output = vim.fn.system(cmd, clipboard_content)
--- 		local markdown_text = vim.split(cmd_output, "\n")
---
--- 		vim.api.nvim_put(markdown_text, "l", true, true)
--- 	end)
--- 	if not ok then
--- 		vim.notify("Can't convert the passed HTML", vim.log.levels.WARN)
--- 	end
--- end, { desc = "Paste HTML as Markdown" })
