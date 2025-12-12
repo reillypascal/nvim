@@ -5,7 +5,7 @@ local lsp_configs = {}
 -- return path if moxide dir
 -- return nil if not
 local is_moxide_dir = function()
-	local root_markers = { "obsidian", ".moxide.toml" }
+	local root_markers = { ".obsidian", ".moxide.toml" }
 	return vim.fs.root(0, root_markers)
 end
 
