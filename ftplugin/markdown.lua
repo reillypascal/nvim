@@ -17,20 +17,13 @@ vim.opt.autoindent = true
 -- end
 --
 -- if is_moxide_dir() ~= nil then
--- 	-- needed for moxide transclusions
+-- -- seems to be needed for moxide transclusions, but nothing happened when I tried
 -- 	vim.lsp.inlay_hint.enable()
 -- end
 
-vim.opt.spelllang = "en_us"
-vim.opt.spell = true
--- want to turn off spell for opening doc floats w/ shift + K
--- https://github.com/neovim/neovim/issues/26548
--- https://www.reddit.com/r/neovim/comments/tvy18v/comment/i3c3qb0/
-for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-	if vim.api.nvim_win_get_config(winid).zindex then
-		vim.opt_local.spell = false
-	end
-end
+-- instead, added ":Sp" command in commands.lua
+-- vim.opt.spelllang = "en_us"
+-- vim.opt.spell = true
 
 -- Map j and k to move by visual lines
 vim.api.nvim_buf_set_keymap(0, "n", "j", "gj", { noremap = true, silent = true })

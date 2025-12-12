@@ -20,6 +20,12 @@ vim.api.nvim_create_user_command("IsoDate", [[execute "normal! a" .. strftime('%
 -- shorter alias to check lsp health
 vim.api.nvim_create_user_command("ChLsp", "checkhealth vim.lsp", {})
 
+-- toggle spelling
+vim.api.nvim_create_user_command("Sp", function()
+	vim.o.spelllang = "en_us"
+	vim.o.spell = not vim.opt.spell:get()
+end, {})
+
 -- turn off spellcheck in terminal buffers
 -- https://github.com/neovim/neovim/issues/2862#issuecomment-113536390
 --     also turn off list, cursorline, and cursorcolumn?

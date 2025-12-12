@@ -55,6 +55,19 @@ vim.opt.autoindent = true
 -- Set spell file
 vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 
+-- want to turn off spell for opening doc floats w/ shift + K
+-- https://github.com/neovim/neovim/issues/26548
+-- https://www.reddit.com/r/neovim/comments/tvy18v/comment/i3c3qb0/
+for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+	if
+		vim.api.nvim_win_get_config(winid).zindex
+		-- this stops moxide from working and doesn't stop e.g., Lua spellchecking!
+		-- or vim.api.nvim_get_option_value("filetype", { win = winid }) ~= "markdown"
+	then
+		vim.opt_local.spell = false
+	end
+end
+
 -- Save undo history
 vim.o.undofile = true
 
@@ -99,6 +112,12 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+
+-- only makes border on bg window on e.g., Lazy
+vim.o.winborder = "single"
+-- other options:
+-- vim.lsp.buf.hover({ border = "single" })
+-- vim.lsp.buf.signature_help({ border = "single" })
 
 -- adds subdirectories to path
 -- :set path?
