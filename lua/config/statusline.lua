@@ -174,6 +174,14 @@ local function eol()
 	-- return string.format(" %s ", vim.bo.fileformat)
 end
 
+local function spell()
+	if vim.opt.spell:get() then
+		return " sp "
+	else
+		return ""
+	end
+end
+
 local function lineinfo()
 	if vim.bo.filetype == "alpha" then
 		return ""
@@ -200,6 +208,7 @@ Statusline.active = function()
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
+		spell(),
 		wordcount(),
 		encoding(),
 		eol(),
