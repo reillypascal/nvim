@@ -114,10 +114,8 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 -- only makes border on bg window on e.g., Lazy
-vim.o.winborder = "single"
--- other options:
--- vim.lsp.buf.hover({ border = "single" })
--- vim.lsp.buf.signature_help({ border = "single" })
+-- vim.o.winborder = "single"
+-- vim.lsp.buf.hover({ border = "rounded" })
 
 -- adds subdirectories to path
 -- :set path?
