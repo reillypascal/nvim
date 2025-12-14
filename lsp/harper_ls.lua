@@ -49,4 +49,11 @@ return {
 		-- "sh",
 	},
 	root_markers = { ".git" },
+	settings = {
+		["harper-ls"] = {
+			linters = {
+				SentenceCapitalization = false,
+			},
+		},
+	},
 }
