@@ -16,8 +16,8 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	elseif server_name == "marksman" and is_moxide_dir() ~= nil then
 		-- if moxide root _is_ in cwd/ancestor, don't also use marksman
 		-- this avoids "A" on gO
-		-- elseif server_name == "harper_ls" and is_moxide_dir() ~= nil then
-		-- also turn off harper_ls for notebook - only want it for blog posts
+	elseif server_name == "codebook" and is_moxide_dir() ~= nil then
+		-- also turn off codebook (spellcheck) for notebook - only want it for blog posts
 	else
 		table.insert(lsp_configs, server_name)
 	end
