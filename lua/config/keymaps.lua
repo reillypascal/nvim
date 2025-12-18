@@ -54,3 +54,18 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set("n", "<C-\\>", function()
 	return vim.bo.buftype == "terminal" and "<cmd>bdelete!<cr>" or "<cmd>15split<bar>term<cr>"
 end, { expr = true })
+
+-- toggle checkbox
+-- https://www.reddit.com/r/neovim/comments/1fndhti/comment/loj25tv/
+vim.keymap.set(
+	"n",
+	">>",
+	[[:s/\[\ \]/\[x\]/<CR>:nohlsearch<CR>]],
+	{ desc = "Check Markdown checkbox", noremap = true, silent = true }
+)
+vim.keymap.set(
+	"n",
+	"<<",
+	[[:s/\[x\]/\[\ \]/<CR>:nohlsearch<CR>]],
+	{ desc = "Uncheck Markdown checkbox", noremap = true, silent = true }
+)

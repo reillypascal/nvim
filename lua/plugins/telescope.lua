@@ -67,7 +67,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			},
 			pickers = {
 				find_files = {
-					hidden = true,
+					hidden = false,
 				},
 			},
 		})
