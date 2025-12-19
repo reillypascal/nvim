@@ -51,6 +51,7 @@ return { -- Autoformat
 			python = { "ruff" },
 			rust = { "rustfmt" },
 			sh = { "shfmt" },
+			tidal = { "ormolu" },
 			toml = { "tombi" },
 			zig = { "zigfmt" },
 			zsh = { "shfmt" },
