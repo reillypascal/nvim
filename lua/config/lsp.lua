@@ -9,10 +9,12 @@ local is_moxide_dir = function()
 	return vim.fs.root(0, root_markers)
 end
 
+-- local extension = vim.fn.expand(":e")
+-- local tidal = vim.filetype.match({ filename = "*.tidal" })
+-- local extension = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":e")
+
 for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	local server_name = vim.fn.fnamemodify(f, ":t:r")
-	-- local extension = vim.fn.expand(":e")
-	-- local extension = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":e")
 	if server_name == "markdown_oxide" and is_moxide_dir() == nil then
 		-- if moxide root not in cwd/ancestor, don't activate moxide
 	elseif server_name == "marksman" and is_moxide_dir() ~= nil then
@@ -20,7 +22,7 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 		-- this avoids "A" on gO
 	elseif server_name == "codebook" and is_moxide_dir() ~= nil then
 		-- also turn off codebook (spellcheck) for notebook - only want it for blog posts
-		-- elseif extension == "tidal" and server_name == "hls" then
+	elseif extension == "tidal" and server_name == "hls" then
 		-- hls gives highlighting error if running with tidal.nvim
 	else
 		table.insert(lsp_configs, server_name)
