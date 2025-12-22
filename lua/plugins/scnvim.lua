@@ -32,10 +32,9 @@ return {
 				},
 			},
 			-- this block makes docs appear in nvim; independent of telescope scdoc
-			--[[documentation = {
-        cmd = '/opt/homebrew/bin/pandoc',
-      },]]
-			--
+			documentation = {
+				cmd = "/opt/homebrew/bin/pandoc",
+			},
 			postwin = {
 				float = {
 					enabled = true,
