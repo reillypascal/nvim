@@ -22,7 +22,7 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 		-- this avoids "A" on gO
 	elseif server_name == "codebook" and is_moxide_dir() ~= nil then
 		-- also turn off codebook (spellcheck) for notebook - only want it for blog posts
-	elseif extension == "tidal" and server_name == "hls" then
+	elseif server_name == "hls" then
 		-- hls gives highlighting error if running with tidal.nvim
 	else
 		table.insert(lsp_configs, server_name)
