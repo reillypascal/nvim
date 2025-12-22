@@ -1,1 +1,0 @@
-return { 'tidalcycles/vim-tidal' }
