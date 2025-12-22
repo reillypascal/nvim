@@ -21,7 +21,10 @@ return {
 				cmd = "sclang",
 				args = {},
 				--- SuperCollider boot file
-				file = vim.api.nvim_get_runtime_file("bootfiles/BootSuperDirt.scd", false)[1],
+				file = vim.api.nvim_get_runtime_file(
+					"/Users/reillyspitzfaden/Dev/SuperCollider/Tidal/superdirt_startup.scd",
+					false
+				)[1],
 				enabled = false,
 			},
 			split = "h",
@@ -30,8 +33,8 @@ return {
 		--- Set to false to disable all default mappings
 		--- @type table | nil
 		mappings = {
-			send_line = { mode = { "i", "n" }, key = "<S-CR>" },
-			send_visual = { mode = { "x" }, key = "<S-CR>" },
+			send_line = { mode = { "i", "n" }, key = "<C-S-CR>" },
+			send_visual = { mode = { "x" }, key = "<C-S-CR>" },
 			-- send_block = { mode = { "i", "n", "x" }, key = "<M-CR>" },
 			send_block = { mode = { "i", "n", "x" }, key = "<C-CR>" },
 			send_node = { mode = "n", key = "<leader><CR>" },
