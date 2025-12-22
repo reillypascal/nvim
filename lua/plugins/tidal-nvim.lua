@@ -22,7 +22,7 @@ return {
 				args = {},
 				--- SuperCollider boot file
 				file = vim.api.nvim_get_runtime_file(
-					"/Users/reillyspitzfaden/Dev/SuperCollider/Tidal/superdirt_startup.scd",
+					"/Users/reillyspitzfaden/Dev/SuperCollider/Tidal/BootSuperDirt.scd",
 					false
 				)[1],
 				enabled = false,
