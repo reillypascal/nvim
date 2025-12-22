@@ -1,5 +1,6 @@
 return {
 	"grddavies/tidal.nvim",
+	-- dir = "/Users/reillyspitzfaden/Dev/Neovim/tidal.nvim",
 	opts = {
 		-- Your configuration here
 		-- See configuration section for defaults

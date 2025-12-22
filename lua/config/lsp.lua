@@ -9,8 +9,12 @@ local is_moxide_dir = function()
 	return vim.fs.root(0, root_markers)
 end
 
--- local extension = vim.fn.expand(":e")
--- local tidal = vim.filetype.match({ filename = "*.tidal" })
+local is_haskell_dir = function()
+	-- local extension = vim.fn.expand("%:e")
+	local root_markers = { "hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml" }
+	return vim.fs.root(0, root_markers)
+end
+-- local tidal_match = vim.filetype.match({ filename = "*.hs" })
 -- local extension = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":e")
 
 for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
@@ -22,7 +26,7 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 		-- this avoids "A" on gO
 	elseif server_name == "codebook" and is_moxide_dir() ~= nil then
 		-- also turn off codebook (spellcheck) for notebook - only want it for blog posts
-	elseif server_name == "hls" then
+	elseif server_name == "hls" and is_haskell_dir() == nil then
 		-- hls gives highlighting error if running with tidal.nvim
 	else
 		table.insert(lsp_configs, server_name)
