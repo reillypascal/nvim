@@ -45,8 +45,8 @@ return { -- Autoformat
 			-- https://shopify.dev/docs/storefronts/themes/tools/liquid-prettier-plugin
 			liquid = { "prettierd" },
 			lua = { "stylua" },
-			markdown = { "prettierd" },
-			-- markdown = { "rumdl" },
+			-- markdown = { "prettierd" },
+			markdown = { "rumdl_fmt" },
 			nunjucks = { "prettierd" },
 			python = { "ruff" },
 			rust = { "rustfmt" },
@@ -55,6 +55,14 @@ return { -- Autoformat
 			toml = { "tombi" },
 			zig = { "zigfmt" },
 			zsh = { "shfmt" },
+		},
+		-- https://github.com/stevearc/conform.nvim/issues/814#issuecomment-3599483608
+		formatters = {
+			rumdl_fmt = {
+				command = "rumdl",
+				args = { "fmt", "-", "--quiet" },
+				stdin = true,
+			},
 		},
 	},
 }
