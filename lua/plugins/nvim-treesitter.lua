@@ -17,7 +17,7 @@ return { -- Highlight, edit, and navigate code
 			"javascript",
 			"json",
 			"json5",
-			-- "latex",
+			"latex",
 			"liquid",
 			"lua",
 			"luadoc",
