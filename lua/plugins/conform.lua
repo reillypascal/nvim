@@ -38,6 +38,7 @@ return { -- Autoformat
 			cmake = { "gersemi" },
 			cpp = { "clang-format" },
 			css = { "biome" },
+			faust = { "faustfmt" },
 			haskell = { "ormolu" },
 			html = { "biome" },
 			javascript = { "biome" },
@@ -58,6 +59,11 @@ return { -- Autoformat
 		},
 		-- https://github.com/stevearc/conform.nvim/issues/814#issuecomment-3599483608
 		formatters = {
+			faustfmt = {
+				command = "faustfmt",
+				args = { "-f" },
+				stdin = true,
+			},
 			rumdl_fmt = {
 				command = "rumdl",
 				args = { "fmt", "-", "--quiet" },
