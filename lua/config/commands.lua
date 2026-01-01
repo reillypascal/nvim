@@ -17,6 +17,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- insert ISO date: https://vi.stackexchange.com/a/21826
 vim.api.nvim_create_user_command("IsoDate", [[execute "normal! a" .. strftime('%Y-%m-%dT%H:%M:%S%z') .. "\<Esc>"]], {})
 
+vim.api.nvim_create_user_command("JDate", [[execute "normal! a" .. strftime('%A %B %e, %Y') .. "\<Esc>"]], {})
+
 -- shorter alias to check lsp health
 vim.api.nvim_create_user_command("ChLsp", "checkhealth vim.lsp", {})
 

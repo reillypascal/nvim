@@ -2,6 +2,7 @@ return { -- Autocompletion
 	"saghen/blink.cmp",
 	event = "VimEnter",
 	version = "1.*",
+	lazy = false,
 	dependencies = {
 		-- Snippet Engine
 		{
@@ -16,6 +17,10 @@ return { -- Autocompletion
 				end
 				return "make install_jsregexp"
 			end)(),
+			-- https://www.reddit.com/r/neovim/comments/1mh01t1/noob_question_how_do_i_properly_integrate_luasnip/
+			config = function()
+				require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets" })
+			end,
 			dependencies = {
 				-- `friendly-snippets` contains a variety of premade snippets.
 				--    See the README about individual language/framework/plugin snippets:
@@ -27,7 +32,9 @@ return { -- Autocompletion
 				--   end,
 				-- },
 			},
-			opts = {},
+			opts = {
+				enable_autosnippets = true,
+			},
 		},
 		"folke/lazydev.nvim",
 	},
