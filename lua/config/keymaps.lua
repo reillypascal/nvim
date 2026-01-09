@@ -59,13 +59,13 @@ end, { expr = true })
 -- https://www.reddit.com/r/neovim/comments/1fndhti/comment/loj25tv/
 vim.keymap.set(
 	"n",
-	">>",
+	"<leader>>",
 	[[:s/\[\ \]/\[x\]/<CR>:nohlsearch<CR>]],
 	{ desc = "Check Markdown checkbox", noremap = true, silent = true }
 )
 vim.keymap.set(
 	"n",
-	"<<",
+	"<leader><",
 	[[:s/\[x\]/\[\ \]/<CR>:nohlsearch<CR>]],
 	{ desc = "Uncheck Markdown checkbox", noremap = true, silent = true }
 )
