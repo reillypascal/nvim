@@ -1,7 +1,19 @@
+local os_name = vim.loop.os_uname().sysname
+
+if os_name == "Linux" then
+	Main_module = "nvim-treesitter.config"
+else
+	Main_module = "nvim-treesitter.configs"
+end
+
 return { -- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	main = "nvim-treesitter.configs", -- Sets main module to use for opts
+	-- https://github.com/nvim-lua/kickstart.nvim/pull/1748/files
+	-- referenced in https://www.reddit.com/r/neovim/comments/1q2rnnl/i_just_installed_kickstart_and_getting_this_error/
+	-- configs -> config: issue on Arch, but not yet on macOS
+	-- main = "nvim-treesitter.configs", -- Sets main module to use for opts
+	main = Main_module,
 	-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 	opts = {
 		ensure_installed = {
