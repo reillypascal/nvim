@@ -34,7 +34,7 @@ return {
 		"jsonc",
 		"svelte",
 		"typescript",
-		"typescript.tsx",
+		-- "typescript.tsx",
 		"typescriptreact",
 		"vue",
 	},
