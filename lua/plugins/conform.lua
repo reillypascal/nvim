@@ -28,6 +28,7 @@ return { -- Autoformat
 				}
 			end
 		end,
+		-- list of formatters loaded by this plugin, organized by programming language
 		formatters_by_ft = {
 			-- Conform can also run multiple formatters sequentially
 			--
