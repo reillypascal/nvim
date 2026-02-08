@@ -19,6 +19,8 @@ vim.api.nvim_create_user_command("IsoDate", [[execute "normal! a" .. strftime('%
 
 vim.api.nvim_create_user_command("Jdate", [[execute "normal! a" .. strftime('%A %B %e, %Y') .. "\<Esc>"]], {})
 
+vim.api.nvim_create_user_command("Title", [[execute "normal! a" .. expand("%:t:r") .. "\<Esc>"]], {})
+
 -- shorter alias to check lsp health
 vim.api.nvim_create_user_command("ChLsp", "checkhealth vim.lsp", {})
 
