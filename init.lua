@@ -3,8 +3,10 @@ require("config.options")
 require("config.keymaps")
 require("config.commands")
 require("config.lsp")
-require("config.lsp.commands")
+require("config.lsp.commands-fzf-lua")
+-- require("config.lsp.commands-telescope")
 require("config.plugins")
+require("config.keymaps-fzf-lua")
 
 require("nvim-highlight-colors").turnOff()
 --[[
