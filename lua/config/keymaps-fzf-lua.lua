@@ -13,7 +13,7 @@ vim.keymap.set("n", "<leader>s.", picker.oldfiles, { desc = '[S]earch Recent Fil
 vim.keymap.set("n", "<leader><leader>", picker.buffers, { desc = "[ ] Find existing buffers" })
 -- my keymaps
 -- search keymaps
-vim.keymap.set("n", "<leader>so", picker.global, { desc = "[S]earch with g[l]obal search" })
+vim.keymap.set("n", "<leader>so", picker.global, { desc = "[S]earch with gl[o]bal search" })
 vim.keymap.set("n", "<leader>/", picker.blines, { desc = "Search [/] current buffer lines" })
 -- quickfix/loclist
 vim.keymap.set("n", "<leader>sc", picker.quickfix, { desc = "[S]earch [Q]uickfix list" })
