@@ -3,11 +3,11 @@ require("config.options")
 require("config.keymaps")
 require("config.commands")
 require("config.lsp")
-require("config.lsp.commands-fzf-lua")
--- require("config.lsp.commands-telescope")
+-- require("config.lsp.commands-fzf-lua")
+require("config.lsp.commands-telescope")
 require("config.plugins")
 -- telescope equivalent is in telescope.lua plugin file
-require("config.keymaps-fzf-lua")
+-- require("config.keymaps-fzf-lua")
 
 require("nvim-highlight-colors").turnOff()
 --[[
