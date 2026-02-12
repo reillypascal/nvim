@@ -55,6 +55,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			--  All the info you're looking for is in `:help telescope.setup()`
 			--
 			defaults = {
+				-- https://github.com/nvim-telescope/telescope.nvim/issues/2471#issuecomment-1513758675
+				file_ignore_patterns = { "^.git/" },
 				layout_strategy = "vertical",
 				layout_config = {
 					vertical = {
@@ -73,7 +75,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			},
 			pickers = {
 				find_files = {
-					hidden = false,
+					hidden = true,
 				},
 			},
 		})
