@@ -19,7 +19,8 @@ vim.keymap.set("n", "<leader>/", picker.blines, { desc = "Search [/] current buf
 vim.keymap.set("n", "<leader>sc", picker.quickfix, { desc = "[S]earch [Q]uickfix list" })
 vim.keymap.set("n", "<leader>sl", picker.loclist, { desc = "[S]earch [L]oclist" })
 -- misc keymaps
-vim.keymap.set("n", "<leader>z", picker.zoxide, { desc = "[S]earch with g[l]obal search" })
+vim.keymap.set("n", "<leader>sm", picker.marks, { desc = "[S]earch [M]arks" })
+vim.keymap.set("n", "<leader>z", picker.zoxide, { desc = "[Z]oxide" })
 -- git keymaps
 vim.keymap.set("n", "<leader>gf", picker.git_files, { desc = "[G]it [F]iles" })
 vim.keymap.set("n", "<leader>gs", picker.git_status, { desc = "[G]it [S]tatus" })
