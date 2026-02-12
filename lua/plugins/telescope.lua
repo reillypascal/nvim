@@ -99,9 +99,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		-- my keymaps
 		vim.keymap.set("n", "<leader>sm", builtin.marks, { desc = "[S]earch [M]arks" })
 		-- git keymaps
-		vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "[G]it [B]ranches" })
+		vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, { desc = "[G]it [B]uffer Commits" })
 		vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "[G]it [C]ommits" })
 		vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "[G]it [F]iles" })
+		vim.keymap.set("n", "<leader>gr", builtin.git_branches, { desc = "[G]it B[r]anches" })
 		vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "[G]it [S]tatus" })
 
 		-- Slightly advanced example of overriding default behavior and theme
