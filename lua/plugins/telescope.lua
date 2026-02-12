@@ -56,7 +56,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			--
 			defaults = {
 				-- https://github.com/nvim-telescope/telescope.nvim/issues/2471#issuecomment-1513758675
-				file_ignore_patterns = { "^.git/" },
+				file_ignore_patterns = { "^.git/", ".DS_Store" },
 				layout_strategy = "vertical",
 				layout_config = {
 					vertical = {
