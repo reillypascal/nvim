@@ -10,6 +10,12 @@ return {
 	opts = {},
 	---@diagnostic enable: missing-fields
 	config = function()
-		require("fzf-lua").setup({})
+		require("fzf-lua").setup({
+			defaults = {
+				file_icons = false,
+				-- git icons for files in search results
+				git_icons = true,
+			},
+		})
 	end,
 }

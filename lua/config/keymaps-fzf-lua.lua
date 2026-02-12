@@ -3,7 +3,7 @@ vim.keymap.set("n", "<leader>sh", picker.helptags, { desc = "[S]earch [H]elp" })
 vim.keymap.set("n", "<leader>sk", picker.keymaps, { desc = "[S]earch [K]eymaps" })
 vim.keymap.set("n", "<leader>sf", picker.files, { desc = "[S]earch [F]iles" })
 -- was <leader>ss
-vim.keymap.set("n", "<leader>sb", picker.builtin, { desc = "[S]earch fzf-lua [B]uiltins" })
+vim.keymap.set("n", "<leader>sb", picker.builtin, { desc = "[S]earch Picker [B]uiltins" })
 -- vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>sg", picker.live_grep, { desc = "[S]earch by [G]rep" })
 -- vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
@@ -11,6 +11,19 @@ vim.keymap.set("n", "<leader>sr", picker.resume, { desc = "[S]earch [R]esume" })
 vim.keymap.set("n", "<leader>s.", picker.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 vim.keymap.set("n", "<leader><leader>", picker.buffers, { desc = "[ ] Find existing buffers" })
 -- my keymaps
+-- search keymaps
+vim.keymap.set("n", "<leader>so", picker.global, { desc = "[S]earch with g[l]obal search" })
+vim.keymap.set("n", "<leader>/", picker.blines, { desc = "Search [/] current buffer lines" })
+vim.keymap.set("n", "<leader>sc", picker.quickfix, { desc = "[S]earch [Q]uickfix list" })
+vim.keymap.set("n", "<leader>sl", picker.loclist, { desc = "[S]earch with g[l]obal search" })
+-- misc keymaps
+vim.keymap.set("n", "<leader>z", picker.zoxide, { desc = "[S]earch with g[l]obal search" })
+-- git keymaps
+vim.keymap.set("n", "<leader>gf", picker.git_files, { desc = "[G]it [F]iles" })
+vim.keymap.set("n", "<leader>gs", picker.git_status, { desc = "[G]it [S]tatus" })
+vim.keymap.set("n", "<leader>gd", picker.git_diff, { desc = "[G]it [D]iff" })
+vim.keymap.set("n", "<leader>gd", picker.git_hunks, { desc = "[G]it [H]unks" })
+
 -- was for Obsidian - see plugin setup file for replacement
 -- vim.keymap.set("n", "<leader>ss", builtin.lsp_document_symbols, { desc = "[S]earch LSP Document [S]ymbols" })
 
