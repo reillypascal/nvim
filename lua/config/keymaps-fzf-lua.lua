@@ -4,9 +4,10 @@ vim.keymap.set("n", "<leader>sk", picker.keymaps, { desc = "[S]earch [K]eymaps" 
 vim.keymap.set("n", "<leader>sf", picker.files, { desc = "[S]earch [F]iles" })
 -- was <leader>ss
 vim.keymap.set("n", "<leader>sb", picker.builtin, { desc = "[S]earch Picker [B]uiltins" })
--- vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+vim.keymap.set("n", "<leader>sw", picker.grep_cword, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>sg", picker.live_grep, { desc = "[S]earch by [G]rep" })
--- vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+-- also available: `diagnostics_document`
+vim.keymap.set("n", "<leader>sd", picker.diagnostics_workspace, { desc = "[S]earch Workspace [D]iagnostics" })
 vim.keymap.set("n", "<leader>sr", picker.resume, { desc = "[S]earch [R]esume" })
 vim.keymap.set("n", "<leader>s.", picker.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 vim.keymap.set("n", "<leader><leader>", picker.buffers, { desc = "[ ] Find existing buffers" })
@@ -14,8 +15,9 @@ vim.keymap.set("n", "<leader><leader>", picker.buffers, { desc = "[ ] Find exist
 -- search keymaps
 vim.keymap.set("n", "<leader>so", picker.global, { desc = "[S]earch with g[l]obal search" })
 vim.keymap.set("n", "<leader>/", picker.blines, { desc = "Search [/] current buffer lines" })
+-- quickfix/loclist
 vim.keymap.set("n", "<leader>sc", picker.quickfix, { desc = "[S]earch [Q]uickfix list" })
-vim.keymap.set("n", "<leader>sl", picker.loclist, { desc = "[S]earch with g[l]obal search" })
+vim.keymap.set("n", "<leader>sl", picker.loclist, { desc = "[S]earch [L]oclist" })
 -- misc keymaps
 vim.keymap.set("n", "<leader>z", picker.zoxide, { desc = "[S]earch with g[l]obal search" })
 -- git keymaps

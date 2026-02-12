@@ -15,6 +15,7 @@ return {
 				-- file_icons = false,
 				-- git icons for files in search results
 				git_icons = true,
+				-- color_icons = false,
 			},
 		})
 	end,
