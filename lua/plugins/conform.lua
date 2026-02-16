@@ -45,6 +45,9 @@ return { -- Autoformat
 			javascript = { "biome" },
 			json = { "biome" },
 			-- https://shopify.dev/docs/storefronts/themes/tools/liquid-prettier-plugin
+			-- ly.reformat source code mentions need to run indent _after_ reformatting that adds newlines
+			-- https://python-ly.readthedocs.io/en/latest/_modules/ly/reformat.html?highlight=reformat
+			lilypond = { "ly_reformat", "ly_indent" },
 			liquid = { "prettierd" },
 			lua = { "stylua" },
 			-- markdown = { "prettierd" },
@@ -63,6 +66,16 @@ return { -- Autoformat
 			faustfmt = {
 				command = "faustfmt",
 				args = { "-f" },
+				stdin = true,
+			},
+			ly_indent = {
+				command = "ly",
+				args = { "indent" },
+				stdin = true,
+			},
+			ly_reformat = {
+				command = "ly",
+				args = { "reformat" },
 				stdin = true,
 			},
 			rumdl_fmt = {
