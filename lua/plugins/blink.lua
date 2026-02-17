@@ -37,6 +37,8 @@ return { -- Autocompletion
 			},
 		},
 		"folke/lazydev.nvim",
+		-- needed for nvim-lilypond-suite dictionary as completion source
+		"Kaiser-Yang/blink-cmp-dictionary",
 	},
 	--- @module 'blink.cmp'
 	--- @type blink.cmp.Config
@@ -82,8 +84,25 @@ return { -- Autocompletion
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "lazydev" }, -- seems to need "markdown_oxide" in order to use
+			-- nvim-lilypond-suite completions: https://github.com/martineausimon/nvim-lilypond-suite/wiki/2.-Configuration#configuration-example
+			-- removed "buffer" - completes from everything in the buffer
+			default = { "dictionary", "lsp", "path", "snippets", "lazydev" }, -- seems to need "markdown_oxide" in order to use
 			providers = {
+				-- dictionary table is for nvim-lilypond-suite (so far)
+				-- note that $LILYDICTPATH didn't need to be added to .zshenv
+				dictionary = {
+					module = "blink-cmp-dictionary",
+					name = "Dict",
+					min_keyword_length = 3,
+					max_items = 8,
+					opts = {
+						dictionary_files = function()
+							if vim.bo.filetype == "lilypond" then
+								return vim.fn.glob(vim.fn.expand("$LILYDICTPATH") .. "/*", true, true)
+							end
+						end,
+					},
+				},
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
 				-- lsp = {
 				-- Configure markdown_oxide for better keyword matching
