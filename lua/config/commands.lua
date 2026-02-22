@@ -34,3 +34,9 @@ end, {})
 -- https://github.com/neovim/neovim/issues/2862#issuecomment-113536390
 --     also turn off list, cursorline, and cursorcolumn?
 vim.cmd([[au TermOpen * setlocal nospell]], false)
+
+-- expand `%%` to current file's directory in command mode
+-- useful for `:'<,'>w file2` to extract section to new file:
+-- put file in same directory as buffer
+-- https://www.reddit.com/r/vim/comments/gned4g/comment/fr9oo3c/
+vim.cmd([[cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%']])
