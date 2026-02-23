@@ -55,7 +55,7 @@ return { -- Autoformat
 			nunjucks = { "prettierd" },
 			python = { "ruff" },
 			rust = { "rustfmt" },
-			-- scheme = { "schemat" },
+			scheme = { "schemat" },
 			sh = { "shfmt" },
 			tidal = { "ormolu" },
 			toml = { "tombi" },
@@ -84,11 +84,10 @@ return { -- Autoformat
 				args = { "fmt", "-", "--quiet" },
 				stdin = true,
 			},
-			-- schemat = {
-			-- 	command = { "schemat" },
-			-- 	args = { "-" },
-			-- 	stdin = true,
-			-- },
+			schemat = {
+				command = "schemat",
+				stdin = true,
+			},
 		},
 	},
 }
