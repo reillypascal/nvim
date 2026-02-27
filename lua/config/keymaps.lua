@@ -71,9 +71,9 @@ vim.keymap.set(
 )
 
 -- dynomark
-vim.keymap.set(
-	"n",
-	"<leader>td",
-	[[<Plug>(DynomarkToggle)]],
-	{ desc = "[T]oggle [D]ynomark", noremap = true, silent = true }
-)
+-- vim.keymap.set(
+-- 	"n",
+-- 	"<leader>td",
+-- 	[[<Plug>(DynomarkToggle)]],
+-- 	{ desc = "[T]oggle [D]ynomark", noremap = true, silent = true }
+-- )
