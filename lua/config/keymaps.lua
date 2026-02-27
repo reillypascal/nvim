@@ -69,3 +69,11 @@ vim.keymap.set(
 	[[:s/\[x\]/\[\ \]/<CR>:nohlsearch<CR>]],
 	{ desc = "Uncheck Markdown checkbox", noremap = true, silent = true }
 )
+
+-- dynomark
+vim.keymap.set(
+	"n",
+	"<leader>td",
+	[[<Plug>(DynomarkToggle)]],
+	{ desc = "[T]oggle [D]ynomark", noremap = true, silent = true }
+)
