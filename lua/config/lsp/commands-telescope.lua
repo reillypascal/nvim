@@ -43,7 +43,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Fuzzy find all the symbols in your current document.
 		--  Symbols are things like variables, functions, types, etc.
-		map("gO", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
+		--  was `gO`, but that overlaps w/ similar native keybinding
+		map("grO", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
 
 		-- Fuzzy find all the symbols in your current workspace.
 		--  Similar to document symbols, except searches over your entire project.
