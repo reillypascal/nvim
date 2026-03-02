@@ -5,7 +5,7 @@ local lsp_configs = {}
 -- return path if moxide dir
 -- return nil if not
 local is_notes_dir = function()
-	local root_markers = { ".obsidian", ".moxide.toml" }
+	local root_markers = { ".obsidian", ".moxide.toml", ".zk" }
 	return vim.fs.root(0, root_markers)
 end
 
@@ -21,7 +21,7 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	local server_name = vim.fn.fnamemodify(f, ":t:r")
 	if server_name == "markdown_oxide" and is_notes_dir() == nil then
 		-- if moxide root not in cwd/ancestor, don't activate moxide
-		-- elseif server_name == "marksman" and is_notes_dir() ~= nil then
+	elseif server_name == "marksman" and is_notes_dir() ~= nil then
 		-- if moxide root _is_ in cwd/ancestor, don't also use marksman
 		-- this avoids "A" on gO
 	elseif server_name == "codebook" and is_notes_dir() ~= nil then
