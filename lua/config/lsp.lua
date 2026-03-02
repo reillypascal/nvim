@@ -21,7 +21,7 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	local server_name = vim.fn.fnamemodify(f, ":t:r")
 	if server_name == "markdown_oxide" and is_moxide_dir() == nil then
 		-- if moxide root not in cwd/ancestor, don't activate moxide
-		-- elseif server_name == "marksman" and is_moxide_dir() ~= nil then
+	elseif server_name == "marksman" and is_moxide_dir() ~= nil then
 		-- if moxide root _is_ in cwd/ancestor, don't also use marksman
 		-- this avoids "A" on gO
 	elseif server_name == "codebook" and is_moxide_dir() ~= nil then

@@ -1,7 +1,7 @@
 require("config.statusline")
 require("config.options")
 require("config.keymaps")
-require("config.keymaps-zk")
+-- require("config.keymaps-zk")
 require("config.commands")
 require("config.lsp")
 -- require("config.lsp.commands-fzf-lua")
