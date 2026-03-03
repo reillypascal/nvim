@@ -2,7 +2,7 @@
 
 local lsp_configs = {}
 
--- return path if moxide dir
+-- return path if notes dir
 -- return nil if not
 local is_notes_dir = function()
 	local root_markers = { ".obsidian", ".moxide.toml", ".zk" }
@@ -23,8 +23,8 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 		-- if moxide root not in cwd/ancestor, don't activate moxide
 	elseif server_name == "marksman" and is_notes_dir() ~= nil then
 		-- if moxide root _is_ in cwd/ancestor, don't also use marksman
-		-- this avoids "A" on gO
-	elseif server_name == "codebook" and is_notes_dir() ~= nil then
+		-- this avoids "A" on grO
+		-- elseif server_name == "codebook" and is_notes_dir() ~= nil then
 		-- also turn off codebook (spellcheck) for notebook - only want it for blog posts
 	elseif server_name == "hls" and is_haskell_dir() == nil then
 		-- hls gives highlighting error if running with tidal.nvim
