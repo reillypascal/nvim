@@ -12,12 +12,12 @@ then
 	vim.opt.conceallevel = 2
 end
 
--- local is_moxide_dir = function()
--- 	return vim.fs.root(0, { "obsidian", ".moxide.toml" })
+-- local is_notes_dir = function()
+-- 	return vim.fs.root(0, { "obsidian", ".moxide.toml", ".zk" })
 -- end
 --
--- if is_moxide_dir() ~= nil then
--- -- seems to be needed for moxide transclusions, but nothing happened when I tried
+-- if is_notes_dir() ~= nil then
+-- 	-- seems to be needed for moxide transclusions, but nothing happened when I tried
 -- 	vim.lsp.inlay_hint.enable()
 -- end
 
