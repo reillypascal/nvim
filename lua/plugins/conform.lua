@@ -18,7 +18,8 @@ return { -- Autoformat
 			-- Disable "format_on_save lsp_fallback" for languages that don't
 			-- have a well standardized coding style. You can add additional
 			-- languages here or re-enable it for the disabled ones.
-			local disable_filetypes = { c = true, cpp = true }
+			-- waiting on genexpr: https://github.com/isabelgk/gen-fmt?tab=readme-ov-file#limitations
+			local disable_filetypes = { c = true, cpp = true, genexpr = true }
 			if disable_filetypes[vim.bo[bufnr].filetype] then
 				return nil
 			else
@@ -40,6 +41,7 @@ return { -- Autoformat
 			cpp = { "clang-format" },
 			css = { "biome" },
 			faust = { "faustfmt" },
+			genexpr = { "gen_fmt" },
 			haskell = { "ormolu" },
 			html = { "biome" },
 			javascript = { "biome" },
@@ -67,6 +69,11 @@ return { -- Autoformat
 			faustfmt = {
 				command = "faustfmt",
 				args = { "-f" },
+				stdin = true,
+			},
+			gen_fmt = {
+				command = "gen-fmt",
+				args = { "-i" },
 				stdin = true,
 			},
 			ly_indent = {
