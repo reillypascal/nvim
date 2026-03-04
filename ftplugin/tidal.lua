@@ -1,0 +1,23 @@
+-- open GHCI REPL in term split using Tidal boot file
+vim.keymap.set(
+	"n",
+	"<localleader>b",
+	"<cmd>10 split term://ghci -ghci-script=$TIDAL_BOOT_PATH/BootTidal.hs %<cr>:startinsert<cr>",
+	{ desc = "[B]oot Tidal server and open in terminal split", noremap = true, buffer = true }
+)
+-- yank current line; move to term; paste, enter append mode, <CR>; back to normal mode; return to previous location
+vim.keymap.set(
+	"n",
+	"<localleader>ee",
+	[[ yy<C-w>jpa<CR><C-\><C-n><C-w>p ]],
+	{ desc = "Evaluate current line", noremap = true, buffer = true }
+)
+-- yank current line to "*; wrap in :{/:}; move to term; paste from "*, enter append mode, <CR>; back to normal mode; return to previous location
+vim.keymap.set(
+	"n",
+	"<localleader>er",
+	[[ "*yip <cmd>let @* = "\:\{\n" . @* . "\:\}"<cr> <C-w>j"*pa<CR><C-\><C-n><C-w>p ]],
+	{ desc = "Evaluate current block", noremap = true, buffer = true }
+)
+
+vim.cmd("set ft=haskell")
