@@ -12,12 +12,12 @@ vim.keymap.set(
 	[[ yy<C-w>jpa<CR><C-\><C-n><C-w>p ]],
 	{ desc = "Evaluate current line", noremap = true, buffer = true }
 )
--- yank current line to "*; wrap in :{/:}; move to term; paste from "*, enter append mode, <CR>; back to normal mode; return to previous location
+-- yank current block to "*; wrap in :{/:}; move to term; paste from "*, enter append mode, <CR>; back to normal mode; return to previous location
 vim.keymap.set(
 	"n",
 	"<localleader>er",
 	[[ "*yip <cmd>let @* = "\:\{\n" . @* . "\:\}"<cr> <C-w>j"*pa<CR><C-\><C-n><C-w>p ]],
 	{ desc = "Evaluate current block", noremap = true, buffer = true }
 )
-
+-- enables highlighting, but note that it may cause issues with hls
 vim.cmd("set ft=haskell")
