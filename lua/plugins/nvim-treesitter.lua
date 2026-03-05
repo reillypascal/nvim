@@ -59,22 +59,6 @@ return { -- Highlight, edit, and navigate code
 			additional_vim_regex_highlighting = { "ruby" },
 		},
 		indent = { enable = true, disable = { "ruby" } },
-		-- https://github.com/LazyVim/LazyVim/discussions/748#discussioncomment-14815676
-		-- https://github.com/nvim-treesitter/nvim-treesitter/?tab=readme-ov-file#adding-custom-languages
-		parsers = {
-			genexpr = {
-				install_info = {
-					url = "https://github.com/isabelgk/tree-sitter-genexpr",
-					revision = "HEAD",
-					includes = { "tree-sitter-genexpr/src" },
-					files = { "tree-sitter-genexpr/src/parser.c" },
-					branch = "main",
-					generate_requires_npm = false,
-					requires_generate_from_grammar = false,
-				},
-				filetype = "genexpr",
-			},
-		},
 	},
 	-- There are additional nvim-treesitter modules that you can use to interact
 	-- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -82,18 +66,4 @@ return { -- Highlight, edit, and navigate code
 	--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
 	--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 	--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-	config = function()
-		--- https://github.com/nvim-treesitter/nvim-treesitter/?tab=readme-ov-file#adding-custom-languages
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "TSUpdate",
-			callback = function()
-				require("nvim-treesitter.parsers").genexpr = {
-					install_info = {
-						url = "https://github.com/isabelgk/tree-sitter-genexpr",
-						revision = "HEAD", -- commit hash for revision to check out; HEAD if missing
-					},
-				}
-			end,
-		})
-	end,
 }
