@@ -3,7 +3,7 @@ vim.keymap.set(
 	"n",
 	"<localleader>b",
 	"<cmd>10 split term://ghci -ghci-script=$TIDAL_BOOT_PATH/BootTidal.hs %<cr>:startinsert<cr>",
-	{ desc = "Boot Tidal server and open in terminal split", noremap = true, buffer = true }
+	{ desc = "Boot Tidal interpreter and open in terminal split", noremap = true, buffer = true }
 )
 -- yank current line; move to term; paste, enter append mode, <CR>; back to normal mode; return to previous location
 vim.keymap.set(
