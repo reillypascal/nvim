@@ -19,6 +19,13 @@ vim.keymap.set(
 	[[ "*yip <cmd>let @* = "\:\{\n" . @* . "\:\}"<cr> <C-w>j"*pa<CR><C-\><C-n><C-w>p ]],
 	{ desc = "Evaluate current block", noremap = true, buffer = true }
 )
+-- yank entire buffer to "*; same as block after that
+vim.keymap.set(
+	"n",
+	"<localleader>eb",
+	[[ <cmd>%y*<cr> <cmd>let @* = "\:\{\n" . @* . "\:\}"<cr> <C-w>j"*pa<CR><C-\><C-n><C-w>p ]],
+	{ desc = "Evaluate entire buffer", noremap = true, buffer = true }
+)
 -- 'hush' message
 vim.keymap.set(
 	"n",
