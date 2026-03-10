@@ -1,6 +1,7 @@
 return {
 	"davidgranstrom/scnvim",
 	ft = "supercollider",
+	dependencies = { "davidgranstrom/scnvim-tmux" },
 	config = function()
 		local scnvim = require("scnvim")
 		local map = scnvim.map
@@ -43,6 +44,13 @@ return {
 			extensions = {
 				["fzf-sc"] = {
 					search_plugin = "nvim-fzf",
+				},
+				tmux = {
+					path = vim.fn.tempname(),
+					horizontal = true,
+					size = "20%",
+					cmd = "tail",
+					args = { "-F", "$1" },
 				},
 			},
 		})
