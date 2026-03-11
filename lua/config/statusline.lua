@@ -208,7 +208,7 @@ Statusline.active = function()
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
-		spell(),
+		-- spell(),
 		wordcount(),
 		encoding(),
 		eol(),

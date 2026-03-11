@@ -12,6 +12,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- https://github.com/LazyVim/LazyVim/issues/6868
+-- broke syntax-aware spell-checking
+-- vim.api.nvim_create_autocmd("BufEnter", {
+-- 	desc = "Turn off spell check for URLs, acronyms, HTML comments",
+-- 	group = vim.api.nvim_create_augroup("rs-spell", { clear = true }),
+-- 	callback = function()
+-- 		-- vim.cmd([=[syn match AcronymNoSpell "\<\(\u\|\d\)\{3,}s\?\>" contains=@NoSpell]=])
+-- 		-- vim.cmd([=[syn match HtmlCommentNoSpell '\<!\-\-).*\-\-\>' contains=@NoSpell]=])
+-- 		vim.cmd([=[syn match UrlNoSpell "\w\+:\/\/[^[:space:]]\+" contains=@NoSpell]=])
+-- 		vim.cmd([[syn spell toplevel]])
+-- 	end,
+-- })
+
 -- [[ User commands ]]
 -- options {} argument required, but left empty here
 -- insert ISO date: https://vi.stackexchange.com/a/21826
