@@ -70,10 +70,6 @@ vim.keymap.set(
 	{ desc = "Uncheck Markdown checkbox", noremap = true, silent = true }
 )
 
--- dynomark
--- vim.keymap.set(
--- 	"n",
--- 	"<leader>td",
--- 	[[<Plug>(DynomarkToggle)]],
--- 	{ desc = "[T]oggle [D]ynomark", noremap = true, silent = true }
--- )
+-- tidal.nvim
+vim.keymap.set("n", "<localleader>b", [[<cmd>TidalLaunch<cr>]], { desc = "Boot Tidal" })
+vim.keymap.set("n", "<localleader>q", [[<cmd>TidalQuit<cr>]], { desc = "Quit Tidal" })
