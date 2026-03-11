@@ -12,18 +12,21 @@ then
 	vim.opt.conceallevel = 2
 end
 
--- local is_notes_dir = function()
--- 	return vim.fs.root(0, { "obsidian", ".moxide.toml", ".zk" })
--- end
---
+local is_notes_dir = function()
+	return vim.fs.root(0, { "obsidian", ".moxide.toml", ".zk" })
+end
+
 -- if is_notes_dir() ~= nil then
 -- 	-- seems to be needed for moxide transclusions, but nothing happened when I tried
 -- 	vim.lsp.inlay_hint.enable()
 -- end
 
--- instead, added ":Sp" command in commands.lua
--- vim.opt.spelllang = "en_us"
--- vim.opt.spell = true
+-- only use spell _outside_ of notes dir.
+if is_notes_dir() == nil then
+	-- also added ":Sp" command in commands.lua
+	vim.opt.spelllang = "en_us"
+	vim.opt.spell = true
+end
 
 -- Map j and k to move by visual lines
 vim.api.nvim_buf_set_keymap(0, "n", "j", "gj", { noremap = true, silent = true })
