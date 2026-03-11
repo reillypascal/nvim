@@ -22,10 +22,13 @@ return {
 				["<C-k>"] = map("signature.show", { "n", "i" }),
 				-- ['<F12>'] = map('sclang.hard_stop', { 'n', 'x', 'i' }),
 				["<M-.>"] = map("sclang.hard_stop", { "n", "x", "i" }),
-				["<leader>st"] = map("sclang.start"),
-				["<leader>sc"] = map("sclang.recompile"),
-				["<F1>"] = map_expr("s.boot"),
-				["<F2>"] = map_expr("s.meter"),
+				["<localleader>cs"] = map("sclang.start"),
+				["<localleader>cr"] = map("sclang.recompile"),
+				["<localleader>cb"] = map_expr("s.boot"),
+				["<localleader>ck"] = map_expr("Server.killAll"),
+				["<localleader>cq"] = map_expr("s.quit"),
+				["<localleader>cm"] = map_expr("s.meter"),
+				["<localleader>co"] = map_expr("s.scope"),
 			},
 			editor = {
 				highlight = {
