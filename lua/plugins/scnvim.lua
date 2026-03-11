@@ -10,23 +10,75 @@ return {
 
 		scnvim.setup({
 			keymaps = {
-				["<S-CR>"] = map("editor.send_line", { "i", "n" }, { buffer = true }),
-				["<C-CR>"] = {
-					map("editor.send_block", { "i", "n" }, { buffer = true }),
-					map("editor.send_selection", "x", { buffer = true }),
+				["<localleader><CR>"] = map(
+					"editor.send_line",
+					{ "i", "n" },
+					{ desc = "SuperCollider: send line", buffer = true }
+				),
+				["<leader><CR>"] = {
+					map("editor.send_block", { "i", "n" }, { desc = "SuperCollider: send block", buffer = true }),
+					map("editor.send_selection", "x", { desc = "SuperCollider: send selection", buffer = true }),
 				},
-				["<CR>"] = map("postwin.toggle", { buffer = true }),
-				["<M-CR>"] = map("postwin.toggle", "i", { buffer = true }),
-				["<M-L>"] = map("postwin.clear", { "n", "i" }, { buffer = true }),
-				["<C-k>"] = map("signature.show", { "n", "i" }, { buffer = true }),
-				["<localleader>c."] = map("sclang.hard_stop", { "n", "x", "i" }, { buffer = true }),
-				["<localleader>cs"] = map("sclang.start", { "n", "x", "i" }, { buffer = true }),
-				["<localleader>cr"] = map("sclang.recompile", { "n", "x", "i" }, { buffer = true }),
-				["<localleader>cb"] = map_expr("s.boot", { "n", "x", "i" }, { buffer = true }),
-				["<localleader>ck"] = map_expr("Server.killAll", { "n", "x", "i" }, { buffer = true }),
-				["<localleader>cq"] = map_expr("s.quit", { "n", "x", "i" }, { buffer = true }),
-				["<localleader>cm"] = map_expr("s.meter", { "n", "x", "i" }, { buffer = true }),
-				["<localleader>co"] = map_expr("s.scope", { "n", "x", "i" }, { buffer = true }),
+				["<localleader>cp"] = map(
+					"postwin.toggle",
+					{ "i", "n" },
+					{ desc = "SuperCollider: toggle postwin", buffer = true }
+				),
+				["<localleader>cc"] = map(
+					"postwin.clear",
+					{ "n", "i" },
+					{ desc = "SuperCollider: clear postwin", buffer = true }
+				),
+				["<localleader>ci"] = map(
+					"signature.show",
+					{ "n", "i" },
+					{ desc = "SuperCollider: show signature", buffer = true }
+				),
+				["<leader>."] = map(
+					"sclang.hard_stop",
+					{ "n", "x", "i" },
+					{ desc = "SuperCollider: hard stop", buffer = true }
+				),
+				["<localleader>cs"] = map(
+					"sclang.start",
+					{ "n", "x", "i" },
+					{ desc = "SuperCollider: start", buffer = true }
+				),
+				["<localleader>cq"] = map(
+					"sclang.stop",
+					{ "n", "x", "i" },
+					{ desc = "SuperCollider: stop", buffer = true }
+				),
+				["<localleader>cr"] = map(
+					"sclang.recompile",
+					{ "n", "x", "i" },
+					{ desc = "SuperCollider: recompile class library", buffer = true }
+				),
+				["<localleader>cb"] = map_expr(
+					"s.boot",
+					{ "n", "x", "i" },
+					{ desc = "SuperCollider: boot server", buffer = true }
+				),
+				["<localleader>ck"] = map_expr(
+					"Server.killAll",
+					{ "n", "x", "i" },
+					{ desc = "SuperCollider: kill all servers", buffer = true }
+				),
+				-- ["<localleader>cq"] = map_expr(
+				-- 	"s.quit",
+				-- 	{ "n", "x", "i" },
+				-- 	{ desc = "SuperCollider: quit server", buffer = true }
+				-- ),
+				["<localleader>cm"] = map_expr(
+					"s.meter",
+					{ "n", "x", "i" },
+					{ desc = "SuperCollider: open meter", buffer = true }
+				),
+				["<localleader>co"] = map_expr(
+					"s.scope",
+					{ "n", "x", "i" },
+					{ desc = "SuperCollider: open scope", buffer = true }
+				),
 			},
 			editor = {
 				highlight = {
@@ -39,7 +91,7 @@ return {
 			-- },
 			postwin = {
 				float = {
-					enabled = false,
+					enabled = true,
 				},
 			},
 			extensions = {

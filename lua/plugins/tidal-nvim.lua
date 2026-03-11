@@ -13,7 +13,8 @@ return {
 					"-v0",
 				},
 				--- Tidal boot file path
-				file = vim.api.nvim_get_runtime_file("bootfiles/BootTidal.hs", false)[1],
+				-- file = vim.api.nvim_get_runtime_file("bootfiles/BootTidal.hs", false)[1],
+				file = "$TIDAL_BOOT_PATH/BootTidal.hs",
 				enabled = true,
 			},
 			sclang = {
@@ -60,7 +61,7 @@ return {
 			},
 			send_hush = {
 				mode = "n",
-				key = "<localleader><ESC>",
+				key = "<localleader>.",
 				opts = { buffer = true },
 			},
 		},
