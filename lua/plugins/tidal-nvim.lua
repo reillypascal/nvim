@@ -33,12 +33,36 @@ return {
 		--- Set to false to disable all default mappings
 		--- @type table | nil
 		mappings = {
-			send_line = { mode = { "i", "n" }, key = "<localleader>ee" },
-			send_visual = { mode = { "x" }, key = "<localleader>E" },
-			send_block = { mode = { "i", "n", "x" }, key = "<localleader>eb" },
-			send_node = { mode = "n", key = "<localleader>er" },
-			send_silence = { mode = "n", key = "<localleader>s" },
-			send_hush = { mode = "n", key = "<localleader><ESC>" },
+			send_line = {
+				mode = { "i", "n" },
+				key = "<localleader>ee",
+				opts = { buffer = true },
+			},
+			send_visual = {
+				mode = { "x" },
+				key = "<localleader>E",
+				opts = { buffer = true },
+			},
+			send_block = {
+				mode = { "i", "n", "x" },
+				key = "<localleader>eb",
+				opts = { buffer = true },
+			},
+			send_node = {
+				mode = "n",
+				key = "<localleader>er",
+				opts = { buffer = true },
+			},
+			send_silence = {
+				mode = "n",
+				key = "<localleader>s",
+				opts = { buffer = true },
+			},
+			send_hush = {
+				mode = "n",
+				key = "<localleader><ESC>",
+				opts = { buffer = true },
+			},
 		},
 		---- Configure highlight applied to selections sent to tidal interpreter
 		selection_highlight = {

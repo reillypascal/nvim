@@ -9,26 +9,22 @@ return {
 
 		scnvim.setup({
 			keymaps = {
-				-- ['<M-e>'] = map('editor.send_line', { 'i', 'n' }),
-				["<S-CR>"] = map("editor.send_line", { "i", "n" }),
-				-- ['<C-e>'] = {
-				["<M-CR>"] = {
-					map("editor.send_block", { "i", "n" }),
-					map("editor.send_selection", "x"),
+				["<localleader>ee"] = map("editor.send_line", { "i", "n" }, { buffer = true }),
+				["<localleader>er"] = {
+					map("editor.send_block", { "i", "n" }, { buffer = true }),
+					map("editor.send_selection", "x", { buffer = true }),
 				},
-				["<CR>"] = map("postwin.toggle"),
-				-- ['<M-CR>'] = map('postwin.toggle', 'i'),
-				["<M-L>"] = map("postwin.clear", { "n", "i" }),
-				["<C-k>"] = map("signature.show", { "n", "i" }),
-				-- ['<F12>'] = map('sclang.hard_stop', { 'n', 'x', 'i' }),
-				["<M-.>"] = map("sclang.hard_stop", { "n", "x", "i" }),
-				["<localleader>cs"] = map("sclang.start"),
-				["<localleader>cr"] = map("sclang.recompile"),
-				["<localleader>cb"] = map_expr("s.boot"),
-				["<localleader>ck"] = map_expr("Server.killAll"),
-				["<localleader>cq"] = map_expr("s.quit"),
-				["<localleader>cm"] = map_expr("s.meter"),
-				["<localleader>co"] = map_expr("s.scope"),
+				["<localleader>spt"] = map("postwin.toggle", { buffer = true }),
+				["<localleader>spc"] = map("postwin.clear", { "n", "i" }, { buffer = true }),
+				["<localleader>si"] = map("signature.show", { "n", "i" }, { buffer = true }),
+				["<localleader>s."] = map("sclang.hard_stop", { "n", "x", "i" }, { buffer = true }),
+				["<localleader>ss"] = map("sclang.start", { "n", "x", "i" }, { buffer = true }),
+				["<localleader>sr"] = map("sclang.recompile", { "n", "x", "i" }, { buffer = true }),
+				["<localleader>sb"] = map_expr("s.boot", { "n", "x", "i" }, { buffer = true }),
+				["<localleader>sk"] = map_expr("Server.killAll", { "n", "x", "i" }, { buffer = true }),
+				["<localleader>sq"] = map_expr("s.quit", { "n", "x", "i" }, { buffer = true }),
+				["<localleader>sm"] = map_expr("s.meter", { "n", "x", "i" }, { buffer = true }),
+				["<localleader>so"] = map_expr("s.scope", { "n", "x", "i" }, { buffer = true }),
 			},
 			editor = {
 				highlight = {
