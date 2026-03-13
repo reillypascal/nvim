@@ -36,7 +36,7 @@ return {
 		mappings = {
 			send_line = {
 				mode = { "i", "n" },
-				key = "<localleader>ee",
+				key = "<localleader>e",
 				opts = { buffer = true },
 			},
 			send_visual = {
@@ -46,12 +46,12 @@ return {
 			},
 			send_block = {
 				mode = { "i", "n", "x" },
-				key = "<localleader>eb",
+				key = "<localleader>b",
 				opts = { buffer = true },
 			},
 			send_node = {
 				mode = "n",
-				key = "<localleader>er",
+				key = "<localleader>r",
 				opts = { buffer = true },
 			},
 			send_silence = {
