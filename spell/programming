@@ -112,7 +112,6 @@
 .bz2
 .bzl
 .c
-.c
 .c++
 .cab
 .cabal
@@ -177,7 +176,6 @@
 .cp
 .cpio
 .cpp
-.cpp
 .cppo
 .cproject
 .cpt
@@ -211,7 +209,6 @@
 .cu
 .cue
 .cuh
-.cxx
 .cxx
 .cyl
 .cyn
@@ -416,7 +413,6 @@
 .gyp
 .gypi
 .gz
-.h
 .h
 .haml
 .hamlbars
@@ -1396,7 +1392,6 @@ ACID
 ACK
 ACL
 ACM
-ACM
 ACME
 ACP
 ACPI
@@ -1418,7 +1413,6 @@ AFP
 AGP
 AH
 AI
-AI
 AIB
 AIOHTTP
 AIX
@@ -1430,7 +1424,6 @@ ALU
 ALX
 AM
 AMD
-AMD
 AMG
 AMOLED
 AMP
@@ -1439,14 +1432,11 @@ AMR
 ANA
 ANN
 ANSI
-ANSI
 ANT
 AOL
 AOP
 AP
 APCI
-API
-API
 API
 APIC
 APIPA
@@ -1459,7 +1449,6 @@ ARAL
 ARC
 ARIN
 ARK
-ARM
 ARM
 AROS
 ARP
@@ -1482,7 +1471,6 @@ AST
 ASUS
 AT
 AT&T
-AT&T
 ATA
 ATAG
 ATAPI
@@ -1492,7 +1480,6 @@ AVC
 AVI
 AVL
 AWK
-AWS
 AWS
 AWT
 Abbott
@@ -1595,7 +1582,6 @@ Amazon
 Ameba
 America
 American
-American
 Amplify
 Amul
 Anaconda
@@ -1630,7 +1616,6 @@ AppSignal
 AppVeyor
 Appian
 Appium
-Apple
 Apple
 Apps
 Appsmith
@@ -1734,7 +1719,6 @@ BFS
 BFT
 BGP
 BI
-BI
 BIM
 BINAC
 BIND
@@ -1760,12 +1744,10 @@ BRS
 BSA
 BSB
 BSD
-BSD
 BSP-tree
 BSS
 BSTW
 BSoD
-BT
 BT
 BVG
 BW
@@ -1796,7 +1778,6 @@ Barmenia
 Base
 Basecamp
 Bash
-Bash
 Basic
 Bastyon
 Bata
@@ -1811,7 +1792,6 @@ Beats
 Bedrock
 Behance
 Beijing
-Bell
 Bell
 Bellman–Ford
 Benford's
@@ -1907,7 +1887,6 @@ Brevo
 Brex
 Bricks
 British
-British
 Broadcom
 Bros.
 Browser
@@ -1919,7 +1898,6 @@ Bug
 Bugatti
 Bugcrowd
 Bugsnag
-Builder
 Builder
 Buildkite
 Bukalapak
@@ -1941,10 +1919,7 @@ Byte
 ByteDance
 Byzantine
 C
-C
-C
 C#
-C++
 C++
 C++,CLI
 C++03
@@ -1969,7 +1944,6 @@ CBC
 CBS
 CC
 CCleaner
-CD
 CD
 CDE
 CDMA
@@ -2004,7 +1978,6 @@ CM
 CMDB
 CMMI
 CMOS
-CMS
 CMS
 CMake
 CN
@@ -2045,9 +2018,7 @@ CSINode
 CSIStorageCapacity
 CSM
 CSP
-CSP
 CSRF
-CSS
 CSS
 CSS3
 CSV
@@ -2057,9 +2028,7 @@ CTCP
 CTFE
 CTI
 CTL
-CTL
 CTM
-CTS
 CTS
 CTSS
 CUA
@@ -2165,7 +2134,6 @@ Clarifai
 Claris
 Clarivate
 Classic
-Classic
 Classroom
 Clerk
 Clever
@@ -2257,7 +2225,6 @@ Company
 Compiler
 ComponentStatus
 Compose
-Compose
 Composer
 Computer
 Comsol
@@ -2313,7 +2280,6 @@ Creative
 Credly
 Crehana
 Crew
-Crew
 Critical
 CronJob
 Crowdin
@@ -2333,7 +2299,6 @@ Cycling
 Cypress
 Cytoscape.js
 D
-D
 D&E
 D-EDGE
 D-Wave
@@ -2341,7 +2306,6 @@ D-adjacent
 D3.js
 DAC
 DAF
-DAG
 DAG
 DAL
 DAO
@@ -2374,7 +2338,6 @@ DES
 DFA
 DFD
 DFS
-DFS
 DFTA
 DGD
 DHCP
@@ -2391,7 +2354,6 @@ DJI
 DKIM
 DL
 DLL
-DLNA
 DLNA
 DMA
 DMCA
@@ -2529,7 +2491,6 @@ Django
 Dlib
 DoS
 Docker
-Docker
 Docker Business
 Docker Desktop
 Docker Desktop for Linux
@@ -2603,7 +2564,6 @@ ECMA
 ECN
 ECOS
 ECRS
-ECS
 ECS
 ECharts
 EDA
@@ -2735,7 +2695,6 @@ Euclid's
 Euclidean
 Euler
 Eulerian
-Event
 Event
 Eventbrite
 Evernote
@@ -2975,16 +2934,12 @@ GIF
 GIGO
 GIL
 GIMP
-GIMP
 GIMPS
 GIPHY
 GIS
 GLUT
 GML
 GNOME
-GNOME
-GNU
-GNU
 GNU
 GOG.com
 GOMS
@@ -3003,8 +2958,6 @@ GSM
 GSMArena.com
 GStreamer
 GTK
-GTK
-GUI
 GUI
 GUID
 GWT
@@ -3040,7 +2993,6 @@ Ghost
 Ghostery
 Gin
 Git
-Git
 GitBook
 GitHub
 GitKraken
@@ -3070,7 +3022,6 @@ Goodreads
 Google
 Grab
 Gradle
-Grafana
 Grafana
 Grammarly
 Grand
@@ -3112,12 +3063,10 @@ H&M
 H3
 HA
 HAL
-HAL
 HASP
 HBA
 HBO
 HCI
-HCL
 HCL
 HD
 HDD
@@ -3138,7 +3087,6 @@ HLASM
 HLS
 HMA
 HP
-HP
 HPC
 HPFS
 HSBC
@@ -3147,7 +3095,6 @@ HSM
 HT
 HTC
 HTM
-HTML
 HTML
 HTML5
 HTTP
@@ -3242,7 +3189,6 @@ Huffman
 Hugo
 Humble
 Hungarian
-Hungarian
 Hungry
 Hunt
 Husqvarna
@@ -3252,11 +3198,9 @@ Hypothesis
 Hyundai
 Hz
 I
-I
 I,O
 I18N
 IANA
-IBM
 IBM
 IC
 ICANN
@@ -3270,8 +3214,6 @@ ICQ
 ICS
 ICT
 IDE
-IDE
-IDE
 IDEA
 IDF
 IDL
@@ -3279,7 +3221,6 @@ IDLE
 IDS
 IE
 IEC
-IEEE
 IEEE
 IETF
 IFL
@@ -3332,7 +3273,6 @@ ISC
 ISC2
 ISDN
 ISO
-ISO
 ISP
 ISPF
 ISR
@@ -3359,7 +3299,6 @@ Icons
 Icons8
 IdP
 Identification
-Identity
 Identity
 Illustrator
 Image.sc
@@ -3388,7 +3327,6 @@ Infosys
 Infracost
 Ingelheim
 Ingress
-Ingress
 IngressClass
 Initiative
 Ink
@@ -3402,7 +3340,6 @@ Instacart
 Instagram
 Instapaper
 Instatus
-Institute
 Institute
 Instructables
 Instructure
@@ -3464,13 +3401,11 @@ JNI
 JNZ
 JOUAV
 JPEG
-JPEG
 JR
 JRE
 JS
 JSE
 JSFiddle
-JSON
 JSON
 JSP
 JSS
@@ -3526,7 +3461,6 @@ K-dominant
 K3s
 K8s
 KB
-KDE
 KDE
 KFC
 KLM
@@ -3650,7 +3584,6 @@ LE
 LED
 LF
 LFS
-LFS
 LG
 LGA
 LGPL
@@ -3729,7 +3662,6 @@ Libera.Chat
 Liberapay
 Libraries.io
 Library
-Library
 LibraryThing
 LibreOffice
 Lichess
@@ -3799,7 +3731,6 @@ MAAS
 MAC
 MAMP
 MAN
-MAN
 MANET
 MAPI
 MATE
@@ -3839,7 +3770,6 @@ MGCP
 MHz
 MIB
 MICR
-MIDI
 MIDI
 MIMD
 MIME
@@ -3883,10 +3813,8 @@ MSA
 MSB
 MSDN
 MSI
-MSI
 MSN
 MT
-MTA
 MTA
 MTBF
 MTR
@@ -3901,7 +3829,6 @@ MVC
 MVP
 MVS
 MWC
-MX
 MX
 MXF
 MYOB
@@ -3946,7 +3873,6 @@ Martin
 MarvelApp
 Maserati
 Master
-Master
 MasterCard
 Mastodon
 Material
@@ -3960,7 +3886,6 @@ Mattermost
 Matternet
 Mautic
 Maven
-Max
 Max
 Max-Planck-Gesellschaft
 Maximal
@@ -4014,7 +3939,6 @@ Micro.blog
 MicroPython
 MicroStrategy
 Microgenetics
-Microsoft
 Microsoft
 Microstation
 Migadu
@@ -4129,7 +4053,6 @@ NETGEAR
 NEXT
 NFA
 NFC
-NFC
 NFS
 NGINX
 NGSCB
@@ -4138,7 +4061,6 @@ NI
 NIC
 NIM
 NIO
-NIST
 NIST
 NLE
 NLP
@@ -4149,7 +4071,6 @@ NOC
 NOP
 NOS
 NOW
-NP
 NP
 NP-complete
 NP-hard
@@ -4182,7 +4103,6 @@ Namespace
 Namu
 Nano
 National
-National
 Nations
 NativeScript
 Naver
@@ -4206,7 +4126,6 @@ Network
 NetworkPolicy
 Networks
 Neutralinojs
-New
 New
 Newegg
 News
@@ -4294,7 +4213,6 @@ OOD
 OOE
 OOM
 OOP
-OOP
 OOPL
 OOTB
 OOo
@@ -4304,7 +4222,6 @@ OPPO
 ORB
 ORCID
 ORM
-OS
 OS
 OSCON
 OSDN
@@ -4423,7 +4340,6 @@ PERL
 PGA
 PGO
 PGP
-PHP
 PHP
 PIC
 PID
@@ -4628,7 +4544,6 @@ Porsche
 PortSwigger
 Portainer
 Post
-Post
 PostCSS
 PostHog
 PostgreSQL
@@ -4714,7 +4629,6 @@ PyUp
 Pydantic
 Pytest
 Python
-Python
 PythonAnywhere
 Pythonic
 QA
@@ -4736,7 +4650,6 @@ Qiita
 Qiskit
 Qlik
 QoS
-Qt
 Qt
 Qualcomm
 Qualtrics
@@ -4765,10 +4678,8 @@ R-tree
 R3
 RACF
 RAD
-RAD
 RADIUS
 RAID
-RAII
 RAII
 RAIT
 RAM
@@ -4783,7 +4694,6 @@ RDF
 RDM
 RDOS
 RDP
-RDS
 RDS
 REFAL
 REST
@@ -4818,7 +4728,6 @@ RRAS
 RSA
 RSI
 RSS
-RSS
 RSVP
 RSocket
 RStudio
@@ -4829,7 +4738,6 @@ RTEMS
 RTF
 RTFM
 RTL
-RTL
 RTLZWEI
 RTM
 RTMP
@@ -4837,7 +4745,6 @@ RTOS
 RTP
 RTS
 RTSP
-RTTI
 RTTI
 RTU
 RTÉ
@@ -4964,7 +4871,6 @@ Rockwell
 Rocky
 Roku
 Role
-Role
 RoleBinding
 Roll20
 Rolls-Royce
@@ -5012,9 +4918,6 @@ SBU
 SCADA
 SCID
 SCM
-SCM
-SCM
-SCP
 SCP
 SCPC
 SCPI
@@ -5126,9 +5029,7 @@ SPF
 SPI
 SPM
 SPMD
-SPMD
 SPOF
-SQL
 SQL
 SQLAlchemy
 SQLite
@@ -5139,7 +5040,6 @@ SSA
 SSD
 SSDP
 SSE
-SSH
 SSH
 SSI
 SSID
@@ -5157,10 +5057,8 @@ STL
 STMicroelectronics
 SUS
 SUSE
-SUSE
 SV
 SVD
-SVG
 SVG
 SVG.js
 SVGA
@@ -5216,7 +5114,6 @@ ScyllaDB
 Seagate
 SearXNG
 Search
-Search
 SeatGeek
 Secret
 Secrets
@@ -5243,7 +5140,6 @@ Sequential
 Server
 Serverless
 Service
-Service
 ServiceAccount
 ServiceCIDR
 ServiceProxyOptions
@@ -5259,11 +5155,9 @@ ShareX
 Shazam
 Sheets
 Shell
-Shell
 Shelly
 Shenzhen
 Shields.io
-Shift
 Shift
 Shift-Or
 Shikimori
@@ -5406,7 +5300,6 @@ Stadia
 Staffbase
 Stagetimer
 Standard
-Standard
 StandardJS
 Standards
 Star
@@ -5496,7 +5389,6 @@ Synology
 Sysop
 System
 System76
-Systems
 Systems
 Systèmes
 São
@@ -5694,7 +5586,6 @@ Tubi
 Tumblr
 TuneIn
 Turbo
-Turbo
 Turbo-BM
 TurboSquid
 Turborepo
@@ -5726,7 +5617,6 @@ UEFI
 UFC
 UHF
 UI
-UI
 UIkit
 UL
 ULA
@@ -5734,12 +5624,10 @@ ULSI
 UMA
 UMB
 UML
-UML
 UMPC
 UMTS
 UNC
 UNIVAC
-UPS
 UPS
 URI
 URL
@@ -5792,7 +5680,6 @@ Uptobox
 Upwork
 User
 V
-V
 V2EX
 V8
 VAX
@@ -5828,7 +5715,6 @@ VNC
 VOD
 VOX
 VP-tree
-VPN
 VPN
 VPS
 VPU
@@ -5888,7 +5774,6 @@ VirtualBox
 VirusTotal
 Visa
 Visio
-Visual
 Visual
 Vita
 Vite
@@ -6061,7 +5946,6 @@ Wyze
 X
 X.Org
 XAML
-XAML
 XAMPP
 XCBL
 XD
@@ -6074,11 +5958,9 @@ XILP
 XML
 XMMS
 XMPP
-XMPP
 XMS
 XNS
 XO
-XP
 XP
 XPCOM
 XPI
@@ -6111,7 +5993,6 @@ Y2K38
 YACC
 YAGNI
 YAML
-YAML
 YARN
 YaST
 Yale
@@ -6122,7 +6003,6 @@ Yarn
 Yelp
 Yeti
 Yoast
-York
 York
 YouTube
 Yr
@@ -6192,16 +6072,12 @@ Zyte
 __future__
 __slots__
 a
-a
 abbr
 absolute
-abstract
-abstract
 abstract
 abstraction
 abuse.ch
 accepting
-access
 access
 acpid
 acquisition
@@ -6211,7 +6087,6 @@ acyclic
 ad
 adapter
 adaptive
-address
 address
 address-calculation
 addressing
@@ -6223,13 +6098,9 @@ adversary
 aggregate
 algebra
 algorithm
-algorithm
 algorithmic
 algorithmically
 alias
-alias
-alias
-alignment
 alignment
 aliqua
 aliquip
@@ -6248,9 +6119,6 @@ an
 analysis
 ancestor
 and
-and
-and
-and
 anim
 annealing
 annotation
@@ -6266,14 +6134,11 @@ arch
 archive
 area
 argument
-argument
-argument
 argument-based
 arithmetic
 arm64
 arp
 arping
-array
 array
 article
 articulation
@@ -6283,13 +6148,11 @@ asciinema
 ash
 aside
 assignment
-assignment
 association
 associative
 asymptotic
 asymptotically
 asynchronous
-at
 at
 attack
 attribute
@@ -6322,8 +6185,6 @@ balance
 balanced
 bare
 base
-base
-base
 base image
 base32
 base64
@@ -6351,9 +6212,6 @@ big
 big-O
 bigbasket
 bin
-bin
-binary
-binary
 binary
 binder
 bingo
@@ -6361,8 +6219,6 @@ binomial
 bintree
 bipartite
 bisector
-bit
-bit
 bit
 bitand
 bitfield
@@ -6374,13 +6230,11 @@ blkdiscard
 blkid
 blob
 block
-block
 blockdev
 blocking
 blockquote
 blossom
 boAt
-body
 body
 bogosort
 boogol
@@ -6399,7 +6253,6 @@ box
 bozo
 bps
 br
-branch
 branch
 brctl
 breadth-first
@@ -6430,7 +6283,6 @@ bzcat
 bzip2
 c99
 cPanel
-cache
 cache
 cactus
 cal
@@ -6465,7 +6317,6 @@ certificate
 cflow
 cgroups
 chain
-chain
 chaining
 changeset
 char
@@ -6475,7 +6326,6 @@ chcon
 check
 checkable
 checker
-checking
 checking
 checkout
 cherry-picking
@@ -6493,16 +6343,11 @@ circular
 cite
 cksum
 class
-class
-class
 clean
 clear
 clique
 clone
-clone
 closure
-closure
-cluster
 cluster
 clustering
 cmp
@@ -6512,13 +6357,10 @@ coalesced
 coarsening
 cocktail
 code
-code
-code
 codeword
 coding
 col
 colgroup
-collection
 collection
 collective
 collision
@@ -6551,7 +6393,6 @@ complement
 complete
 completely
 complex
-complex
 complexity
 component
 components
@@ -6582,12 +6423,9 @@ consistency
 const
 const_cast
 constant
-constant
-constraint
 constraint
 construction
 constructor
-container
 container
 container image
 containerd
@@ -6610,7 +6448,6 @@ coroutine
 correspondence
 cost
 count
-count
 counting
 cout
 cover
@@ -6632,15 +6469,12 @@ cupidatat
 curl
 curve
 cut
-cut
 cutting
 cxref
 cycle
 cyclic
 daily.dev
 dangling
-data
-data
 data
 data.ai
 database
@@ -6650,7 +6484,6 @@ date-fns
 dblp
 dbt
 dc
-dd
 dd
 de
 deallocvt
@@ -6672,7 +6505,6 @@ del
 del.icio.us
 delayed
 delete
-delete
 delete()
 delete[]()
 delta
@@ -6680,10 +6512,8 @@ dense
 depmod
 depoissonization
 deprecated
-deprecated
 depth
 depth-first
-deque
 deque
 derangement
 dereference
@@ -6710,16 +6540,13 @@ dialog
 diameter
 dichotomic
 dictionary
-dictionary
 diff
 difference
 digital
 digraph
-digraph
 dilemma
 diminishing
 dining
-dir
 dir
 dircolors
 direct
@@ -6731,7 +6558,6 @@ discrete
 disjoint
 disjunction
 dispatch
-dispatch
 distance
 distributed
 distribution
@@ -6739,7 +6565,6 @@ distributional
 div
 divide
 divide-and-conquer
-division
 division
 divisor
 dl
@@ -6753,7 +6578,6 @@ dolore
 domain
 don't-care
 dos2unix
-double
 double
 double-direction
 double-ended
@@ -6771,7 +6595,6 @@ dumpkmap
 dumpleases
 dwm
 dyadic
-dynamic
 dynamic
 dynamic_cast
 dynamization
@@ -6795,17 +6618,14 @@ eiusmod
 elastic-bucket
 electron-builder
 element
-element
 elementary
 elit
 em
 embed
 encapsulation
 encoding
-encoding
 end-of-string
 enim
-entry
 entry
 enum
 enumerable
@@ -6818,8 +6638,6 @@ equality
 equations
 ergodic
 error
-error
-error
 errors
 esbuild
 escape
@@ -6830,7 +6648,6 @@ etcd
 eu
 evaluation
 evil
-ex
 ex
 exact
 excepteur
@@ -6848,12 +6665,8 @@ explicit
 exponential
 expr
 expression
-expression
-expression
-extended
 extended
 extendible
-extension
 extension
 extern
 external
@@ -6865,10 +6678,8 @@ f-string
 facet
 facility
 factor
-factor
 factorial
 fallocate
-false
 false
 family
 fast
@@ -6891,16 +6702,10 @@ figcaption
 figshare
 figure
 file
-file
-file
-file
-file
 file-like
-filesystem
 filesystem
 filter
 finally
-find
 find
 find()
 find_if()
@@ -6940,8 +6745,6 @@ fractional
 frame
 frameset
 free
-free
-free
 free()	
 free-standing
 freeCodeCamp
@@ -6961,26 +6764,19 @@ fugiat
 full
 fully
 function
-function
-function
 functional
 functor
 fuse
 fuser
 gamma
 garbage
-garbage
 gencat
 general-purpose
 generals
 generation
 generator
-generator
-generator
-generic
 generic
 geometric
-get
 get
 getconf
 getopt
@@ -6989,8 +6785,6 @@ getty
 gitfile
 gitignore.io
 global
-global
-global
 glossary
 gnome
 goobi
@@ -6998,13 +6792,11 @@ goto
 grafts
 grammar
 graph
-graph
 greatest
 greedy
 grep
 grid
 groups
-guarantee
 guarantee
 gulp
 gunzip
@@ -7020,10 +6812,7 @@ halt
 halting
 handle
 handler
-handler
 handling
-hash
-hash
 hash
 hash-based
 hash_map
@@ -7031,9 +6820,6 @@ hashable
 hashing
 haveibeenpwned
 head
-head
-head
-header
 header
 heap
 heapify
@@ -7048,7 +6834,6 @@ hgroup
 hidden
 hiding
 hierarchy
-hierarchy
 higher-order
 highest
 hint
@@ -7056,7 +6841,6 @@ histogram
 history
 homeomorphic
 homify
-hook
 hook
 horizontal
 hostid
@@ -7067,7 +6851,6 @@ htmx
 htop
 httpd
 hwclock
-hybrid
 hybrid
 hyperedge
 hypergraph
@@ -7094,9 +6877,7 @@ iTerm2
 iTunes
 iconv
 id
-id
 ideal
-identifier
 identifier
 if-statement
 ifconfig
@@ -7105,19 +6886,16 @@ iframe
 ifstream
 ifup
 image
-image
 img
 immortal
 immutable
 implementation
 implication
 implicit
-implicit
 implies
 import
 importer
 importing
-in
 in
 in-branching
 in-class
@@ -7135,12 +6913,9 @@ increment
 incremental
 independent
 index
-index
 indexing
 inequality
-inequality
 infix
-information
 information
 inheritance
 init
@@ -7148,7 +6923,6 @@ initialization
 initializer
 inline
 inlining
-input
 input
 ins
 insert
@@ -7160,11 +6934,8 @@ instantaneous
 instantiation
 int
 integer
-integer
 integral
 interactive
-interactive
-interface
 interface
 interior-based
 internal
@@ -7199,9 +6970,7 @@ istream
 istringstream
 iterable
 iteration
-iteration
 iteration-statement
-iterator
 iterator
 jQuery
 jobs
@@ -7221,7 +6990,6 @@ k6
 kHz
 kbd
 key
-key
 keyword
 kill
 killall
@@ -7238,7 +7006,6 @@ laboris
 laborum
 labs
 lambda
-language
 language
 last
 last-in,
@@ -7266,10 +7033,7 @@ libraires
 library
 libuv
 line
-line
 linear
-link
-link
 link
 linkage
 linked
@@ -7277,8 +7041,6 @@ linker
 linux32
 linux64
 linuxrc
-list
-list
 list
 lists
 literal
@@ -7289,9 +7051,6 @@ loader
 loadfont
 loadkmap
 local
-local
-locale
-locale
 locale
 localedef
 location
@@ -7321,7 +7080,6 @@ lzop
 m4
 macOS
 machine
-machine
 macro
 magic
 magna
@@ -7336,8 +7094,6 @@ man
 management
 manager
 many-one
-map
-map
 map
 mapping
 mark
@@ -7366,26 +7122,20 @@ median
 meld
 mem_fun()
 member
-member
 memberwise
 memoization
 memory
-memory
 menu
 menuitem
-merge
 merge
 merging
 meromorphic
 mesg
 meta
-meta
 metaclass
 metaheuristic
 metaphone
 meter
-method
-method
 method
 methods
 micro:bit
@@ -7411,7 +7161,6 @@ mkswap
 mktemp
 mode
 model
-model
 moderately
 modifiable
 modinfo
@@ -7436,25 +7185,19 @@ multigraph
 multilayer
 multimap
 multiple
-multiple
 multiplication
 multiprefix
 multiprocessor
 multiset
 multiway
 mutable
-mutable
 mv
 n
 n-ary
 naive
 name
-name
-name
 named
 nameif
-namespace
-namespace
 namespace
 nav
 nc
@@ -7462,13 +7205,11 @@ nearest
 negation
 neighbor
 nested
-nested
 netcup
 netstat
 network
 new
 new()
-new-style
 new-style
 new[]()
 new_handler
@@ -7483,7 +7224,6 @@ nl
 nm
 nobr
 node
-node
 noembed
 noframes
 nohup
@@ -7497,8 +7237,6 @@ nor
 noscript
 nostrud
 not
-not
-notation
 notation
 nothrow
 npm
@@ -7507,18 +7245,12 @@ nsenter
 nslookup
 nuke
 null
-null
 nulla
 nullary
 nullptr
 number
-number
-number
 numbers
 numfmt
-object
-object
-object
 object
 object-oriented
 objective
@@ -7530,9 +7262,6 @@ octree
 od
 odd–even
 of
-of
-of
-of
 officia
 offline
 offset
@@ -7543,7 +7272,6 @@ ol
 old-style
 omega
 omicron
-on
 on
 one
 one-based
@@ -7564,10 +7292,7 @@ optimizer
 optimum
 option
 or
-or
 oracle
-order
-order
 order
 ordered
 orders
@@ -7585,7 +7310,6 @@ osu!
 out-branching
 out-degree
 out_of_range
-output
 output
 overlapping
 overlay
@@ -7613,13 +7337,10 @@ paradigm
 parallel
 param
 parameter
-parameter
 parametric
-parent
 parent
 parent image
 pariatur
-partial
 partial
 partially
 partition
@@ -7629,13 +7350,11 @@ passive
 paste
 patch
 path
-path
 path-like
 pathchk
 paths
 pathspec
 patience
-pattern
 pattern
 pax
 peel
@@ -7671,7 +7390,6 @@ plumbing
 pnpm
 point
 pointer
-pointer
 poissonization
 policy
 polychotomy
@@ -7689,7 +7407,6 @@ portion
 poset
 positional
 postfix
-postfix
 postman
 postman's
 postorder
@@ -7701,7 +7418,6 @@ pre
 pre-commit
 precompute
 predicate
-prefix
 prefix
 preorder
 preprocessor
@@ -7725,11 +7441,8 @@ problem
 procedural
 procedure
 process
-process
 product
 program
-program
-programming
 programming
 progress
 prohibiting
@@ -7780,10 +7493,8 @@ quadratic
 quadtree
 qualification
 qualified
-qualified
 quantum
 queens
-queue
 queue
 qui
 quicksort
@@ -7792,7 +7503,6 @@ quis
 radarr
 radix
 ragged
-random
 random
 random-access
 randomization
@@ -7804,7 +7514,6 @@ rb
 rd
 rdate
 reachability
-reachable
 reachable
 read
 read,
@@ -7820,7 +7529,6 @@ rectangular
 rectilinear
 recurrence
 recursion
-recursion
 recursive
 recursively
 reduced
@@ -7829,7 +7537,6 @@ reduction
 redundancy
 red–black
 ref
-reference
 reference
 reflexive
 reflog
@@ -7840,13 +7547,11 @@ region
 registry
 regression
 regular
-regular
 rehashing
 reinterpret_cast
 relation
 relational
 relative
-relaxation
 relaxation
 relaxed
 remainder
@@ -7855,14 +7560,11 @@ remote
 remote-tracking
 renice
 repository
-repository
 reprehenderit
 representation
 representations
 rescalable
 reset
-resolution
-resolution
 resolution
 resolve
 resource
@@ -7882,7 +7584,6 @@ right-threaded
 rm
 rmdel
 rmdir
-rmdir
 rmmod
 roadmap.sh
 rollup.js
@@ -7901,8 +7602,6 @@ rt
 rtc
 ruby
 rule
-rule
-run
 run
 run-init
 run-parts
@@ -7925,10 +7624,7 @@ sccs
 scheme
 scikit-learn
 scope
-scope
 script
-script
-search
 search
 searching
 seats
@@ -7936,9 +7632,7 @@ secant
 secondary
 section
 sed
-sed
 segment
-select
 select
 selection
 selection-statement
@@ -7947,23 +7641,17 @@ self-loop
 self-organizing
 semantic-release
 semantics
-semantics
 semidefinite
-separate
 separate
 separately
 separator
 seq
-sequence
-sequence
 sequence
 sequential
 served
 service
 service account
 service discovery
-set
-set
 set
 setkeycodes
 setpriv
@@ -7976,7 +7664,6 @@ sha384sum
 sha3sum
 sha512sum
 shadcn,ui
-shadow
 shadow
 shaker
 shallow
@@ -7992,17 +7679,13 @@ shuf
 shuffle
 shutdown
 sibling
-sibling
 sieve
 sift
-signature
 signature
 simple
 simplex
 simulated
 simulation
-single
-single
 single
 single-destination
 single-pair
@@ -8025,7 +7708,6 @@ slot
 small
 smallest
 smart
-smart
 smash.gg
 smoothsort
 social
@@ -8035,12 +7717,10 @@ solution
 solvable
 sonarr
 sort
-sort
 sort()
 sorted
 sorting
 soundex
-source
 source
 spaCy
 space
@@ -8053,7 +7733,6 @@ sparsity
 spatial
 spec
 special
-special
 specialization
 spectral
 splay
@@ -8062,7 +7741,6 @@ square
 ssl_client
 st-digraph
 stable
-stack
 stack
 standard
 standards
@@ -8073,9 +7751,6 @@ stash
 stat
 state
 statement
-statement
-static
-static
 static
 static_cast
 stdbuf
@@ -8089,15 +7764,10 @@ stream
 strictly
 strike
 string
-string
-string
 string-search
 strings
 stringstream
 strip
-strip
-strong
-strong
 strong
 strongSwan
 strongly
@@ -8124,8 +7794,6 @@ subtype
 succinct
 suckless
 suffix
-suffix
-sum
 sum
 summary
 sunt
@@ -8153,22 +7821,15 @@ symmetry
 symref
 sync
 syntax
-syntax
 sysctl
 syslogd
 system
-system
-system
 tRPC
-table
-table
 table
 tabs
 tac
 tado°
 tag
-tag
-tail
 tail
 talk
 tango
@@ -8183,7 +7844,6 @@ team
 tee
 telnet
 template
-template
 tempor
 temporal
 teratail
@@ -8191,14 +7851,9 @@ term
 terminal
 terminate()
 termination
-termination
-ternary
 ternary
 test
-test
 testing
-testing
-text
 text
 textarea
 tfoot
@@ -8218,9 +7873,6 @@ three-way
 throw
 tie
 tight
-time
-time
-time
 time
 time,space
 time-constructible
@@ -8245,7 +7897,6 @@ towers
 tput
 tqdm
 tr
-tr
 traceroute
 traceroute6
 track
@@ -8263,7 +7914,6 @@ travelling
 traversal
 treap
 tree
-tree
 tree-ish
 treeish
 trees
@@ -8276,7 +7926,6 @@ trigraph
 trinary
 tripartition
 triple-quoted
-true
 true
 trulia
 truncate
@@ -8293,10 +7942,6 @@ two-dimensional
 two-level
 two-phase
 two-way
-type
-type
-type
-type
 type
 type_info
 typedef
@@ -8317,7 +7962,6 @@ umount
 unalias
 uname
 unary
-unary
 unborn
 unbounded
 uncaught
@@ -8331,11 +7975,9 @@ unget
 uniform
 uninitialized
 union
-union
 uniq
 uniqueness
 unit
-universal
 universal
 universe
 unix2dos
@@ -8472,15 +8114,11 @@ vFairs
 val
 valarray
 value
-value
 van
 var
-var
-variable
 variable
 vconfig
 vdir
-vector
 vector
 vehicle
 velit
@@ -8492,8 +8130,6 @@ vi
 video
 view
 virtual
-virtual
-virtual
 virtual machine
 virtual-function
 visibility
@@ -8503,7 +8139,6 @@ vivo
 void
 void*
 volatile
-volume
 volume
 voluptate
 vptr
@@ -8534,7 +8169,6 @@ whoami
 wiki.gg
 with
 word
-word
 work-depth
 work-efficient
 work-preserving
@@ -8543,11 +8177,9 @@ worktree
 worst
 worst-case
 write
-write
 x86_64
 xargs
 xmp
-xor
 xor
 xxd
 xz
