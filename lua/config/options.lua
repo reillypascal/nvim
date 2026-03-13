@@ -52,8 +52,12 @@ vim.opt.autoindent = true
 -- vim.opt.smartindent = true
 -- vim.opt.cindent = true
 
--- Set spell file
+-- Set spell options
+-- https://wordlist.aspell.net - generated from SCOWL
+vim.opt.spelllang = { "en-us-large", "cjk" }
 vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+-- vim.cmd([[highlight clear SpellLocal]])
+-- vim.cmd([[highlight clear SpellRare]])
 
 -- want to turn off spell for opening doc floats w/ shift + K
 -- https://github.com/neovim/neovim/issues/26548
