@@ -24,10 +24,10 @@ end
 -- end
 
 -- only use spell _outside_ of notes dir.
--- if is_notes_dir() == nil then
--- also added ":Sp" command in commands.lua
-vim.opt.spell = true
--- end
+if is_notes_dir() == nil then
+	-- also added ":Sp" command in commands.lua
+	vim.opt.spell = true
+end
 
 -- Map j and k to move by visual lines
 vim.api.nvim_buf_set_keymap(0, "n", "j", "gj", { noremap = true, silent = true })
