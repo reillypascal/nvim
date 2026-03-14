@@ -100,6 +100,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 		-- my keymaps
 		vim.keymap.set("n", "<leader>sm", builtin.marks, { desc = "[S]earch [M]arks" })
+		vim.keymap.set("n", "<leader>ss", builtin.spell_suggest, { desc = "[S]earch [M]arks" })
 		-- git keymaps
 		vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, { desc = "[G]it [B]uffer Commits" })
 		vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "[G]it [C]ommits" })
