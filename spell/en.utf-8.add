@@ -445,7 +445,7 @@ holomictic
 hostable
 href
 http
-https
+#ttps
 hyperfixation
 hyperfocus
 hyperjack
@@ -623,3 +623,6 @@ youtube
 zeroes
 zoxide
 Émile
+#odebook
+codebook
+Neovim's
