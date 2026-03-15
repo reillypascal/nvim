@@ -199,6 +199,7 @@ Nahvalur
 Nason
 Neidermayer
 Neocities
+Neovim's
 NetNewsWire
 Netlify's
 Neuromancer
@@ -372,6 +373,7 @@ chezmoi
 clangd
 claymation
 cmd
+codebook
 codelldb
 cohabitate
 colorscheme
@@ -445,7 +447,7 @@ holomictic
 hostable
 href
 http
-#ttps
+https
 hyperfixation
 hyperfocus
 hyperjack
@@ -568,7 +570,6 @@ smol
 sonified
 spacebar
 src
-stackexchange.com
 statusline
 statuslog
 stdout
@@ -588,7 +589,6 @@ taskfinder
 techbros
 that'll
 tmux
-tracydurnell.com
 transcoding
 treesitter
 treffpunkt
@@ -623,6 +623,3 @@ youtube
 zeroes
 zoxide
 Émile
-#odebook
-codebook
-Neovim's
