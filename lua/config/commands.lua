@@ -52,3 +52,30 @@ vim.cmd([[au TermOpen * setlocal nospell]], false)
 -- put file in same directory as buffer
 -- https://www.reddit.com/r/vim/comments/gned4g/comment/fr9oo3c/
 vim.cmd([[cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%']])
+
+-- paste HTML to Markdown
+vim.api.nvim_create_user_command("Mdp", function()
+	local os_name = vim.loop.os_uname().sysname
+
+	if os_name == "Darwin" then
+		-- system commands from neovim
+		-- https://www.reddit.com/r/neovim/comments/y2by27/comment/is24btb/
+		-- html from macos clipboard
+		-- https://stackoverflow.com/a/24132171
+		-- question shows cleaning up html > markdown in pandoc
+		-- https://stackoverflow.com/q/78052121
+		-- check if clipboard has class html
+		-- https://apple.stackexchange.com/a/281920
+		local class_handle =
+			io.popen([[osascript -e '((clipboard info) as string) contains "«class html»"' | tr -d '\n']])
+		if class_handle:read("*a") == "true" then
+			local handle = io.popen(
+				[[osascript -e 'the clipboard as «class HTML»' | perl -ne 'print chr foreach unpack("C*",pack("H*",substr($_,11,-3)))' | pandoc -f html -t gfm-raw_html --wrap=none]]
+			)
+			local result = handle:read("*a")
+			vim.api.nvim_paste(result, false, -1)
+			handle:close()
+		end
+		class_handle:close()
+	end
+end, {})
