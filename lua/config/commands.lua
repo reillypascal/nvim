@@ -60,7 +60,7 @@ vim.api.nvim_create_user_command("Mdp", function()
 	if os_name == "Linux" then
 		local class_handle = io.popen([[echo `wl-paste --list-types`]])
 		if string.find(class_handle:read(), "text/html") then
-			local handle = io.popen([[wl-paste -t text/html | tr -d '\n' | pandoc -f html -t gfm-raw_html --wrap=none]])
+			local handle = io.popen([[wl-paste -t text/html | pandoc -f html -t gfm-raw_html --wrap=none | tr -d '\n']])
 			local result = handle:read("*a")
 			vim.api.nvim_paste(result, false, -1)
 			handle:close()
@@ -73,7 +73,7 @@ vim.api.nvim_create_user_command("Mdp", function()
 		-- 	io.popen([[osascript -e '((clipboard info) as string) contains "«class html»"' | tr -d '\n']])
 		-- if class_handle:read("*a") == "true" then
 		-- 	local handle = io.popen(
-		-- 		[[osascript -e 'the clipboard as «class HTML»' | perl -ne 'print chr foreach unpack("C*",pack("H*",substr($_,11,-3)))' | pandoc -f html -t gfm-raw_html --wrap=none]]
+		-- 		[[osascript -e 'the clipboard as «class HTML»' | perl -ne 'print chr foreach unpack("C*",pack("H*",substr($_,11,-3)))' | pandoc -f html -t gfm-raw_html --wrap=none | tr -d '\n']]
 		-- 	)
 		-- 	local result = handle:read("*a")
 		-- 	vim.api.nvim_paste(result, false, -1)
@@ -82,11 +82,11 @@ vim.api.nvim_create_user_command("Mdp", function()
 		-- class_handle:close()
 
 		-- pbpaste-swift: https://stackoverflow.com/a/36109230
-		local handle = io.popen([[pbpaste-html | pandoc -f html -t gfm-raw_html --wrap=none]])
+		-- note: change branch for no html to just `exit(0)`
+		local handle = io.popen([[pbpaste-html | pandoc -f html -t gfm-raw_html --wrap=none | tr -d '\n']])
 		local result = handle:read("*a")
-		if result ~= "\n" then
-			vim.api.nvim_paste(result, false, -1)
-		end
+		-- can paste result without checking for errors: pbpaste-html Swift script (as written) either has HTML available or no output, so seems to be no garbage
+		vim.api.nvim_paste(result, false, -1)
 		handle:close()
 	end
 end, {})
