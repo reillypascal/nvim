@@ -57,6 +57,17 @@ vim.cmd([[cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%']])
 vim.api.nvim_create_user_command("Mdp", function()
 	local os_name = vim.loop.os_uname().sysname
 
+	if os_name == "Linux" then
+		local class_handle = io.popen([[echo `wl-paste --list-types`]])
+		if string.find(class_handle:read(), "text/html") then
+			local handle = io.popen([[wl-paste -t text/html | tr -d '\n' | pandoc -f html -t gfm-raw_html --wrap=none]])
+			local result = handle:read("*a")
+			vim.api.nvim_paste(result, false, -1)
+			handle:close()
+		end
+		class_handle:close()
+	end
+
 	if os_name == "Darwin" then
 		-- system commands from neovim
 		-- https://www.reddit.com/r/neovim/comments/y2by27/comment/is24btb/
