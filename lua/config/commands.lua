@@ -60,7 +60,9 @@ vim.api.nvim_create_user_command("Mdp", function()
 	if os_name == "Linux" then
 		local class_handle = io.popen([[echo `wl-paste --list-types`]])
 		if string.find(class_handle:read(), "text/html") then
-			local handle = io.popen([[wl-paste -t text/html | tr -d '\n' | pandoc -f html -t gfm-raw_html --wrap=none]])
+			local handle = io.popen(
+				[[wl-paste -t text/html | tr -d '\n' | pandoc -f html -t gfm-raw_html --wrap=none | sed 's/ / /g']]
+			)
 			local result = handle:read("*a")
 			vim.api.nvim_paste(result, false, -1)
 			handle:close()
@@ -84,10 +86,12 @@ vim.api.nvim_create_user_command("Mdp", function()
 		-- pbpaste-swift: https://stackoverflow.com/a/36109230
 		-- note: change branch for no html to just `exit(0)`
 		-- tried piping to `perl -pi -e 'chomp if eof'`, but caused statusline duplication glitch
-		local handle = io.popen([[pbpaste-html | tr -d '\n' | pandoc -f html -t gfm-raw_html --wrap=none]])
+		local handle =
+			io.popen([[pbpaste-html | tr -d '\n' | pandoc -f html -t gfm-raw_html --wrap=none | sed 's/ / /g']])
 		local result = handle:read("*a")
-		-- can paste result without checking for errors: pbpaste-html Swift script (as written) either has HTML available or no output, so seems to be no garbage
-		vim.api.nvim_paste(result, false, -1)
+		if result ~= "\n" then
+			vim.api.nvim_paste(result, false, -1)
+		end
 		handle:close()
 	end
 end, {})
