@@ -55,7 +55,7 @@ return { -- Autoformat
 			-- markdown = { "prettierd" },
 			markdown = { "rumdl_fmt" },
 			nunjucks = { "prettierd" },
-			python = { "ruff" },
+			python = { "black" },
 			rust = { "rustfmt" },
 			scheme = { "schemat" },
 			sh = { "shfmt" },
