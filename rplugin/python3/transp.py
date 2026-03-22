@@ -39,7 +39,7 @@ class Transp(object):
         self.nvim = nvim
 
     @pynvim.command("Transp", range="", nargs="*", sync=True)
-    def command_handler(self, args, range):
+    def command_handler(self, args, rng):
         # string slice: 'm2+' becomes 'm2' transp and '+' direction
         transp = intervals[args[0][:2]]
         direction = args[0][2:]
