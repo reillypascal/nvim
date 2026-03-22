@@ -9,8 +9,26 @@ def apply_transformation(nvim, args, handler):
     vstart = buffer.mark("<")
     vend = buffer.mark(">")
 
-    # index/slice portion of buffer
-    string = buffer[vstart[0] - 1][vstart[1] : vend[1] + 1]
+    # join lines into string w/ '\n' if multi-line, else just slice line
+    if vend[0] > vstart[0]:
+        # number of lines needs to be *inclusive*
+        numlines = vend[0] - vstart[0] + 1
+        lines = []
+        for i in range(numlines):
+            # first and last lines *may* need to be sliced
+            if i == 0:
+                # convert starting/ending line to 0-index
+                lines.append(buffer[vstart[0] - 1][vstart[1] :])
+            elif i == numlines - 1:
+                # add 1 to end column to make inclusive
+                lines.append(buffer[vend[0] - 1][: vend[1] + 1])
+            else:
+                lines.append(buffer[vstart[0] - 1 + i])
+        string = "\n".join(lines)
+    else:
+        # index/slice portion of buffer; make start row 0-indexed, end column inclusive
+        string = buffer[vstart[0] - 1][vstart[1] : vend[1] + 1]
+
     # if selection doesn't include '{}',
     # `ly` requires them, so wrap around string
     if "{" not in string and "}" not in string:

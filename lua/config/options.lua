@@ -54,7 +54,7 @@ vim.opt.autoindent = true
 
 -- Set spell options
 -- https://wordlist.aspell.net - generated from SCOWL
-vim.opt.spelllang = { "en_us", "en-us-large", "programming", "cjk" }
+vim.opt.spelllang = { "en-us-large", "programming" }
 vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 vim.o.spelloptions = "camel"
 -- vim.cmd([[highlight clear SpellLocal]])
