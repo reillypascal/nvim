@@ -11,4 +11,4 @@ class Overwrite(object):
 
     @pynvim.command("Overwrite", range="", nargs="*", sync=True)
     def command_handler(self, args, rng):
-        lyutils.apply_rhythm(self.nvim, args, rhythm.rhythm_overwrite)
+        lyutils.apply_transformation(self.nvim, args, rhythm.rhythm_overwrite)

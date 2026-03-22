@@ -11,4 +11,4 @@ class Implicit(object):
 
     @pynvim.command("Implicit", range="", nargs="*", sync=True)
     def command_handler(self, args, rng):
-        lyutils.apply_rhythm(self.nvim, args, rhythm.rhythm_implicit)
+        lyutils.apply_transformation(self.nvim, args, rhythm.rhythm_implicit)

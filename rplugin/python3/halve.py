@@ -11,4 +11,4 @@ class Halve(object):
 
     @pynvim.command("Halve", range="", nargs="*", sync=True)
     def command_handler(self, args, rng):
-        lyutils.apply_rhythm(self.nvim, args, rhythm.rhythm_halve)
+        lyutils.apply_transformation(self.nvim, args, rhythm.rhythm_halve)

@@ -11,4 +11,4 @@ class Double(object):
 
     @pynvim.command("Double", range="", nargs="0", sync=True)
     def command_handler(self, args, rng):
-        lyutils.apply_rhythm(self.nvim, args, rhythm.rhythm_double)
+        lyutils.apply_transformation(self.nvim, args, rhythm.rhythm_double)

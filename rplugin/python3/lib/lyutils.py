@@ -2,7 +2,7 @@ import pynvim
 import ly.document as document
 
 
-def apply_rhythm(nvim, args, handler):
+def apply_transformation(nvim, args, handler):
     # get entire current buffer
     buffer = nvim.current.buffer
     # get visual boundary marks

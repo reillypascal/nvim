@@ -11,4 +11,4 @@ class Explicit(object):
 
     @pynvim.command("Explicit", range="", nargs="*", sync=True)
     def command_handler(self, args, rng):
-        lyutils.apply_rhythm(self.nvim, args, rhythm.rhythm_explicit)
+        lyutils.apply_transformation(self.nvim, args, rhythm.rhythm_explicit)

@@ -1,12 +1,8 @@
 import pynvim
-
-# from pynvim import api, attach
-
-# zuban complains it can't find imports, but they seem
-# to be available if 'ly' CLI tool is installed globally
 import ly.document as document
 import ly.pitch as pitch
 import ly.pitch.transpose as transpose
+import lib.lyutils as lyutils
 
 # dictionary associates the absolute value of
 # transposition with Lilypond note and modifier
@@ -40,48 +36,31 @@ class Transp(object):
 
     @pynvim.command("Transp", range="", nargs="*", sync=True)
     def command_handler(self, args, rng):
-        # string slice: 'm2+' becomes 'm2' transp and '+' direction
-        transp = intervals[args[0][:2]]
-        direction = args[0][2:]
-        # oct is an optional argument; set to 0 if not set,
-        # else convert passed string to int
-        oct = int(args[1]) if len(args) >= 2 else 0
+        # pass handler into apply_transformation
+        # similarly to e.g., rhythm.rhythm_explicit
+        def transposition_handler(cursor, args):
+            # string slice: 'm2+' becomes 'm2' transp and '+' direction
+            transp = intervals[args[0][:2]]
+            direction = args[0][2:]
+            # oct is an optional argument; set to 0 if not set,
+            # else convert passed string to int
+            oct = int(args[1]) if len(args) >= 2 else 0
 
-        # assign c to starting pitch if going up,
-        # else assign it to dest
-        start = (
-            pitch.Pitch(0, 0, 0)
-            if direction == "+"
-            else pitch.Pitch(transp[0], transp[1], 0)
-        )
-        # dest always has octave
-        dest = (
-            pitch.Pitch(transp[0], transp[1], oct)
-            if direction == "+"
-            else pitch.Pitch(0, 0, oct)
-        )
-        transposer = transpose.Transposer(start, dest)
+            # assign c to starting pitch if going up,
+            # else assign it to dest
+            start = (
+                pitch.Pitch(0, 0, 0)
+                if direction == "+"
+                else pitch.Pitch(transp[0], transp[1], 0)
+            )
+            # dest always has octave
+            dest = (
+                pitch.Pitch(transp[0], transp[1], oct)
+                if direction == "+"
+                else pitch.Pitch(0, 0, oct)
+            )
+            transposer = transpose.Transposer(start, dest)
 
-        # get entire current buffer
-        buffer = self.nvim.current.buffer
-        # get visual boundary marks
-        vstart = buffer.mark("<")
-        vend = buffer.mark(">")
+            transpose.transpose(cursor, transposer, "english")
 
-        # index/slice portion of buffer
-        string = buffer[vstart[0] - 1][vstart[1] : vend[1] + 1]
-        # if selection doesn't include '{}',
-        # `ly` requires them, so wrap around string
-        if "{" not in string and "}" not in string:
-            string = "{" + string + "}"
-
-        # turn string into Document
-        doc = document.Document(string)
-        # perform transposition
-        transpose.transpose(document.Cursor(doc, 0, None), transposer, "english")
-
-        # result as string; remove '{}'/space
-        output = doc.plaintext().replace("{", "").replace("}", "").strip(" ")
-        # put output string in '*' register
-        self.nvim.funcs.setreg("*", output)
-        self.nvim.api.feedkeys('gv"*p', "n", False)
+        lyutils.apply_transformation(self.nvim, args, transposition_handler)
