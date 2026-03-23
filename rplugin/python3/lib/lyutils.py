@@ -2,7 +2,7 @@ import pynvim
 import ly.document as document
 
 
-def apply_transformation(nvim, args, handler):
+def get_selection_as_doc(nvim):
     # get entire current buffer
     buffer = nvim.current.buffer
     # get visual boundary marks
@@ -31,19 +31,27 @@ def apply_transformation(nvim, args, handler):
 
     # if selection doesn't include '{}',
     # `ly` requires them, so wrap around string
+    input_has_brackets = False
     if "{" not in string and "}" not in string:
         string = "{" + string + "}"
+    else:
+        input_has_brackets = True
 
     # turn string into Document
-    doc = document.Document(string)
-    # perform transposition
+    return (document.Document(string), input_has_brackets)
+
+
+def update_buffer(nvim, args, doc, input_has_brackets, handler):
+    # apply transformation
     if len(args) > 0:
         handler(document.Cursor(doc, 0, None), args)
     else:
         handler(document.Cursor(doc, 0, None))
 
-    # result as string; remove '{}'/space
-    output = doc.plaintext().replace("{", "").replace("}", "").strip(" ")
+    # result as string; remove '{}'/space if needed
+    output = doc.plaintext()
+    if not input_has_brackets:
+        output = output.replace("{", "").replace("}", "").strip(" ")
     # put output string in '*' register
-    nvim.funcs.setreg("*", output)
-    nvim.api.feedkeys('gv"*p', "n", False)
+    nvim.funcs.setreg("l", output)
+    nvim.api.feedkeys('gv"lp', "n", False)

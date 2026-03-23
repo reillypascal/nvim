@@ -63,4 +63,7 @@ class Transp(object):
 
             transpose.transpose(cursor, transposer, "english")
 
-        lyutils.apply_transformation(self.nvim, args, transposition_handler)
+        doc, input_has_brackets = lyutils.get_selection_as_doc(self.nvim)
+        lyutils.update_buffer(
+            self.nvim, args, doc, input_has_brackets, transposition_handler
+        )

@@ -9,6 +9,9 @@ class Undot(object):
     def __init__(self, nvim):
         self.nvim = nvim
 
-    @pynvim.command("Undot", range="", nargs="*", sync=True)
+    @pynvim.command("Undot", range="", nargs="0", sync=True)
     def command_handler(self, args, rng):
-        lyutils.apply_transformation(self.nvim, args, rhythm.rhythm_double)
+        doc, input_has_brackets = lyutils.get_selection_as_doc(self.nvim)
+        lyutils.update_buffer(
+            self.nvim, args, doc, input_has_brackets, rhythm.rhythm_undot
+        )
