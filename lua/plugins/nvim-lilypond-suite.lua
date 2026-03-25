@@ -16,7 +16,7 @@ return {
 				del_prev_hyphen = "<leader>dH",
 			},
 			options = {
-				pitches_language = "default",
+				pitches_language = "english",
 				hyphenation_language = "en_DEFAULT",
 				output = "pdf",
 				backend = nil,

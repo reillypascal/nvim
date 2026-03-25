@@ -95,3 +95,10 @@ vim.api.nvim_create_user_command("Mdp", function()
 		handle:close()
 	end
 end, {})
+
+-- [[ Lilypond ]]
+-- https://github.com/martineausimon/nvim-lilypond-suite/wiki/2.-Configuration#recommended-syntax-sync-settings
+vim.api.nvim_create_autocmd("BufEnter", {
+	command = "syntax sync fromstart",
+	pattern = { "*.ly", "*.ily", "*.tex" },
+})
