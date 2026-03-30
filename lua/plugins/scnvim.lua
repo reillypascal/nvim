@@ -2,7 +2,7 @@ return {
 	"davidgranstrom/scnvim",
 	ft = "supercollider",
 	lazy = true,
-	dependencies = { "davidgranstrom/scnvim-tmux" },
+	-- dependencies = { "davidgranstrom/scnvim-tmux" },
 	config = function()
 		local scnvim = require("scnvim")
 		local map = scnvim.map
@@ -10,16 +10,16 @@ return {
 
 		scnvim.setup({
 			keymaps = {
-				["<localleader><CR>"] = map(
+				["<S-CR>"] = map(
 					"editor.send_line",
 					{ "i", "n" },
 					{ desc = "SuperCollider: send line", buffer = true }
 				),
-				["<leader><CR>"] = {
+				["<C-CR>"] = {
 					map("editor.send_block", { "i", "n" }, { desc = "SuperCollider: send block", buffer = true }),
 					map("editor.send_selection", "x", { desc = "SuperCollider: send selection", buffer = true }),
 				},
-				["<localleader>cp"] = map(
+				["<CR>"] = map(
 					"postwin.toggle",
 					{ "i", "n" },
 					{ desc = "SuperCollider: toggle postwin", buffer = true }
@@ -34,7 +34,7 @@ return {
 					{ "n", "i" },
 					{ desc = "SuperCollider: show signature", buffer = true }
 				),
-				["<leader>."] = map(
+				["<C-.>"] = map(
 					"sclang.hard_stop",
 					{ "n", "x", "i" },
 					{ desc = "SuperCollider: hard stop", buffer = true }
@@ -91,20 +91,22 @@ return {
 			-- },
 			postwin = {
 				float = {
-					enabled = true,
+					enabled = false,
 				},
+				horizontal = true,
+				size = "10",
 			},
 			extensions = {
 				["fzf-sc"] = {
 					search_plugin = "nvim-fzf",
 				},
-				tmux = {
-					path = vim.fn.tempname(),
-					horizontal = true,
-					size = "20%",
-					cmd = "tail",
-					args = { "-F", "$1" },
-				},
+				-- tmux = {
+				-- 	path = vim.fn.tempname(),
+				-- 	horizontal = true,
+				-- 	size = "20%",
+				-- 	cmd = "tail",
+				-- 	args = { "-F", "$1" },
+				-- },
 			},
 		})
 	end,

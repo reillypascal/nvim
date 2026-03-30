@@ -136,7 +136,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 					buffer = event.buf,
 					callback = function()
 						if check_codelens_support() then
-							vim.lsp.codelens.refresh({ bufnr = 0 })
+							-- vim.lsp.codelens.refresh({ bufnr = 0 })
+							vim.lsp.codelens.enable(true, { bufnr = bufnr })
 						end
 					end,
 				})

@@ -1,7 +1,7 @@
 require("config.statusline")
 require("config.options")
 require("config.keymaps")
--- require("config.keymaps-zk")
+require("config.keymaps-zk")
 require("config.commands")
 require("config.lsp")
 -- require("config.lsp.commands-fzf-lua")
@@ -9,7 +9,7 @@ require("config.lsp.commands-telescope")
 require("config.plugins")
 -- telescope equivalent is in telescope.lua plugin file
 -- require("config.keymaps-fzf-lua")
-require("scnvim").load_extension("tmux")
+-- require("scnvim").load_extension("tmux")
 require("nvim-highlight-colors").turnOff()
 --[[
 :HighlightColors On 	Turn highlights on

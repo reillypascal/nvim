@@ -1,4 +1,6 @@
+-- wrap at space between words
 vim.opt.linebreak = true
+-- keep indent on line break, e.g., in lists
 -- also in options.lua - why needed here?
 vim.opt.autoindent = true
 
@@ -14,20 +16,20 @@ then
 	-- vim.o.cmdheight = 2
 end
 
-local is_notes_dir = function()
-	return vim.fs.root(0, { "obsidian", ".moxide.toml", ".zk" })
-end
+-- local is_notes_dir = function()
+-- 	return vim.fs.root(0, { "obsidian", ".moxide.toml", ".zk" })
+-- end
+--
+-- -- only use spell _outside_ of notes dir.
+-- if is_notes_dir() == nil then
+-- 	-- also added ":Sp" command in commands.lua
+-- 	vim.opt.spell = true
+-- end
 
 -- if is_notes_dir() ~= nil then
 -- 	-- seems to be needed for moxide transclusions, but nothing happened when I tried
 -- 	vim.lsp.inlay_hint.enable()
 -- end
-
--- only use spell _outside_ of notes dir.
-if is_notes_dir() == nil then
-	-- also added ":Sp" command in commands.lua
-	vim.opt.spell = true
-end
 
 -- Map j and k to move by visual lines
 vim.api.nvim_buf_set_keymap(0, "n", "j", "gj", { noremap = true, silent = true })

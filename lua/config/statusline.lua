@@ -224,18 +224,53 @@ function Statusline.short()
 	return "%#StatusLineNC#   NvimTree"
 end
 
-vim.cmd(
-	[[
-augroup Statusline
-	au!
-	au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
-	au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
-	au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
-	augroup END
-	]],
-	false
-)
+-- https://learnvimscriptthehardway.stevelosh.com/chapters/12.html
+-- replaced `*` filter with `!TelescopePrompt`
+-- vim.cmd(
+-- 	[[
+-- augroup Statusline
+-- 	au!
+-- 	au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
+-- 	au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
+-- 	au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
+-- 	augroup END
+-- 	]],
+-- 	false
+-- )
 
+-- vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+-- 	desc = "Statusline active",
+-- 	group = vim.api.nvim_create_augroup("Statusline", { clear = true }),
+-- 	callback = function()
+-- 		if vim.bo.filetype ~= "TelescopePrompt" then
+-- 			vim.opt_local.statusline = "%{%v:lua.Statusline.active()%}"
+-- 		end
+-- 	end,
+-- })
+--
+-- vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+-- 	desc = "Statusline inactive",
+-- 	group = vim.api.nvim_create_augroup("Statusline", { clear = true }),
+-- 	callback = function()
+-- 		if vim.api.nvim_get_option_value("buftype", { buf = 0 }) ~= "prompt" then
+-- 			vim.opt_local.statusline = "%{%v:lua.Statusline.inactive()%}"
+-- 		end
+-- 	end,
+-- })
+--
+-- vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+-- 	desc = "Statusline inactive",
+-- 	group = vim.api.nvim_create_augroup("Statusline", { clear = true }),
+-- 	callback = function()
+-- 		if vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "NvimTree" then
+-- 			vim.opt_local.statusline = "%{%v:lua.Statusline.short()%}"
+-- 		end
+-- 	end,
+-- })
+
+-- https://www.reddit.com/r/neovim/comments/17hbep3/comment/k6mrasn/
+-- https://vi.stackexchange.com/questions/42003/what-does-vlua-mean-in-an-option
+vim.o.statusline = "%{%v:lua.Statusline.active()%}"
 -- :h ruler - position info (redundant bc in statusline)
 -- :h showcmd - current key command; can turn off on slower computers
 vim.o.ruler = false
