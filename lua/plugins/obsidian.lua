@@ -55,7 +55,7 @@ return {
 		ui = {
 			-- 'true' requires conceallevel = 1/2
 			enable = true,
-			external_link_icon = { char = " ", hl_group = "Constant" },
+			external_link_icon = { char = " ", hl_group = "Comment" }, -- Constant
 			tags = { hl_group = "Special" },
 		},
 	},
