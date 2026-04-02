@@ -25,10 +25,10 @@ return {
 				vim.keymap.del("n", "[o", { buffer = true })
 				vim.keymap.set("n", "]w", function()
 					actions.nav_link("next")
-				end, { buffer = true, desc = "Go to next wikilink" })
+				end, { buffer = true, desc = "Go to next link" })
 				vim.keymap.set("n", "[w", function()
 					actions.nav_link("prev")
-				end, { buffer = true, desc = "Go to previous wikilink" })
+				end, { buffer = true, desc = "Go to previous link" })
 			end,
 		},
 		footer = {
@@ -55,7 +55,7 @@ return {
 		ui = {
 			-- 'true' requires conceallevel = 1/2
 			enable = true,
-			external_link_icon = { char = " ", hl_group = "Comment" }, -- Constant
+			external_link_icon = { char = "", hl_group = "Comment" }, -- Constant
 			tags = { hl_group = "Special" },
 		},
 	},

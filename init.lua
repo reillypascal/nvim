@@ -10,7 +10,7 @@ require("config.plugins")
 -- telescope equivalent is in telescope.lua plugin file
 -- require("config.keymaps-fzf-lua")
 -- require("scnvim").load_extension("tmux")
-require("nvim-highlight-colors").turnOff()
+-- require("nvim-highlight-colors").turnOff()
 --[[
 :HighlightColors On 	Turn highlights on
 :HighlightColors Off 	Turn highlights off
