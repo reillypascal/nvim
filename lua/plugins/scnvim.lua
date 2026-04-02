@@ -24,12 +24,12 @@ return {
 					{ "i", "n" },
 					{ desc = "SuperCollider: toggle postwin", buffer = true }
 				),
-				["<localleader>cc"] = map(
+				["<localleader>sc"] = map(
 					"postwin.clear",
 					{ "n", "i" },
 					{ desc = "SuperCollider: clear postwin", buffer = true }
 				),
-				["<localleader>ci"] = map(
+				["<localleader>si"] = map(
 					"signature.show",
 					{ "n", "i" },
 					{ desc = "SuperCollider: show signature", buffer = true }
@@ -39,42 +39,42 @@ return {
 					{ "n", "x", "i" },
 					{ desc = "SuperCollider: hard stop", buffer = true }
 				),
-				["<localleader>cs"] = map(
+				["<localleader>ss"] = map(
 					"sclang.start",
 					{ "n", "x", "i" },
 					{ desc = "SuperCollider: start", buffer = true }
 				),
-				["<localleader>cq"] = map(
+				["<localleader>sq"] = map(
 					"sclang.stop",
 					{ "n", "x", "i" },
 					{ desc = "SuperCollider: stop", buffer = true }
 				),
-				["<localleader>cr"] = map(
+				["<localleader>sr"] = map(
 					"sclang.recompile",
 					{ "n", "x", "i" },
 					{ desc = "SuperCollider: recompile class library", buffer = true }
 				),
-				["<localleader>cb"] = map_expr(
+				["<localleader>sb"] = map_expr(
 					"s.boot",
 					{ "n", "x", "i" },
 					{ desc = "SuperCollider: boot server", buffer = true }
 				),
-				["<localleader>ck"] = map_expr(
+				["<localleader>sk"] = map_expr(
 					"Server.killAll",
 					{ "n", "x", "i" },
 					{ desc = "SuperCollider: kill all servers", buffer = true }
 				),
-				-- ["<localleader>cq"] = map_expr(
+				-- ["<localleader>sq"] = map_expr(
 				-- 	"s.quit",
 				-- 	{ "n", "x", "i" },
 				-- 	{ desc = "SuperCollider: quit server", buffer = true }
 				-- ),
-				["<localleader>cm"] = map_expr(
+				["<localleader>sm"] = map_expr(
 					"s.meter",
 					{ "n", "x", "i" },
 					{ desc = "SuperCollider: open meter", buffer = true }
 				),
-				["<localleader>co"] = map_expr(
+				["<localleader>so"] = map_expr(
 					"s.scope",
 					{ "n", "x", "i" },
 					{ desc = "SuperCollider: open scope", buffer = true }
