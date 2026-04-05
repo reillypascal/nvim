@@ -10,16 +10,21 @@ return {
 
 		scnvim.setup({
 			keymaps = {
-				["<S-CR>"] = map(
+				-- <S-CR>
+				["<localleader>e"] = map(
 					"editor.send_line",
 					{ "i", "n" },
 					{ desc = "SuperCollider: send line", buffer = true }
 				),
-				["<C-CR>"] = {
+				-- <C-CR>
+				["<localleader>r"] = {
 					map("editor.send_block", { "i", "n" }, { desc = "SuperCollider: send block", buffer = true }),
+				},
+				-- this map statement was on the same keymap as send_block
+				["<localleader>v"] = {
 					map("editor.send_selection", "x", { desc = "SuperCollider: send selection", buffer = true }),
 				},
-				["<CR>"] = map(
+				["<localleader>sp"] = map(
 					"postwin.toggle",
 					{ "i", "n" },
 					{ desc = "SuperCollider: toggle postwin", buffer = true }
@@ -34,7 +39,8 @@ return {
 					{ "n", "i" },
 					{ desc = "SuperCollider: show signature", buffer = true }
 				),
-				["<C-.>"] = map(
+				-- <C-.>
+				["<localleader>."] = map(
 					"sclang.hard_stop",
 					{ "n", "x", "i" },
 					{ desc = "SuperCollider: hard stop", buffer = true }

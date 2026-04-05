@@ -59,6 +59,7 @@ return { -- Autoformat
 			rust = { "rustfmt" },
 			scheme = { "schemat" },
 			sh = { "shfmt" },
+			swift = { "swift_format" },
 			tidal = { "ormolu" },
 			toml = { "tombi" },
 			zig = { "zigfmt" },
@@ -93,6 +94,11 @@ return { -- Autoformat
 			},
 			schemat = {
 				command = "schemat",
+				stdin = true,
+			},
+			swift_format = {
+				command = "swift",
+				args = { "format" },
 				stdin = true,
 			},
 		},

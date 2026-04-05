@@ -27,7 +27,7 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	elseif server_name == "codebook" and is_notes_dir() ~= nil then
 		-- also turn off codebook (spellcheck) for notebook - only want it for blog posts
 	elseif server_name == "hls" and is_haskell_dir() == nil then
-		-- hls gives highlighting error if running with tidal.nvim
+		-- hls gives highlighting error if running with .tidal files
 	else
 		table.insert(lsp_configs, server_name)
 	end
@@ -48,9 +48,9 @@ vim.diagnostic.config({
 		-- 	return string.format("%s\n%s: %s", diagnostic.message, diagnostic.source, diagnostic.code)
 		-- end,
 	},
-	virtual_text = false,
+	virtual_text = false, -- <- this line is what's muting diagnostics
 	-- virtual_lines = {
-	-- 	current_line = true,
+	-- 	current_line = true, -- <- this line inserts extra blank line for diagnostics
 	-- },
 	underline = { severity = vim.diagnostic.severity.ERROR },
 	signs = vim.g.have_nerd_font and {
