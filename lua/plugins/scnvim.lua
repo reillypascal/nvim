@@ -24,7 +24,7 @@ return {
 				["<localleader>v"] = {
 					map("editor.send_selection", "x", { desc = "SuperCollider: send selection", buffer = true }),
 				},
-				["<localleader>sp"] = map(
+				["<localleader>sw"] = map(
 					"postwin.toggle",
 					{ "i", "n" },
 					{ desc = "SuperCollider: toggle postwin", buffer = true }

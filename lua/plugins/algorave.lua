@@ -1,6 +1,6 @@
 return {
-	-- dir = "~/Dev/Neovim/algorave.nvim",
-	"https://codeberg.org/reillypascal/algorave.nvim",
+	dir = "~/Dev/Neovim/algorave.nvim",
+	-- "https://codeberg.org/reillypascal/algorave.nvim",
 	-- https://github.com/LazyVim/LazyVim/discussions/4264#discussioncomment-10252426
 	opts = function(_, opts)
 		local api = require("algorave").api
