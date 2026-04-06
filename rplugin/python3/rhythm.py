@@ -5,7 +5,7 @@ import lib.lyutils as lyutils
 
 
 @pynvim.plugin
-class RExtract(object):
+class Rhythm(object):
     def __init__(self, nvim):
         self.nvim = nvim
 
