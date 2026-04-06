@@ -1,3 +1,5 @@
+---@module 'lazy'
+---@type LazySpec
 return { -- Autocompletion
 	"saghen/blink.cmp",
 	event = "VimEnter",

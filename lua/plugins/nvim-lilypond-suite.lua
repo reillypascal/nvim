@@ -1,3 +1,5 @@
+---@module 'lazy'
+---@type LazySpec
 return {
 	"martineausimon/nvim-lilypond-suite",
 	opts = {

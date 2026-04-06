@@ -11,7 +11,8 @@
 --
 -- Then, because we use the `opts` key (recommended), the configuration runs
 -- after the plugin has been loaded as `require(MODULE).setup(opts)`.
-
+---@module 'lazy'
+---@type LazySpec
 return { -- Useful plugin to show you pending keybinds.
 	"folke/which-key.nvim",
 	event = "VimEnter", -- Sets the loading event to 'VimEnter'

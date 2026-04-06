@@ -1,3 +1,5 @@
+---@module 'lazy'
+---@type LazySpec
 return {
 	"reillypascal/radio.nvim",
 	-- dir = "~/Dev/Neovim/radio.nvim",

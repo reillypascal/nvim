@@ -16,15 +16,15 @@ then
 	-- vim.o.cmdheight = 2
 end
 
--- local is_notes_dir = function()
--- 	return vim.fs.root(0, { "obsidian", ".moxide.toml", ".zk" })
--- end
---
--- -- only use spell _outside_ of notes dir.
--- if is_notes_dir() == nil then
--- 	-- also added ":Sp" command in commands.lua
--- 	vim.opt.spell = true
--- end
+local is_notes_dir = function()
+	return vim.fs.root(0, { "obsidian", ".moxide.toml", ".zk" })
+end
+
+-- only use spell _outside_ of notes dir, and not in e.g., docs/LSP hover
+if is_notes_dir() == nil and vim.bo.modifiable then
+	-- also added ":Sp" command in commands.lua
+	vim.opt.spell = true
+end
 
 -- if is_notes_dir() ~= nil then
 -- 	-- seems to be needed for moxide transclusions, but nothing happened when I tried
