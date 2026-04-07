@@ -49,6 +49,7 @@ local function vcs()
 		removed = ""
 	end
 
+	-- BUG: appears before added/changed/removed displays
 	local end_padding = ""
 	if git_info.added ~= 0 or git_info.changed ~= 0 or git_info.removed ~= 0 then
 		end_padding = " "
@@ -104,14 +105,14 @@ local function lsp_diag()
 	return errors .. warnings .. hints .. info .. " "
 end
 
--- local function filepath()
--- 	local fpath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:h")
--- 	if fpath == "" or fpath == "." then
--- 		return " "
--- 	end
---
--- 	return string.format(" %%<%s/", fpath)
--- end
+local function filepath()
+	local fpath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:h")
+	if fpath == "" or fpath == "." then
+		return " "
+	end
+
+	return string.format(" %%<%s/", fpath)
+end
 
 local function filename()
 	local fname = vim.fn.expand("%:t")
@@ -162,8 +163,9 @@ Statusline.active = function()
 		vcs(),
 		lsp_diag(),
 		"%#Statusline#",
-		" ", -- don't want to put this in filename(); keep compatibility w/ filepath()
-		-- filepath(),
+		-- don't want to put this in filename(); keep compatibility w/ filepath()
+		-- " ",
+		filepath(),
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
