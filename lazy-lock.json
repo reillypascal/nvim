@@ -1,11 +1,11 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "LuaSnip": { "branch": "master", "commit": "642b0c595e11608b4c18219e93b88d7637af27bc" },
-  "algorave.nvim": { "branch": "main", "commit": "abecffc34e179c6da15b9d65676ac3b16e0d1862" },
+  "algorave.nvim": { "branch": "main", "commit": "a6ca19d4cff3f19aa718ef590fe33f7d0c9f7fe3" },
   "blink-cmp-dictionary": { "branch": "master", "commit": "35142bba869b869715e91a99d2f46bcf93fca4ae" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "conform.nvim": { "branch": "master", "commit": "086a40dc7ed8242c03be9f47fbcee68699cc2395" },
-  "gitsigns.nvim": { "branch": "main", "commit": "db486b42299b2e3f5831809617af21becf268a39" },
+  "gitsigns.nvim": { "branch": "main", "commit": "0d797daee85366bc242580e352a4f62d67557b84" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "lazydev.nvim": { "branch": "main", "commit": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d" },
   "mini.ai": { "branch": "main", "commit": "43eb2074843950a3a25aae56a5f41362ec043bfa" },

@@ -55,8 +55,6 @@ local function vcs()
 	end
 
 	return table.concat({
-		-- " %#GitSignsAdd# ",
-		-- " %#GitBranch# ",
 		" %#StatusLine# ",
 		git_info.head,
 		" ",
@@ -87,19 +85,15 @@ local function lsp_diag()
 	end
 
 	if count["errors"] ~= 0 then
-		-- errors = " %#LspDiagnosticsSignError#󰅚 " .. count["errors"]
 		errors = " %#LspDiagnosticsDefaultError#󰅚 " .. count["errors"]
 	end
 	if count["warnings"] ~= 0 then
-		-- warnings = " %#LspDiagnosticsSignWarning#󰀪 " .. count["warnings"]
 		warnings = " %#LspDiagnosticsDefaultWarning#󰀪 " .. count["warnings"]
 	end
 	if count["hints"] ~= 0 then
-		-- hints = " %#LspDiagnosticsSignHint#󰌶 " .. count["hints"]
 		hints = " %#LspDiagnosticsDefaultHint#󰌶 " .. count["hints"]
 	end
 	if count["info"] ~= 0 then
-		-- info = " %#LspDiagnosticsSignInformation#󰋽 " .. count["info"]
 		info = " %#LspDiagnosticsDefaultInformation#󰋽 " .. count["info"]
 	end
 
@@ -110,31 +104,14 @@ local function lsp_diag()
 	return errors .. warnings .. hints .. info .. " "
 end
 
-local function lsp()
-	local clients = vim.lsp.get_clients()
-	-- https://stackoverflow.com/a/1407187
-	local client_names = {}
-	for _, v in ipairs(clients) do
-		client_names[#client_names + 1] = tostring(v.name)
-	end
-
-	local client_str = string.format("%s", table.concat(client_names, ", "))
-
-	if client_str == "" then
-		return ""
-	end
-
-	return " " .. client_str .. " "
-end
-
-local function filepath()
-	local fpath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:h")
-	if fpath == "" or fpath == "." then
-		return " "
-	end
-
-	return string.format(" %%<%s/", fpath)
-end
+-- local function filepath()
+-- 	local fpath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:h")
+-- 	if fpath == "" or fpath == "." then
+-- 		return " "
+-- 	end
+--
+-- 	return string.format(" %%<%s/", fpath)
+-- end
 
 local function filename()
 	local fname = vim.fn.expand("%:t")
@@ -145,7 +122,7 @@ local function filename()
 end
 
 local function filetype()
-	return string.format(" %s ", vim.bo.filetype) --:upper()
+	return string.format(" %s ", vim.bo.filetype)
 end
 
 local function wordcount()
@@ -155,10 +132,6 @@ local function wordcount()
 		return ""
 	end
 end
-
--- local function tabstop()
--- 	return string.format(" ts=%s ", vim.bo.tabstop)
--- end
 
 local function encoding()
 	return string.format(" %s ", vim.bo.fileencoding)
@@ -171,15 +144,6 @@ local function eol()
 		mac = "cr",
 	}
 	return string.format(" %s ", formats[vim.bo.fileformat])
-	-- return string.format(" %s ", vim.bo.fileformat)
-end
-
-local function spell()
-	if vim.opt.spell:get() then
-		return " sp "
-	else
-		return ""
-	end
 end
 
 local function lineinfo()
@@ -194,79 +158,21 @@ Statusline = {}
 Statusline.active = function()
 	return table.concat({
 		"%#Statusline#",
-		-- update_mode_colors(),
 		mode(),
-		-- "%#LineNr#",
-		-- "|",
-		-- "%#Statusline#",
 		vcs(),
 		lsp_diag(),
 		"%#Statusline#",
-		-- lsp(),
 		" ", -- don't want to put this in filename(); keep compatibility w/ filepath()
 		-- filepath(),
 		filename(),
 		"%=%#StatusLineExtra#",
 		filetype(),
-		-- spell(),
 		wordcount(),
 		encoding(),
 		eol(),
 		lineinfo(),
 	})
 end
-
-function Statusline.inactive()
-	return " %F"
-end
-
-function Statusline.short()
-	return "%#StatusLineNC#   NvimTree"
-end
-
--- https://learnvimscriptthehardway.stevelosh.com/chapters/12.html
--- replaced `*` filter with `!TelescopePrompt`
--- vim.cmd(
--- 	[[
--- augroup Statusline
--- 	au!
--- 	au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
--- 	au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
--- 	au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
--- 	augroup END
--- 	]],
--- 	false
--- )
-
--- vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
--- 	desc = "Statusline active",
--- 	group = vim.api.nvim_create_augroup("Statusline", { clear = true }),
--- 	callback = function()
--- 		if vim.bo.filetype ~= "TelescopePrompt" then
--- 			vim.opt_local.statusline = "%{%v:lua.Statusline.active()%}"
--- 		end
--- 	end,
--- })
---
--- vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
--- 	desc = "Statusline inactive",
--- 	group = vim.api.nvim_create_augroup("Statusline", { clear = true }),
--- 	callback = function()
--- 		if vim.api.nvim_get_option_value("buftype", { buf = 0 }) ~= "prompt" then
--- 			vim.opt_local.statusline = "%{%v:lua.Statusline.inactive()%}"
--- 		end
--- 	end,
--- })
---
--- vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
--- 	desc = "Statusline inactive",
--- 	group = vim.api.nvim_create_augroup("Statusline", { clear = true }),
--- 	callback = function()
--- 		if vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "NvimTree" then
--- 			vim.opt_local.statusline = "%{%v:lua.Statusline.short()%}"
--- 		end
--- 	end,
--- })
 
 -- https://www.reddit.com/r/neovim/comments/17hbep3/comment/k6mrasn/
 -- https://vi.stackexchange.com/questions/42003/what-does-vlua-mean-in-an-option

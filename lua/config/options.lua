@@ -57,21 +57,6 @@ vim.opt.autoindent = true
 vim.opt.spelllang = { "en-us-large", "programming" }
 vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 vim.o.spelloptions = "camel"
--- vim.cmd([[highlight clear SpellLocal]])
--- vim.cmd([[highlight clear SpellRare]])
-
--- want to turn off spell for opening doc floats w/ shift + K
--- https://github.com/neovim/neovim/issues/26548
--- https://www.reddit.com/r/neovim/comments/tvy18v/comment/i3c3qb0/
-for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-	if
-		vim.api.nvim_win_get_config(winid).zindex
-		-- this stops moxide from working and doesn't stop e.g., Lua spellchecking!
-		-- or vim.api.nvim_get_option_value("filetype", { win = winid }) ~= "markdown"
-	then
-		vim.opt_local.spell = false
-	end
-end
 
 -- Save undo history
 vim.o.undofile = true
@@ -134,4 +119,4 @@ vim.cmd([[set path+=,**]])
 -- :h shortmess
 -- appending keeps default settings as well
 -- https://github.com/folke/noice.nvim/wiki/A-Guide-to-Messages#handling-hit-enter-messages
-vim.opt.shortmess:append("I")
+-- vim.opt.shortmess:append("I")

@@ -1,8 +1,7 @@
 ---@module 'lazy'
 ---@type LazySpec
-return { -- Highlight, edit, and navigate code
+return {
 	"nvim-treesitter/nvim-treesitter",
-	-- branch = 'master',
 	lazy = false,
 	build = ":TSUpdate",
 	-- main = "nvim-treesitter.configs", -- Sets main module to use for opts; previously macOS not yet using .config

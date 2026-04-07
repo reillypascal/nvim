@@ -45,7 +45,7 @@ end, {})
 -- turn off spellcheck in terminal buffers
 -- https://github.com/neovim/neovim/issues/2862#issuecomment-113536390
 --     also turn off list, cursorline, and cursorcolumn?
-vim.cmd([[au TermOpen * setlocal nospell]], false)
+-- vim.cmd([[au TermOpen * setlocal nospell]], false)
 
 -- expand `%%` to current file's directory in command mode
 -- useful for `:'<,'>w file2` to extract section to new file:

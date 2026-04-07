@@ -30,7 +30,7 @@ return {
 				desc = "Send current line to REPL",
 			},
 			send_visual = {
-				mode = { "x" },
+				mode = { "n", "x" },
 				key = "<localleader>v",
 				callback = function()
 					require("algorave").api.send_visual()

@@ -12,8 +12,6 @@ if
 	or string.match(dir, "~/Sync (Household)/*.*")
 then
 	vim.opt.conceallevel = 2
-	-- for bibli_ls messages:
-	-- vim.o.cmdheight = 2
 end
 
 local is_notes_dir = function()
@@ -25,11 +23,6 @@ if is_notes_dir() == nil and vim.bo.modifiable then
 	-- also added ":Sp" command in commands.lua
 	vim.opt.spell = true
 end
-
--- if is_notes_dir() ~= nil then
--- 	-- seems to be needed for moxide transclusions, but nothing happened when I tried
--- 	vim.lsp.inlay_hint.enable()
--- end
 
 -- Map j and k to move by visual lines
 vim.api.nvim_buf_set_keymap(0, "n", "j", "gj", { noremap = true, silent = true })
