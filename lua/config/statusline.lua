@@ -171,8 +171,18 @@ Statusline.active = function()
 		filetype(),
 		wordcount(),
 		encoding(),
-		eol(),
-		lineinfo(),
+		-- don't show eol type or line/column position in terminal
+		-- note parentheses: need to run function as well as define
+		(function()
+			if vim.bo.buftype ~= "terminal" then
+				return table.concat({
+					eol(),
+					lineinfo(),
+				})
+			else
+				return ""
+			end
+		end)(),
 	})
 end
 
