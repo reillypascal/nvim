@@ -26,6 +26,12 @@ return {
 				["<localleader>v"] = {
 					map("editor.send_selection", "x", { desc = "SuperCollider: send selection", buffer = true }),
 				},
+				-- <C-.>
+				["<localleader>."] = map(
+					"sclang.hard_stop",
+					{ "n", "x", "i" },
+					{ desc = "SuperCollider: hard stop", buffer = true }
+				),
 				["<localleader>sw"] = map(
 					"postwin.toggle",
 					{ "i", "n" },
@@ -40,12 +46,6 @@ return {
 					"signature.show",
 					{ "n", "i" },
 					{ desc = "SuperCollider: show signature", buffer = true }
-				),
-				-- <C-.>
-				["<localleader>."] = map(
-					"sclang.hard_stop",
-					{ "n", "x", "i" },
-					{ desc = "SuperCollider: hard stop", buffer = true }
 				),
 				["<localleader>ss"] = map(
 					"sclang.start",
