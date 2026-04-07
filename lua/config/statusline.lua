@@ -22,6 +22,7 @@ local modes = {
 	["r?"] = "CONFIRM",
 	["!"] = "SHELL",
 	["t"] = "TERMINAL",
+	["nt"] = "TERMINAL",
 }
 
 local function mode()
