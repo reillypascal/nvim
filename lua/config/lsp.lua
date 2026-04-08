@@ -9,25 +9,11 @@ local is_notes_dir = function()
 	return vim.fs.root(0, root_markers)
 end
 
-local is_haskell_dir = function()
-	-- local extension = vim.fn.expand("%:e")
-	local root_markers = { "hie.yaml", "stack.yaml", "cabal.project", "*.cabal", "package.yaml" }
-	return vim.fs.root(0, root_markers)
-end
--- local tidal_match = vim.filetype.match({ filename = "*.hs" })
--- local extension = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":e")
-
 for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	local server_name = vim.fn.fnamemodify(f, ":t:r")
-	if (server_name == "markdown_oxide" or server_name == "bibli_lsp") and is_notes_dir() == nil then
-		-- if moxide root not in cwd/ancestor, don't activate moxide/bibli_ls
-	elseif server_name == "marksman" and is_notes_dir() ~= nil then
-		-- if moxide root _is_ in cwd/ancestor, don't also use marksman
+	if server_name == "marksman" and is_notes_dir() ~= nil then
+		-- if obsidian root is in cwd/ancestor, don't also use marksman
 		-- this avoids "A" on grO
-	elseif server_name == "codebook" and is_notes_dir() ~= nil then
-		-- also turn off codebook (spellcheck) for notebook - only want it for blog posts
-		-- elseif server_name == "hls" and is_haskell_dir() == nil then
-		-- hls gives highlighting error if running with .tidal files
 	else
 		table.insert(lsp_configs, server_name)
 	end
@@ -48,9 +34,11 @@ vim.diagnostic.config({
 		-- 	return string.format("%s\n%s: %s", diagnostic.message, diagnostic.source, diagnostic.code)
 		-- end,
 	},
-	virtual_text = false, -- <- this line is what's muting diagnostics
+	-- this line is what's muting diagnostics
+	virtual_text = false,
+	-- this line inserts extra blank line for diagnostics
 	-- virtual_lines = {
-	-- 	current_line = true, -- <- this line inserts extra blank line for diagnostics
+	-- 	current_line = true,
 	-- },
 	underline = { severity = vim.diagnostic.severity.ERROR },
 	signs = vim.g.have_nerd_font and {
