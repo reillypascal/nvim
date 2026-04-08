@@ -8,10 +8,6 @@ return {
 			split_size = "10",
 		},
 		repl_definitions = {
-			haskell = {
-				args = { "-ghci-script=" .. vim.fn.expand("$TIDAL_BOOT_PATH") .. "/BootTidal.hs" },
-				file = { "*.hs", "*.tidal" },
-			},
 			scheme = {
 				cmd = "lilypond",
 				args = { "scheme-sandbox" },
