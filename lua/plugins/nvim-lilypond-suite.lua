@@ -2,6 +2,7 @@
 ---@type LazySpec
 return {
 	"martineausimon/nvim-lilypond-suite",
+	ft = { "lilypond" },
 	opts = {
 		lilypond = {
 			mappings = {
