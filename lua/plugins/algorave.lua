@@ -3,9 +3,20 @@
 return {
 	-- dir = "~/Dev/Neovim/algorave.nvim",
 	"https://codeberg.org/reillypascal/algorave.nvim",
+	ft = {
+		"bash",
+		"haskell",
+		"javascript",
+		"lua",
+		"python",
+		"scheme",
+		"sh",
+		"tidal",
+		"zsh",
+	},
 	opts = {
 		start = {
-			split_size = "10",
+			split_size = "12",
 		},
 		repl_definitions = {
 			scheme = {
