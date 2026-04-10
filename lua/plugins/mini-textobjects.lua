@@ -30,10 +30,6 @@ return {
 				goto_left = "", -- g[
 				goto_right = "", -- g]
 			},
-			-- How to search for object (first inside current line, then inside
-			-- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
-			-- 'cover_or_nearest', 'next', 'previous', 'nearest'.
-			search_method = "cover_or_next",
 			-- Whether to disable showing non-error feedback
 			-- This also affects (purely informational) helper messages shown after
 			-- idle time if user input is required.

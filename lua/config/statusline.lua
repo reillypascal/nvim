@@ -1,6 +1,3 @@
--- https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
--- https://elianiva.my.id/posts/neovim-lua-statusline/
-
 local modes = {
 	["n"] = "NORMAL",
 	["no"] = "NORMAL",

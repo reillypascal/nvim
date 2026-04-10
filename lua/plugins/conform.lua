@@ -48,13 +48,12 @@ return { -- Autoformat
 			html = { "biome" },
 			javascript = { "biome" },
 			json = { "biome" },
-			-- https://shopify.dev/docs/storefronts/themes/tools/liquid-prettier-plugin
 			-- ly.reformat source code mentions need to run indent _after_ reformatting that adds newlines
 			-- https://python-ly.readthedocs.io/en/latest/_modules/ly/reformat.html?highlight=reformat
 			lilypond = { "ly_reformat", "ly_indent" },
+			-- https://shopify.dev/docs/storefronts/themes/tools/liquid-prettier-plugin
 			liquid = { "prettierd" },
 			lua = { "stylua" },
-			-- markdown = { "prettierd" },
 			markdown = { "rumdl_fmt" },
 			nunjucks = { "prettierd" },
 			python = { "black" },

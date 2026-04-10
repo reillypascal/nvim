@@ -17,20 +17,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 		end
 
-		-- Rename the variable under your cursor.
-		--  Most Language Servers support renaming across files, etc.
-		map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
-
 		-- Execute a code action, usually your cursor needs to be on top of an error
 		-- or a suggestion from your LSP for this to activate.
 		map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
-
-		-- Find references for the word under your cursor.
-		map("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-
-		-- Jump to the implementation of the word under your cursor.
-		--  Useful when your language has ways of declaring types without an actual implementation.
-		map("gri", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 
 		-- Jump to the definition of the word under your cursor.
 		--  This is where a variable was first declared, or where a function is defined, etc.
@@ -41,23 +30,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		--  For example, in C this would take you to the header.
 		map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
+		map("grh", vim.lsp.buf.hover, "Buffer [H]over")
+
+		-- Jump to the implementation of the word under your cursor.
+		--  Useful when your language has ways of declaring types without an actual implementation.
+		map("gri", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+
+		-- Rename the variable under your cursor.
+		--  Most Language Servers support renaming across files, etc.
+		map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+
 		-- Fuzzy find all the symbols in your current document.
 		--  Symbols are things like variables, functions, types, etc.
 		--  was `gO`, but that overlaps w/ similar native keybinding
 		map("grO", require("telescope.builtin").lsp_document_symbols, "Open Document Symbols")
 
-		-- Fuzzy find all the symbols in your current workspace.
-		--  Similar to document symbols, except searches over your entire project.
-		map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Open Workspace Symbols")
+		-- Find references for the word under your cursor.
+		map("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
 		-- Jump to the type of the word under your cursor.
 		--  Useful when you're not sure what type a variable is and you want to see
 		--  the definition of its *type*, not where it was *defined*.
 		map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
-		-- my maps
-		-- useful for hover in md oxide
-		map("grh", vim.lsp.buf.hover, "Buffer [H]over")
+		-- Fuzzy find all the symbols in your current workspace.
+		--  Similar to document symbols, except searches over your entire project.
+		map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Open Workspace Symbols")
 
 		-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 		---@param client vim.lsp.Client
@@ -102,49 +100,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 					vim.api.nvim_clear_autocmds({ group = "rs-lsp-highlight", buffer = event2.buf })
 				end,
 			})
-		end
-
-		-- via https://gist.github.com/adibhanna/faf21a3b4f2df807c2b7bbbcbf1ba56d#file-init-lua-L630
-		-- Markdown Oxide specific features
-		if client and client.name == "markdown_oxide" then
-			-- setup Markdown Oxide daily note commands
-			vim.api.nvim_create_user_command("Daily", function(args)
-				local input = args.args
-
-				-- info on using client:exec_cmd() to replace vim.lsp.buf.execute_command()
-				-- https://www.reddit.com/r/neovim/comments/1jnm529/comment/mmr6nm7/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-				client:exec_cmd({
-					title = "Daily",
-					command = "jump",
-					arguments = { input },
-				}, { bufnr = vim.api.nvim_get_current_buf() })
-			end, { desc = "Open daily note", nargs = "*" })
-
-			-- Enable code lens for reference counts (if supported)
-			if client_supports_method(client, vim.lsp.protocol.Methods.textDocument_codeLens, event.buf) then
-				local function check_codelens_support()
-					local clients = vim.lsp.get_clients({ bufnr = 0 })
-					for _, c in ipairs(clients) do
-						if c.server_capabilities.codeLensProvider then
-							return true
-						end
-					end
-					return false
-				end
-
-				vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave", "CursorHold", "LspAttach", "BufEnter" }, {
-					buffer = event.buf,
-					callback = function()
-						if check_codelens_support() then
-							-- vim.lsp.codelens.refresh({ bufnr = 0 })
-							vim.lsp.codelens.enable(true, { bufnr = bufnr })
-						end
-					end,
-				})
-
-				-- Trigger codelens refresh
-				vim.api.nvim_exec_autocmds("User", { pattern = "LspAttached" })
-			end
 		end
 
 		-- The following code creates a keymap to toggle inlay hints in your
