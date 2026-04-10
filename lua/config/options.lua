@@ -119,4 +119,5 @@ vim.cmd([[set path+=,**]])
 -- :h shortmess
 -- appending keeps default settings as well
 -- https://github.com/folke/noice.nvim/wiki/A-Guide-to-Messages#handling-hit-enter-messages
+-- NOTE: `shortmess` may help with "hit enter" prompts — check back if these show up (e.g., bibli_ls issue)
 vim.opt.shortmess:append("I")
