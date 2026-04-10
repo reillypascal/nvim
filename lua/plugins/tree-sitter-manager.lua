@@ -5,8 +5,9 @@ return {
 		require("tree-sitter-manager").setup({
 			-- list of parsers to install automatically
 			ensure_installed = {
+				-- nvim includes these by default: C, Lua, Markdown, Vimscript, Vimdoc, Treesitter query files
+				-- https://neovim.io/doc/user/treesitter/#treesitter-parsers
 				"bash",
-				"c",
 				"cmake",
 				"cpp",
 				"css",
@@ -16,10 +17,7 @@ return {
 				"json",
 				"latex",
 				"liquid",
-				"lua",
 				"make",
-				"markdown",
-				"markdown_inline",
 				"python",
 				"rust",
 				"scheme",
