@@ -1,5 +1,4 @@
--- iterate through list of installed_ft
--- or pass installed_ft as list
+-- TODO: iterate through list of installed ft for pattern, instead of "*"
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	pattern = { "*" },
 	callback = function()
