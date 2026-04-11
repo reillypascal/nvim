@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-# import argparse
 from argparse import ArgumentParser
 from contextlib import chdir
 from glob import glob
