@@ -23,6 +23,14 @@ args = parser.parse_args()
 #   - option to exclude parser from build
 #   - check for precompiled binaries
 #   - better algorithm for finding grammar files
+#   - git sparse clone for e.g., LaTeX
+#       - https://stackoverflow.com/a/52269934
+#       - https://github.com/nvim-treesitter/nvim-treesitter/tree/main/runtime/queries/latex
+
+ts_dir = f"{environ["HOME"]}/.local/share/nvim/site"
+# alternate dir for testing
+# ts_dir = f"{environ["HOME"]}/Downloads/site"
+build_dir = f"{environ["HOME"]}/Downloads"
 
 # https://stackoverflow.com/a/66731847
 parsers: Dict[str, Any] = {
@@ -74,6 +82,7 @@ parsers: Dict[str, Any] = {
     # figure out including them with logic that's compatible with others
     # "xml": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-xml"},
     "yaml": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-yaml"},
+    "zig": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-zig"},
     "zsh": {"repo": "https://github.com/georgeharker/tree-sitter-zsh"},
 }
 
@@ -153,11 +162,6 @@ def update_parser(parser_name, parser_data):
                     "queries/.", f"{ts_dir}/queries/{query_name}", dirs_exist_ok=True
                 )
 
-
-ts_dir = f"{environ["HOME"]}/.local/share/nvim/site"
-# alternate dir for testing
-# ts_dir = f"{environ["HOME"]}/Downloads/site"
-build_dir = f"{environ["HOME"]}/Downloads"
 
 # with chdir returns to original path when done
 with chdir(build_dir):
