@@ -158,10 +158,20 @@ def update_parser(parser_name, parser_data):
             else:
                 call(["git", "clone", dep])
 
-            with chdir(query_dir):
-                copytree(
-                    "queries/.", f"{ts_dir}/queries/{query_name}", dirs_exist_ok=True
-                )
+            query_paths_to_search = [
+                f"{query_dir}",
+                f"{query_dir}/src",
+                f"{query_dir}/{query_name}",
+                f"{query_dir}/{query_name}/src",
+            ]
+
+            for candidate in query_paths_to_search:
+                if path.exists(f"{candidate}/queries"):
+                    copytree(
+                        f"{candidate}queries/.",
+                        f"{ts_dir}/queries/{query_name}",
+                        dirs_exist_ok=True,
+                    )
 
 
 # with chdir returns to original path when done
