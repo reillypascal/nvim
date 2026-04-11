@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 
+# TODO:
+#   - check if current commit matches remote; if so, don't run build/copy
+#   - option to exclude parser from build
+#       - optionally both include and exclude multiple
+#   - git sparse clone for e.g., LaTeX
+#       - https://stackoverflow.com/a/52269934
+#       - https://github.com/nvim-treesitter/nvim-treesitter/tree/main/runtime/queries/latex
+#   - check for precompiled binaries
+
 from argparse import ArgumentParser
 from contextlib import chdir
 from glob import glob
@@ -16,16 +25,8 @@ parser.add_argument(
     help="Select a single language (and its dependencies) to update",
     type=str,
 )
+# parser.add_argument("-e", "--exclude", help="Exclude a language from update", type=str)
 args = parser.parse_args()
-
-# TODO:
-#   - check if current commit matches remote; if so, don't run build/copy
-#   - option to exclude parser from build
-#   - check for precompiled binaries
-#   - better algorithm for finding grammar files
-#   - git sparse clone for e.g., LaTeX
-#       - https://stackoverflow.com/a/52269934
-#       - https://github.com/nvim-treesitter/nvim-treesitter/tree/main/runtime/queries/latex
 
 ts_dir = f"{environ["HOME"]}/.local/share/nvim/site"
 # alternate dir for testing
@@ -78,9 +79,7 @@ parsers: Dict[str, Any] = {
             "https://github.com/neovim-treesitter/nvim-treesitter-queries-dtd"
         ],
     },
-    # compiles, but grammar files in a weird place, and couldn't
-    # figure out including them with logic that's compatible with others
-    # "xml": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-xml"},
+    "xml": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-xml"},
     "yaml": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-yaml"},
     "zig": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-zig"},
     "zsh": {"repo": "https://github.com/georgeharker/tree-sitter-zsh"},
@@ -99,53 +98,55 @@ def update_parser(parser_name, parser_data):
         for dep in parsers[parser_name]["parser_deps"]:
             call(["npm", "i", dep])
 
-    # converts to ES modules; issue with yaml
-    # with chdir(parser_dir):
-    # https://tree-sitter.github.io/tree-sitter/cli/init#-u--update
-    # call(["tree-sitter", "init", "-u"])
-
     # https://tree-sitter.github.io/tree-sitter/cli/generate.html
     # NOTE: generate/build comands are usually silent
 
-    # paths_to_search = [
-    #     f"{parser_dir}/grammar.js",
-    #     f"{parser_dir}/grammar.json",
-    #     f"{parser_dir}/src/grammar.js",
-    #     f"{parser_dir}/src/grammar.json",
-    #     f"{parser_dir}/{parser_name}/grammar.js",
-    #     f"{parser_dir}/{parser_name}/grammar.json",
-    #     f"{parser_dir}/{parser_name}/src/grammar.js",
-    #     f"{parser_dir}/{parser_name}/src/grammar.json",
-    # ]
-    # did_find_grammar = False
-    # for candidate in paths_to_search:
-    #     if path.exists(candidate):
-    #         call(["tree-sitter", "generate", candidate])
-    #         did_find_grammar = True
-    #         break
+    paths_to_search = [
+        f"{parser_dir}",
+        f"{parser_dir}/src",
+        f"{parser_dir}/{parser_name}",
+        f"{parser_dir}/{parser_name}/src",
+    ]
+    parser_build_dir = ""
+    did_find_grammar = False
+    for candidate in paths_to_search:
+        if path.exists(f"{candidate}/grammar.js"):
+            parser_build_dir = candidate
+            did_find_grammar = True
+            break
 
-    # if did_find_grammar:
-    with chdir(parser_dir):
-        call(["tree-sitter", "generate"])
+    if did_find_grammar:
+        with chdir(parser_build_dir):
+            # inside dir to ensure can find grammar.json
+            call(["tree-sitter", "generate"])
 
-    call(["tree-sitter", "build", parser_dir])
-    call(["mkdir", "-p", f"{ts_dir}/parser"])
-
-    if system() == "Darwin":
-        for file in glob("*.dylib"):
-            copy(file, f"{ts_dir}/parser/")
-    elif system() == "Linux":
-        for file in glob("*.so"):
-            copy(file, f"{ts_dir}/parser/")
-
-    if path.exists(f"{parser_dir}/queries"):
-        copytree(
-            f"{parser_dir}/queries/.",
-            f"{ts_dir}/queries/{parser_name}",
-            dirs_exist_ok=True,
+        system_so_exts = {"Darwin": ".dylib", "Linux": ".so", "Windows": ".dll"}
+        system_so_ext = system_so_exts[system()]
+        # outside dir to ensure can find e.g., c dependency for cpp
+        call(
+            [
+                "tree-sitter",
+                "build",
+                parser_build_dir,
+                "-o",
+                f"{parser_dir}/{parser_name}{system_so_ext}",
+            ]
         )
-    # else:
-    # print(f"Could not find grammar for {parser_name}")
+        call(["mkdir", "-p", f"{ts_dir}/parser"])
+        call(["mkdir", "-p", f"{ts_dir}/queries"])
+
+        for file in glob(f"*/*{system_so_ext}"):
+            copy(file, f"{ts_dir}/parser/")
+
+        for candidate in paths_to_search:
+            if path.exists(f"{candidate}/queries"):
+                copytree(
+                    f"{candidate}/queries/.",
+                    f"{ts_dir}/queries/{parser_name}",
+                    dirs_exist_ok=True,
+                )
+    else:
+        print(f"Could not find grammar for {parser_name}")
 
     if "query_deps" in parsers[parser_name]:
         for dep in parsers[parser_name]["query_deps"]:
