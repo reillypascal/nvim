@@ -2,12 +2,10 @@
 
 # TODO:
 #   - check if current commit matches remote; if so, don't run build/copy
-#   - option to exclude parser from build
-#       - optionally both include and exclude multiple
 #   - git sparse clone for e.g., LaTeX
 #       - https://stackoverflow.com/a/52269934
 #       - https://github.com/nvim-treesitter/nvim-treesitter/tree/main/runtime/queries/latex
-#   - check for precompiled binaries
+#   - check for precompiled binaries: e.g., sql: https://github.com/derekstride/tree-sitter-sql?tab=readme-ov-file#installation
 
 from argparse import ArgumentParser
 from contextlib import chdir
@@ -19,18 +17,28 @@ from subprocess import call
 from typing import Any, Dict
 
 parser = ArgumentParser()
+# alternative: allow appending to repeat argument flag https://stackoverflow.com/a/77879961
 parser.add_argument(
-    "-l",
-    "--lang",
-    help="Select a single language (and its dependencies) to update",
-    type=str,
+    "-i",
+    "--include",
+    help="Select one or more languages (and their dependencies) to update",
+    nargs="*",
 )
-# parser.add_argument("-e", "--exclude", help="Exclude a language from update", type=str)
+parser.add_argument(
+    "-e", "--exclude", help="Exclude one or more languages from update", nargs="*"
+)
+parser.add_argument(
+    "-t", "--test", help="Use testing directory for destination", action="store_true"
+)
 args = parser.parse_args()
 
-ts_dir = f"{environ["HOME"]}/.local/share/nvim/site"
-# alternate dir for testing
-# ts_dir = f"{environ["HOME"]}/Downloads/site"
+ts_dir = ""
+if args.test:
+    # alternate destination dir for testing
+    ts_dir = f"{environ["HOME"]}/Downloads/site"
+else:
+    ts_dir = f"{environ["HOME"]}/.local/share/nvim/site"
+
 build_dir = f"{environ["HOME"]}/Downloads"
 
 # https://stackoverflow.com/a/66731847
@@ -60,15 +68,12 @@ parsers: Dict[str, Any] = {
         ],
     },
     "json": {"repo": "https://github.com/tree-sitter/tree-sitter-json"},
-    # Stderr: clang: error: no such file or directory: '/Users/reillyspitzfaden/Downloads/tree-sitter-latex/src/parser.c'
     "latex": {"repo": "https://github.com/latex-lsp/tree-sitter-latex"},
     "liquid": {"repo": "https://github.com/hankthetank27/tree-sitter-liquid"},
     "make": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-make"},
     "python": {"repo": "https://github.com/tree-sitter/tree-sitter-python"},
     "rust": {"repo": "https://github.com/tree-sitter/tree-sitter-rust"},
     "scheme": {"repo": "https://github.com/6cdh/tree-sitter-scheme"},
-    # missing grammar.json in sql
-    # see here for info on precompiled binaries: https://github.com/derekstride/tree-sitter-sql?tab=readme-ov-file#installation
     "sql": {"repo": "https://github.com/derekstride/tree-sitter-sql"},
     "supercollider": {
         "repo": "https://github.com/madskjeldgaard/tree-sitter-supercollider"
@@ -87,6 +92,9 @@ parsers: Dict[str, Any] = {
 
 
 def update_parser(parser_name, parser_data):
+    if args.exclude and parser_name in args.exclude:
+        return
+
     parser_dir = path.basename(parser_data["repo"])
 
     if path.exists(parser_dir):
@@ -100,7 +108,6 @@ def update_parser(parser_name, parser_data):
 
     # https://tree-sitter.github.io/tree-sitter/cli/generate.html
     # NOTE: generate/build comands are usually silent
-
     paths_to_search = [
         f"{parser_dir}",
         f"{parser_dir}/src",
@@ -116,6 +123,7 @@ def update_parser(parser_name, parser_data):
             break
 
     if did_find_grammar:
+        # with chdir returns to original path when done
         with chdir(parser_build_dir):
             # inside dir to ensure can find grammar.json
             call(["tree-sitter", "generate"])
@@ -174,10 +182,10 @@ def update_parser(parser_name, parser_data):
                     )
 
 
-# with chdir returns to original path when done
 with chdir(build_dir):
-    if args.lang:
-        update_parser(args.lang, parsers[args.lang])
+    if args.include:
+        for lang in args.include:
+            update_parser(lang, parsers[lang])
     else:
         for parser_name, parser_data in parsers.items():
             update_parser(parser_name, parser_data)
