@@ -54,6 +54,16 @@ end, {})
 vim.cmd([[cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%']])
 
 -- paste HTML to Markdown
+-- TODO:
+-- vim.system
+-- local function run_cmd(args, cwd)
+--     local opts = { text = true }
+--     if cwd then opts.cwd = cwd end
+--     local res = vim.system(args, opts):wait()
+--     local out = (res.stderr ~= "" and res.stderr) or res.stdout or ""
+--     return { ok = res.code == 0, output = out }
+-- end
+
 vim.api.nvim_create_user_command("Mdp", function()
 	local os_name = vim.loop.os_uname().sysname
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # TODO:
+#   - if queries in subfolder for language, move to appropriate dest
 #   - check if current commit matches remote; if so, don't run build/copy
 #   - git sparse clone for e.g., LaTeX
 #       - https://stackoverflow.com/a/52269934
@@ -120,23 +121,24 @@ def update_parser(parser_name, parser_data):
             break
 
     if did_find_grammar:
+        system_so_exts = {"Darwin": ".dylib", "Linux": ".so", "Windows": ".dll"}
+        system_so_ext = system_so_exts[system()]
+
         # with chdir returns to original path when done
         with chdir(parser_build_dir):
             # inside dir to ensure can find grammar.json
             call(["tree-sitter", "generate"])
+            call(
+                [
+                    "tree-sitter",
+                    "build",
+                    # doesn't seem to need to be outside dir for cpp
+                    # parser_build_dir,
+                    "-o",
+                    f"{parser_dir}/{parser_name}{system_so_ext}",
+                ]
+            )
 
-        system_so_exts = {"Darwin": ".dylib", "Linux": ".so", "Windows": ".dll"}
-        system_so_ext = system_so_exts[system()]
-        # outside dir to ensure can find e.g., c dependency for cpp
-        call(
-            [
-                "tree-sitter",
-                "build",
-                parser_build_dir,
-                "-o",
-                f"{parser_dir}/{parser_name}{system_so_ext}",
-            ]
-        )
         call(["mkdir", "-p", f"{ts_dir}/parser"])
         call(["mkdir", "-p", f"{ts_dir}/queries"])
 
