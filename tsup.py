@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 # TODO:
-#   - if queries in subfolder for language, move to appropriate dest
 #   - check if current commit matches remote; if so, don't run build/copy
 #   - git sparse clone for e.g., LaTeX
 #       - https://stackoverflow.com/a/52269934
@@ -95,6 +94,7 @@ parsers: Dict[str, Any] = {
 def update_parser(parser_name, parser_data):
     parser_dir = path.basename(parser_data["repo"])
 
+    # clone parser, or update existing clone
     if path.exists(parser_dir):
         call(["git", "-C", parser_dir, "pull"])
     else:
@@ -104,8 +104,7 @@ def update_parser(parser_name, parser_data):
         for dep in parsers[parser_name]["parser_deps"]:
             call(["npm", "i", dep])
 
-    # https://tree-sitter.github.io/tree-sitter/cli/generate.html
-    # NOTE: generate/build comands are usually silent
+    # find grammar; note folder in order to generate/build there
     paths_to_search = [
         f"{parser_dir}",
         f"{parser_dir}/src",
@@ -124,7 +123,9 @@ def update_parser(parser_name, parser_data):
         system_so_exts = {"Darwin": ".dylib", "Linux": ".so", "Windows": ".dll"}
         system_so_ext = system_so_exts[system()]
 
+        # generate and build parser
         # with chdir returns to original path when done
+        # NOTE: generate/build comands are usually silent: https://tree-sitter.github.io/tree-sitter/cli/generate.html
         with chdir(parser_build_dir):
             # inside dir to ensure can find grammar.json
             call(["tree-sitter", "generate"])
@@ -135,50 +136,78 @@ def update_parser(parser_name, parser_data):
                     # doesn't seem to need to be outside dir for cpp
                     # parser_build_dir,
                     "-o",
-                    f"{parser_dir}/{parser_name}{system_so_ext}",
+                    f"{parser_name}{system_so_ext}",
                 ]
             )
 
+        # copy parser dylibs to treesitter dir
         call(["mkdir", "-p", f"{ts_dir}/parser"])
-        call(["mkdir", "-p", f"{ts_dir}/queries"])
+        for file in glob(
+            f"**/*{system_so_ext}", root_dir=f"{build_dir}/{parser_dir}", recursive=True
+        ):
+            copy(f"{build_dir}/{parser_dir}/{file}", f"{ts_dir}/parser/")
 
-        for file in glob(f"*/*{system_so_ext}"):
-            copy(file, f"{ts_dir}/parser/")
-
+        # copy query .scm files to treesitter dir
         for candidate in paths_to_search:
             if path.exists(f"{candidate}/queries"):
-                copytree(
-                    f"{candidate}/queries/.",
-                    f"{ts_dir}/queries/{parser_name}",
-                    dirs_exist_ok=True,
-                )
+                for root, _, files in walk(f"{candidate}/queries"):
+                    for filename in files:
+                        parent_dir = path.basename(root)
+                        # if there is just one "queries/" in parser
+                        if parent_dir == "queries":
+                            call(["mkdir", "-p", f"{ts_dir}/queries/{parser_name}"])
+                            copy(
+                                path.join(root, filename),
+                                f"{ts_dir}/queries/{parser_name}/",
+                            )
+                        # if multiple language queries (e.g., in xml)
+                        else:
+                            call(["mkdir", "-p", f"{ts_dir}/queries/{parent_dir}"])
+                            copy(
+                                path.join(root, filename),
+                                f"{ts_dir}/queries/{parent_dir}/",
+                            )
     else:
         print(f"Could not find grammar for {parser_name}")
 
+    # clone query dependencies
     if "query_deps" in parsers[parser_name]:
         for dep in parsers[parser_name]["query_deps"]:
             query_dir = path.basename(dep)
             query_name = dep.rsplit("-", 1)[1]
 
+            # clone query, or update existing clone
             if path.exists(query_dir):
                 call(["git", "-C", query_dir, "pull"])
             else:
                 call(["git", "clone", dep])
 
+            # find director(y/ies) of query .scm files
             query_paths_to_search = [
                 f"{query_dir}",
                 f"{query_dir}/src",
                 f"{query_dir}/{query_name}",
                 f"{query_dir}/{query_name}/src",
             ]
-
             for candidate in query_paths_to_search:
                 if path.exists(f"{candidate}/queries"):
-                    copytree(
-                        f"{candidate}queries/.",
-                        f"{ts_dir}/queries/{query_name}",
-                        dirs_exist_ok=True,
-                    )
+                    for root, _, files in walk(f"{candidate}/queries"):
+                        for filename in files:
+                            parent_dir = path.basename(root)
+                            # if there is just one "queries/" in parser
+                            if parent_dir == "queries":
+                                call(["mkdir", "-p", f"{ts_dir}/queries/{query_name}"])
+                                copy(
+                                    path.join(root, filename),
+                                    f"{ts_dir}/queries/{query_name}/",
+                                )
+                            # if multiple language queries (e.g., in xml)
+                            else:
+                                call(["mkdir", "-p", f"{ts_dir}/queries/{parent_dir}"])
+                                copy(
+                                    path.join(root, filename),
+                                    f"{ts_dir}/queries/{parent_dir}/",
+                                )
 
 
 with chdir(build_dir):
