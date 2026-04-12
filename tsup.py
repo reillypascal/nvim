@@ -92,9 +92,6 @@ parsers: Dict[str, Any] = {
 
 
 def update_parser(parser_name, parser_data):
-    if args.exclude and parser_name in args.exclude:
-        return
-
     parser_dir = path.basename(parser_data["repo"])
 
     if path.exists(parser_dir):
@@ -188,4 +185,6 @@ with chdir(build_dir):
             update_parser(lang, parsers[lang])
     else:
         for parser_name, parser_data in parsers.items():
+            if args.exclude and parser_name in args.exclude:
+                continue
             update_parser(parser_name, parser_data)
