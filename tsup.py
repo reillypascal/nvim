@@ -60,16 +60,22 @@ parsers: Dict[str, Any] = {
     "haskell": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-haskell"},
     "html": {
         "repo": "https://github.com/tree-sitter/tree-sitter-html",
-        "query_deps": [
-            "https://github.com/neovim-treesitter/nvim-treesitter-queries-html_tags"
-        ],
+        "query_deps": {
+            "html_tags": {
+                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-html_tags"
+            }
+        },
     },
     "javascript": {
         "repo": "https://github.com/tree-sitter/tree-sitter-javascript",
-        "query_deps": [
-            "https://github.com/neovim-treesitter/nvim-treesitter-queries-ecma",
-            "https://github.com/neovim-treesitter/nvim-treesitter-queries-jsx",
-        ],
+        "query_deps": {
+            "ecma": {
+                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-ecma"
+            },
+            "jsx": {
+                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-jsx"
+            },
+        },
     },
     "json": {"repo": "https://github.com/tree-sitter/tree-sitter-json"},
     "latex": {"repo": "https://github.com/latex-lsp/tree-sitter-latex"},
@@ -84,9 +90,11 @@ parsers: Dict[str, Any] = {
     },
     "toml": {
         "repo": "https://github.com/tree-sitter-grammars/tree-sitter-toml",
-        "query_deps": [
-            "https://github.com/neovim-treesitter/nvim-treesitter-queries-dtd"
-        ],
+        "query_deps": {
+            "dtd": {
+                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-dtd"
+            }
+        },
     },
     "xml": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-xml"},
     "yaml": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-yaml"},
@@ -177,15 +185,14 @@ def update_parser(parser_name, parser_data):
 
     # clone query dependencies
     if "query_deps" in parsers[parser_name]:
-        for dep in parsers[parser_name]["query_deps"]:
-            query_dir = path.basename(dep)
-            query_name = dep.rsplit("-", 1)[1]
+        for query_name, query_data in parsers[parser_name]["query_deps"].items():
+            query_dir = path.basename(query_data["repo"])
 
             # clone query, or update existing clone
             if path.exists(query_dir):
                 call(["git", "-C", query_dir, "pull"])
             else:
-                call(["git", "clone", dep])
+                call(["git", "clone", query_data["repo"]])
 
             # find director(y/ies) of query .scm files
             query_paths_to_search = [
