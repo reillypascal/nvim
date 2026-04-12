@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # TODO:
+#   - break into smaller functions
 #   - check if current commit matches remote; if so, don't run build/copy
 #   - git sparse clone for e.g., LaTeX
 #       - https://stackoverflow.com/a/52269934
@@ -19,13 +20,16 @@ from typing import Any, Dict
 parser = ArgumentParser()
 # alternative: allow appending to repeat argument flag https://stackoverflow.com/a/77879961
 parser.add_argument(
+    "-e", "--exclude", help="Exclude one or more languages from update", nargs="*"
+)
+parser.add_argument(
     "-i",
     "--include",
     help="Select one or more languages (and their dependencies) to update",
     nargs="*",
 )
 parser.add_argument(
-    "-e", "--exclude", help="Exclude one or more languages from update", nargs="*"
+    "-l", "--list", help="List all available parsers", action="store_true"
 )
 parser.add_argument(
     "-t", "--test", help="Use testing directory for destination", action="store_true"
@@ -49,7 +53,7 @@ parsers: Dict[str, Any] = {
     "cmake": {"repo": "https://github.com/uyha/tree-sitter-cmake"},
     "cpp": {
         "repo": "https://github.com/tree-sitter/tree-sitter-cpp",
-        "parser_deps": ["tree-sitter-c"],
+        "build_deps": ["tree-sitter-c"],
     },
     "css": {"repo": "https://github.com/tree-sitter/tree-sitter-css"},
     "genexpr": {"repo": "https://github.com/isabelgk/tree-sitter-genexpr"},
@@ -100,8 +104,9 @@ def update_parser(parser_name, parser_data):
     else:
         call(["git", "clone", parser_data["repo"]])
 
-    if "parser_deps" in parsers[parser_name]:
-        for dep in parsers[parser_name]["parser_deps"]:
+    # add build deps with npm
+    if "build_deps" in parsers[parser_name]:
+        for dep in parsers[parser_name]["build_deps"]:
             call(["npm", "i", dep])
 
     # find grammar; note folder in order to generate/build there
@@ -210,12 +215,25 @@ def update_parser(parser_name, parser_data):
                                 )
 
 
+def list_parsers(parser_dict) -> str:
+    parser_list = "\n".join(f"{key}" for key, _ in parser_dict.items())
+    return parser_list
+
+
 with chdir(build_dir):
-    if args.include:
-        for lang in args.include:
-            update_parser(lang, parsers[lang])
+    # only list parsers if '-l' flag set
+    if args.list:
+        print(list_parsers(parsers))
+    # if '-l' flag not set,
     else:
-        for parser_name, parser_data in parsers.items():
-            if args.exclude and parser_name in args.exclude:
-                continue
-            update_parser(parser_name, parser_data)
+        # only list values of '-i' if set
+        if args.include:
+            # list; may be more than 1 item
+            for lang in args.include:
+                update_parser(lang, parsers[lang])
+        else:
+            # list; may be more than 1 item
+            for parser_name, parser_data in parsers.items():
+                # 'True' unless '-e' set and parser is in '-e' list
+                if not (args.exclude and parser_name in args.exclude):
+                    update_parser(parser_name, parser_data)
