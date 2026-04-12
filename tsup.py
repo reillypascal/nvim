@@ -2,11 +2,9 @@
 
 # TODO:
 #   - break into smaller functions
-#   - check if current commit matches remote; if so, don't run build/copy
 #   - git sparse clone for e.g., LaTeX
 #       - https://stackoverflow.com/a/52269934
 #       - https://github.com/nvim-treesitter/nvim-treesitter/tree/main/runtime/queries/latex
-#   - check for precompiled binaries: e.g., sql: https://github.com/derekstride/tree-sitter-sql?tab=readme-ov-file#installation
 
 from argparse import ArgumentParser
 from contextlib import chdir
@@ -18,7 +16,6 @@ from subprocess import call
 from typing import Any, Dict
 
 parser = ArgumentParser()
-# alternative: allow appending to repeat argument flag https://stackoverflow.com/a/77879961
 parser.add_argument(
     "-e", "--exclude", help="Exclude one or more languages from update", nargs="*"
 )
@@ -136,9 +133,7 @@ def update_parser(parser_name, parser_data):
         system_so_exts = {"Darwin": ".dylib", "Linux": ".so", "Windows": ".dll"}
         system_so_ext = system_so_exts[system()]
 
-        # generate and build parser
-        # with chdir returns to original path when done
-        # NOTE: generate/build comands are usually silent: https://tree-sitter.github.io/tree-sitter/cli/generate.html
+        # generate and build parser; with chdir returns to original path when done
         with chdir(parser_build_dir):
             # inside dir to ensure can find grammar.json
             call(["tree-sitter", "generate"])
