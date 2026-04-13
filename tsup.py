@@ -107,7 +107,7 @@ def clone_or_pull(dir, data):
         call(["git", "clone", data["repo"]])
 
 
-def copy_queries(paths, name, working_dir):
+def copy_queries(paths, name, dest_dir):
     # copy query .scm files to treesitter dir
     for candidate in paths:
         if path.exists(f"{candidate}/queries"):
@@ -116,17 +116,17 @@ def copy_queries(paths, name, working_dir):
                     parent_dir = path.basename(root)
                     # if there is just one "queries/" in parser
                     if parent_dir == "queries":
-                        call(["mkdir", "-p", f"{working_dir}/queries/{name}"])
+                        call(["mkdir", "-p", f"{dest_dir}/queries/{name}"])
                         copy(
                             path.join(root, filename),
-                            f"{working_dir}/queries/{name}/",
+                            f"{dest_dir}/queries/{name}/",
                         )
                     # if multiple language queries (e.g., in xml)
                     else:
-                        call(["mkdir", "-p", f"{working_dir}/queries/{parent_dir}"])
+                        call(["mkdir", "-p", f"{dest_dir}/queries/{parent_dir}"])
                         copy(
                             path.join(root, filename),
-                            f"{working_dir}/queries/{parent_dir}/",
+                            f"{dest_dir}/queries/{parent_dir}/",
                         )
 
 
