@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # TODO:
-#   - break out parser build into fn so can add "parser_deps" that uses it too
+#   - break out parser build into fn so can add "parser_deps" that use it too
 #   - git sparse clone query repo
 #       - https://stackoverflow.com/a/52269934
 #       - https://github.com/romus204/tree-sitter-manager.nvim
@@ -15,6 +15,8 @@ from platform import system
 from shutil import copy, copytree
 from subprocess import call
 from typing import Any, Dict
+
+######## CLI ARGUMENTS ########
 
 parser = ArgumentParser()
 parser.add_argument(
@@ -33,6 +35,8 @@ parser.add_argument(
     "-t", "--test", help="Use testing directory for destination", action="store_true"
 )
 args = parser.parse_args()
+
+######## GLOBALS ########
 
 ts_dir = ""
 if args.test:
@@ -108,6 +112,10 @@ parsers: Dict[str, Any] = {
         "repo": "https://github.com/latex-lsp/tree-sitter-latex",
         "use_repo_queries": False,
     },
+    "lilypond": {
+        "repo": "https://github.com/nwhetsell/tree-sitter-lilypond",
+        "use_repo_queries": True,
+    },
     "liquid": {
         "repo": "https://github.com/hankthetank27/tree-sitter-liquid",
         "use_repo_queries": False,
@@ -163,6 +171,8 @@ parsers: Dict[str, Any] = {
         "use_repo_queries": False,
     },
 }
+
+######## FUNCTIONS ########
 
 
 def clone_or_pull(dir, repo):
@@ -277,6 +287,8 @@ def list_parsers(parser_dict) -> str:
     parser_list = "\n".join(f"{key}" for key, _ in parser_dict.items())
     return parser_list
 
+
+######## RUN UPDATES ########
 
 with chdir(build_dir):
     # list only if '-l' flag set
