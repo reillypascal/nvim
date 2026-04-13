@@ -2,6 +2,7 @@ __pycache__/
 parser/
 queries/
 .DS_Store
+**/*-bak
 launch.json
 # algorave.lua
 # en.utf-8.add

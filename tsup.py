@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 # TODO:
-#   - cpp query issues; needed to use nvim-treesitter ones: github.com/nvim-treesitter/nvim-treesitter/tree/main/runtime/queries/cpp
-#   - break out parser build into fn, add "parser_deps" that uses it too
-#   - git sparse clone for e.g., LaTeX
+#   - break out parser build into fn so can add "parser_deps" that uses it too
+#   - git sparse clone query repo
 #       - https://stackoverflow.com/a/52269934
-#       - https://github.com/nvim-treesitter/nvim-treesitter/tree/main/runtime/queries/latex
+#       - https://github.com/romus204/tree-sitter-manager.nvim
+#       - https://github.com/nvim-treesitter/nvim-treesitter
 
 from argparse import ArgumentParser
 from contextlib import chdir
@@ -43,100 +43,155 @@ else:
 
 build_dir = f"{environ["HOME"]}/Downloads"
 
-# https://stackoverflow.com/a/66731847
+query_repo = "https://github.com/romus204/tree-sitter-manager.nvim"
+query_repo_dir = path.basename(query_repo)
+# Dict typing: https://stackoverflow.com/a/66731847
 parsers: Dict[str, Any] = {
     "bash": {
         "repo": "https://github.com/tree-sitter/tree-sitter-bash",
+        "use_repo_queries": False,
     },
-    "c": {"repo": "https://github.com/tree-sitter/tree-sitter-c"},
-    "cmake": {"repo": "https://github.com/uyha/tree-sitter-cmake"},
-    # "cpp": {
-    #     "repo": "https://github.com/tree-sitter/tree-sitter-cpp",
-    #     "build_deps": ["tree-sitter-c"],
-    # },
-    "css": {"repo": "https://github.com/tree-sitter/tree-sitter-css"},
-    "genexpr": {"repo": "https://github.com/isabelgk/tree-sitter-genexpr"},
-    "haskell": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-haskell"},
+    "c": {
+        "repo": "https://github.com/tree-sitter/tree-sitter-c",
+        "use_repo_queries": False,
+    },
+    "cmake": {
+        "repo": "https://github.com/uyha/tree-sitter-cmake",
+        "use_repo_queries": False,
+    },
+    "cpp": {
+        "repo": "https://github.com/tree-sitter/tree-sitter-cpp",
+        "build_deps": ["tree-sitter-c"],
+        "use_repo_queries": False,
+    },
+    "css": {
+        "repo": "https://github.com/tree-sitter/tree-sitter-css",
+        "use_repo_queries": False,
+    },
+    "genexpr": {
+        "repo": "https://github.com/isabelgk/tree-sitter-genexpr",
+        "use_repo_queries": True,
+    },
+    "haskell": {
+        "repo": "https://github.com/tree-sitter-grammars/tree-sitter-haskell",
+        "use_repo_queries": False,
+    },
     "html": {
         "repo": "https://github.com/tree-sitter/tree-sitter-html",
         "query_deps": {
             "html_tags": {
-                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-html_tags"
+                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-html_tags",
+                "use_repo_queries": False,
             }
         },
+        "use_repo_queries": False,
     },
     "javascript": {
         "repo": "https://github.com/tree-sitter/tree-sitter-javascript",
         "query_deps": {
             "ecma": {
-                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-ecma"
+                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-ecma",
+                "use_repo_queries": False,
             },
             "jsx": {
-                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-jsx"
+                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-jsx",
+                "use_repo_queries": False,
             },
         },
+        "use_repo_queries": False,
     },
-    "json": {"repo": "https://github.com/tree-sitter/tree-sitter-json"},
-    "latex": {"repo": "https://github.com/latex-lsp/tree-sitter-latex"},
-    "liquid": {"repo": "https://github.com/hankthetank27/tree-sitter-liquid"},
-    "make": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-make"},
-    "python": {"repo": "https://github.com/tree-sitter/tree-sitter-python"},
-    "rust": {"repo": "https://github.com/tree-sitter/tree-sitter-rust"},
-    "scheme": {"repo": "https://github.com/6cdh/tree-sitter-scheme"},
-    "sql": {"repo": "https://github.com/derekstride/tree-sitter-sql"},
+    "json": {
+        "repo": "https://github.com/tree-sitter/tree-sitter-json",
+        "use_repo_queries": False,
+    },
+    "latex": {
+        "repo": "https://github.com/latex-lsp/tree-sitter-latex",
+        "use_repo_queries": False,
+    },
+    "liquid": {
+        "repo": "https://github.com/hankthetank27/tree-sitter-liquid",
+        "use_repo_queries": False,
+    },
+    "make": {
+        "repo": "https://github.com/tree-sitter-grammars/tree-sitter-make",
+        "use_repo_queries": False,
+    },
+    "python": {
+        "repo": "https://github.com/tree-sitter/tree-sitter-python",
+        "use_repo_queries": False,
+    },
+    "rust": {
+        "repo": "https://github.com/tree-sitter/tree-sitter-rust",
+        "use_repo_queries": False,
+    },
+    "scheme": {
+        "repo": "https://github.com/6cdh/tree-sitter-scheme",
+        "use_repo_queries": False,
+    },
+    "sql": {
+        "repo": "https://github.com/derekstride/tree-sitter-sql",
+        "use_repo_queries": False,
+    },
     "supercollider": {
-        "repo": "https://github.com/madskjeldgaard/tree-sitter-supercollider"
+        "repo": "https://github.com/madskjeldgaard/tree-sitter-supercollider",
+        "use_repo_queries": False,
     },
     "toml": {
         "repo": "https://github.com/tree-sitter-grammars/tree-sitter-toml",
         "query_deps": {
             "dtd": {
-                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-dtd"
+                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-dtd",
+                "use_repo_queries": False,
             }
         },
+        "use_repo_queries": False,
     },
-    "xml": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-xml"},
-    "yaml": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-yaml"},
-    "zig": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-zig"},
-    "zsh": {"repo": "https://github.com/georgeharker/tree-sitter-zsh"},
+    "xml": {
+        "repo": "https://github.com/tree-sitter-grammars/tree-sitter-xml",
+        "use_repo_queries": False,
+    },
+    "yaml": {
+        "repo": "https://github.com/tree-sitter-grammars/tree-sitter-yaml",
+        "use_repo_queries": False,
+    },
+    "zig": {
+        "repo": "https://github.com/tree-sitter-grammars/tree-sitter-zig",
+        "use_repo_queries": False,
+    },
+    "zsh": {
+        "repo": "https://github.com/georgeharker/tree-sitter-zsh",
+        "use_repo_queries": False,
+    },
 }
 
 
-def clone_or_pull(dir, data):
+def clone_or_pull(dir, repo):
     if path.exists(dir):
         call(["git", "-C", dir, "pull"])
     else:
-        call(["git", "clone", data["repo"]])
+        call(["git", "clone", repo])
 
 
-def copy_queries(paths, name, dest_dir):
+def copy_files(searches, root_dir, dest_dir):
     # copy query .scm files to treesitter dir
-    for candidate in paths:
-        if path.exists(f"{candidate}/queries"):
-            for root, _, files in walk(f"{candidate}/queries"):
-                for filename in files:
-                    parent_dir = path.basename(root)
-                    # if there is just one "queries/" in parser
-                    if parent_dir == "queries":
-                        call(["mkdir", "-p", f"{dest_dir}/queries/{name}"])
-                        copy(
-                            path.join(root, filename),
-                            f"{dest_dir}/queries/{name}/",
-                        )
-                    # if multiple language queries (e.g., in xml)
-                    else:
-                        call(["mkdir", "-p", f"{dest_dir}/queries/{parent_dir}"])
-                        copy(
-                            path.join(root, filename),
-                            f"{dest_dir}/queries/{parent_dir}/",
-                        )
+    call(["mkdir", "-p", f"{dest_dir}"])
+    for search in searches:
+        for file in glob(
+            f"{search}",
+            root_dir=f"{root_dir}",
+            recursive=True,
+        ):
+            copy(
+                f"{root_dir}/{file}",
+                f"{dest_dir}/",
+            )
 
 
 def update_parser(parser_name, parser_data):
     parser_dir = path.basename(parser_data["repo"])
 
     # clone parser, or update existing clone
-    clone_or_pull(parser_dir, parser_data)
+    clone_or_pull(parser_dir, parser_data["repo"])
 
     # add build deps with npm
     if "build_deps" in parsers[parser_name]:
@@ -178,16 +233,29 @@ def update_parser(parser_name, parser_data):
             )
 
         # copy parser dylibs to treesitter dir
-        call(["mkdir", "-p", f"{ts_dir}/parser"])
-        for file in glob(
-            f"**/*{system_so_ext}", root_dir=f"{build_dir}/{parser_dir}", recursive=True
-        ):
-            copy(f"{build_dir}/{parser_dir}/{file}", f"{ts_dir}/parser/")
+        copy_files(
+            [f"**/*{system_so_ext}"],
+            parser_dir,
+            f"{ts_dir}/parser/",
+        )
 
-        # copy query .scm files to treesitter dir
-        copy_queries(paths_to_search, parser_name, ts_dir)
+        if parsers[parser_name]["use_repo_queries"]:
+            # copy query .scm files to treesitter dir
+            copy_files(
+                ["**/queries/*.scm", f"**/{parser_name}/*.scm"],
+                parser_dir,
+                f"{ts_dir}/queries/{parser_name}/",
+            )
+        # if use_repo_queries is False
+        else:
+            copy_files(
+                [f"**/{parser_name}/*.scm"],
+                query_repo_dir,
+                f"{ts_dir}/queries/{parser_name}/",
+            )
+    # if could not find grammar.js
     else:
-        print(f"Could not find grammar for {parser_name}")
+        print(f"Could not find grammar for {parser_name}/")
 
     # clone query dependencies
     if "query_deps" in parsers[parser_name]:
@@ -195,16 +263,14 @@ def update_parser(parser_name, parser_data):
             query_dir = path.basename(query_data["repo"])
 
             # clone query, or update existing clone
-            clone_or_pull(query_dir, query_data)
+            clone_or_pull(query_dir, query_data["repo"])
 
             # find director(y/ies) of query .scm files
-            query_paths_to_search = [
-                f"{query_dir}",
-                f"{query_dir}/src",
-                f"{query_dir}/{query_name}",
-                f"{query_dir}/{query_name}/src",
-            ]
-            copy_queries(query_paths_to_search, query_name, ts_dir)
+            copy_files(
+                ["**/queries/*.scm", f"**/{query_name}/*.scm"],
+                build_dir,
+                f"{ts_dir}/queries/{parser_name}",
+            )
 
 
 def list_parsers(parser_dict) -> str:
@@ -213,19 +279,21 @@ def list_parsers(parser_dict) -> str:
 
 
 with chdir(build_dir):
-    # only list parsers if '-l' flag set
+    # list only if '-l' flag set
     if args.list:
         print(list_parsers(parsers))
-    # if '-l' flag not set,
+    # if '-l' flag not set, download and build
     else:
-        # only list values of '-i' if set
+        clone_or_pull(query_repo_dir, query_repo)
+        # only install values of '-i' if set
         if args.include:
             # list; may be more than 1 item
             for lang in args.include:
                 update_parser(lang, parsers[lang])
+        # if no include list
         else:
             # list; may be more than 1 item
             for parser_name, parser_data in parsers.items():
-                # 'True' unless '-e' set and parser is in '-e' list
+                # update parser unless '-e' is set and parser is in '-e' list
                 if not (args.exclude and parser_name in args.exclude):
                     update_parser(parser_name, parser_data)
