@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # TODO:
+#   - cpp query issues; needed to use nvim-treesitter ones: github.com/nvim-treesitter/nvim-treesitter/tree/main/runtime/queries/cpp
 #   - break out parser build into fn, add "parser_deps" that uses it too
 #   - git sparse clone for e.g., LaTeX
 #       - https://stackoverflow.com/a/52269934
@@ -47,11 +48,12 @@ parsers: Dict[str, Any] = {
     "bash": {
         "repo": "https://github.com/tree-sitter/tree-sitter-bash",
     },
+    "c": {"repo": "https://github.com/tree-sitter/tree-sitter-c"},
     "cmake": {"repo": "https://github.com/uyha/tree-sitter-cmake"},
-    "cpp": {
-        "repo": "https://github.com/tree-sitter/tree-sitter-cpp",
-        "build_deps": ["tree-sitter-c"],
-    },
+    # "cpp": {
+    #     "repo": "https://github.com/tree-sitter/tree-sitter-cpp",
+    #     "build_deps": ["tree-sitter-c"],
+    # },
     "css": {"repo": "https://github.com/tree-sitter/tree-sitter-css"},
     "genexpr": {"repo": "https://github.com/isabelgk/tree-sitter-genexpr"},
     "haskell": {"repo": "https://github.com/tree-sitter-grammars/tree-sitter-haskell"},
