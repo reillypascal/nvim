@@ -55,10 +55,10 @@ parsers: Dict[str, Any] = {
         "repo": "https://github.com/tree-sitter/tree-sitter-bash",
         "use_repo_queries": False,
     },
-    "c": {
-        "repo": "https://github.com/tree-sitter/tree-sitter-c",
-        "use_repo_queries": False,
-    },
+    # "c": {
+    #     "repo": "https://github.com/tree-sitter/tree-sitter-c",
+    #     "use_repo_queries": False,
+    # },
     "cmake": {
         "repo": "https://github.com/uyha/tree-sitter-cmake",
         "use_repo_queries": False,
@@ -112,6 +112,7 @@ parsers: Dict[str, Any] = {
         "repo": "https://github.com/latex-lsp/tree-sitter-latex",
         "use_repo_queries": False,
     },
+    # both lilypond and lilypond-scheme parsers; queries thrown into one folder
     "lilypond": {
         "repo": "https://github.com/nwhetsell/tree-sitter-lilypond",
         "use_repo_queries": True,
@@ -126,7 +127,8 @@ parsers: Dict[str, Any] = {
     },
     "python": {
         "repo": "https://github.com/tree-sitter/tree-sitter-python",
-        "use_repo_queries": False,
+        # got "query: invalid structure" error when using nvim queries (https://github.com/nvim-treesitter/nvim-treesitter/issues/3092)
+        "use_repo_queries": True,
     },
     "rust": {
         "repo": "https://github.com/tree-sitter/tree-sitter-rust",
