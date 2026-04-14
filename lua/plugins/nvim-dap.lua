@@ -1,7 +1,8 @@
 return {
 	-- "Built-in support for many task frameworks (make, npm, cargo, .vscode/tasks.json, etc)"
 	"https://codeberg.org/mfussenegger/nvim-dap",
-	event = "VeryLazy",
+	ft = { "c", "cpp", "python", "rust" },
+	-- event = "VeryLazy",
 	dependencies = {
 		"leoluz/nvim-dap-go",
 		"rcarriga/nvim-dap-ui",
@@ -74,6 +75,13 @@ return {
 		-- [[ DAP ADAPTERS ]]
 		-- https://codeberg.org/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 		-- https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
+		dap.adapters.lldb = {
+			type = "executable",
+			command = "/Applications/Xcode.app/Contents/Developer/usr/bin//lldb-dap",
+			name = "lldb",
+			-- On windows you may have to uncomment this:
+			-- detached = false,
+		}
 		dap.adapters.python = function(cb, config)
 			if config.request == "attach" then
 				---@diagnostic disable-next-line: undefined-field
@@ -99,16 +107,9 @@ return {
 				})
 			end
 		end
-		dap.adapters.lldb = {
-			type = "executable",
-			command = "/Applications/Xcode.app/Contents/Developer/usr/bin//lldb-dap",
-			name = "lldb",
-			-- On windows you may have to uncomment this:
-			-- detached = false,
-		}
 
 		-- [[ DAP CONFIGURATIONS ]]
-		dap.configurations.cpp = {
+		dap.configurations.c = {
 			{
 				name = "Launch",
 				type = "lldb",
@@ -133,6 +134,7 @@ return {
 				-- runInTerminal = false,
 			},
 		}
+		dap.configurations.cpp = dap.configurations.c
 		dap.configurations.python = {
 			{
 				-- The first three options are required by nvim-dap
@@ -158,6 +160,7 @@ return {
 				end,
 			},
 		}
+		dap.configurations.rust = dap.configurations.c
 
 		vim.keymap.set("n", "<leader>d?", function()
 			require("dapui").eval(nil, { enter = true })

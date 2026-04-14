@@ -117,10 +117,11 @@ parsers: Dict[str, Any] = {
         "use_repo_queries": False,
     },
     # both lilypond and lilypond-scheme parsers; queries thrown into one folder
-    "lilypond": {
-        "repo": "https://github.com/nwhetsell/tree-sitter-lilypond",
-        "use_repo_queries": True,
-    },
+    # decoration provider range couldn't parse regex: V im:E866: (NFA regexp) Misplaced ?
+    # "lilypond": {
+    #     "repo": "https://github.com/nwhetsell/tree-sitter-lilypond",
+    #     "use_repo_queries": True,
+    # },
     "liquid": {
         "repo": "https://github.com/hankthetank27/tree-sitter-liquid",
         "use_repo_queries": False,
