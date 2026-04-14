@@ -72,6 +72,10 @@ parsers: Dict[str, Any] = {
         "repo": "https://github.com/tree-sitter/tree-sitter-css",
         "use_repo_queries": False,
     },
+    "dtd": {
+        "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-dtd",
+        "use_repo_queries": False,
+    },
     "genexpr": {
         "repo": "https://github.com/isabelgk/tree-sitter-genexpr",
         "use_repo_queries": True,
@@ -148,16 +152,22 @@ parsers: Dict[str, Any] = {
     },
     "toml": {
         "repo": "https://github.com/tree-sitter-grammars/tree-sitter-toml",
-        "query_deps": {
-            "dtd": {
-                "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-dtd",
-                "use_repo_queries": False,
-            }
-        },
+        # "query_deps": {
+        #     "dtd": {
+        #         "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-dtd",
+        #         "use_repo_queries": False,
+        #     }
+        # },
         "use_repo_queries": False,
     },
     "xml": {
         "repo": "https://github.com/tree-sitter-grammars/tree-sitter-xml",
+        # "query_deps": {
+        #     "dtd": {
+        #         "repo": "https://github.com/neovim-treesitter/nvim-treesitter-queries-dtd",
+        #         "use_repo_queries": False,
+        #     }
+        # },
         "use_repo_queries": False,
     },
     "yaml": {
@@ -272,17 +282,22 @@ def update_parser(parser_name, parser_data):
     # clone query dependencies
     if "query_deps" in parsers[parser_name]:
         for query_name, query_data in parsers[parser_name]["query_deps"].items():
-            query_dir = path.basename(query_data["repo"])
-
-            # clone query, or update existing clone
-            clone_or_pull(query_dir, query_data["repo"])
-
             # find director(y/ies) of query .scm files
-            copy_files(
-                ["**/queries/*.scm", f"**/{query_name}/*.scm"],
-                build_dir,
-                f"{ts_dir}/queries/{parser_name}",
-            )
+            if query_data["use_repo_queries"]:
+                query_dir = path.basename(query_data["repo"])
+                # clone query, or update existing clone
+                clone_or_pull(query_dir, query_data["repo"])
+                copy_files(
+                    ["**/queries/*.scm", f"**/{query_name}/*.scm"],
+                    query_dir,
+                    f"{ts_dir}/queries/{query_name}",
+                )
+            else:
+                copy_files(
+                    [f"**/{query_name}/*.scm"],
+                    query_repo_dir,
+                    f"{ts_dir}/queries/{query_name}/",
+                )
 
 
 def list_parsers(parser_dict) -> str:
