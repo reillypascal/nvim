@@ -1,8 +1,9 @@
 return {
 	-- "Built-in support for many task frameworks (make, npm, cargo, .vscode/tasks.json, etc)"
 	"https://codeberg.org/mfussenegger/nvim-dap",
-	ft = { "c", "cpp", "python", "rust" },
+	-- ft = { "c", "cpp", "python", "rust" },
 	-- event = "VeryLazy",
+	lazy = true,
 	dependencies = {
 		"leoluz/nvim-dap-go",
 		"rcarriga/nvim-dap-ui",
@@ -59,9 +60,9 @@ return {
 			end,
 			desc = "DAP Prompt: Conditional Breakpoint",
 		},
-		{ "<leader>dso", "<CMD>DapStepOver<CR>", desc = "DAP Step Over" },
+		{ "<leader>dsv", "<CMD>DapStepOver<CR>", desc = "DAP Step Over" },
 		{ "<leader>dsi", "<CMD>DapStepInto<CR>", desc = "DAP Step Into" },
-		{ "<leader>dsu", "<CMD>DapStepOut<CR>", desc = "DAP Step Out" },
+		{ "<leader>dso", "<CMD>DapStepOut<CR>", desc = "DAP Step Out" },
 	},
 	config = function()
 		local dap = require("dap")
@@ -161,6 +162,7 @@ return {
 			},
 		}
 		dap.configurations.rust = dap.configurations.c
+		dap.configurations.zig = dap.configurations.c
 
 		vim.keymap.set("n", "<leader>d?", function()
 			require("dapui").eval(nil, { enter = true })
