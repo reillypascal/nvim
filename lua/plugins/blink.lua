@@ -1,6 +1,6 @@
 ---@module 'lazy'
 ---@type LazySpec
-return { -- Autocompletion
+return {
 	"saghen/blink.cmp",
 	event = "VimEnter",
 	version = "1.*",
@@ -10,15 +10,7 @@ return { -- Autocompletion
 		{
 			"L3MON4D3/LuaSnip",
 			version = "2.*",
-			build = (function()
-				-- Build Step is needed for regex support in snippets.
-				-- This step is not supported in many windows environments.
-				-- Remove the below condition to re-enable on windows.
-				if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
-					return
-				end
-				return "make install_jsregexp"
-			end)(),
+			build = "make install_jsregexp",
 			-- https://www.reddit.com/r/neovim/comments/1mh01t1/noob_question_how_do_i_properly_integrate_luasnip/
 			config = function()
 				require("luasnip.loaders.from_lua").lazy_load({
@@ -90,7 +82,7 @@ return { -- Autocompletion
 		sources = {
 			-- nvim-lilypond-suite completions: https://github.com/martineausimon/nvim-lilypond-suite/wiki/2.-Configuration#configuration-example
 			-- removed "buffer" - completes from everything in the buffer
-			default = { "dictionary", "lsp", "path", "snippets", "lazydev" }, -- seems to need "markdown_oxide" in order to use
+			default = { "dictionary", "lsp", "path", "snippets", "lazydev" },
 			providers = {
 				-- dictionary table is for nvim-lilypond-suite (so far)
 				-- note that $LILYDICTPATH didn't need to be added to .zshenv
@@ -108,13 +100,6 @@ return { -- Autocompletion
 					},
 				},
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
-				-- lsp = {
-				-- Configure markdown_oxide for better keyword matching
-				-- markdown_oxide = {
-				-- 	module = "", -- seems to want this
-				-- 	keyword_pattern = [[\(\k\| \|\/\|#\)\+]],
-				-- },
-				-- },
 			},
 		},
 

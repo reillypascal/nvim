@@ -13,6 +13,7 @@ return {
 				insert_version = "<F4>",
 				hyphenation = "<F12>",
 				hyphenation_change_lang = "<F11>",
+				-- note that <localleader> would interfere with ;/, repeats of f/F/t/T
 				insert_hyphen = "<leader>ih",
 				add_hyphen = "<leader>ah",
 				del_next_hyphen = "<leader>dh",

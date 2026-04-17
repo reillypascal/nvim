@@ -23,10 +23,7 @@ return {
 				cmd = "lilypond",
 				args = { "scheme-sandbox" },
 			},
-			supercollider = { enabled = false },
 		},
-		cmd_opts = {},
-		treesitter_nodes = {},
 		mappings = {
 			send_line = {
 				mode = { "n" },

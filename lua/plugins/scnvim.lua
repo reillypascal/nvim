@@ -108,13 +108,6 @@ return {
 				["fzf-sc"] = {
 					search_plugin = "nvim-fzf",
 				},
-				-- tmux = {
-				-- 	path = vim.fn.tempname(),
-				-- 	horizontal = true,
-				-- 	size = "20%",
-				-- 	cmd = "tail",
-				-- 	args = { "-F", "$1" },
-				-- },
 			},
 		})
 	end,
