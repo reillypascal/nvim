@@ -41,7 +41,6 @@ return {
 			enabled = true,
 			separator = "--------------",
 			format = "[{{backlinks}} backlinks]",
-			hl_group = "@comment",
 		},
 		frontmatter = {
 			enabled = false,
