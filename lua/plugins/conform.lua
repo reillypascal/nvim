@@ -21,7 +21,7 @@ return { -- Autoformat
 			-- have a well standardized coding style. You can add additional
 			-- languages here or re-enable it for the disabled ones.
 			-- waiting on genexpr: https://github.com/isabelgk/gen-fmt?tab=readme-ov-file#limitations
-			local disable_filetypes = { c = true, cpp = true, genexpr = true }
+			local disable_filetypes = { bash = true, sh = true, c = true, cpp = true, genexpr = true }
 			if disable_filetypes[vim.bo[bufnr].filetype] then
 				return nil
 			else
@@ -62,6 +62,7 @@ return { -- Autoformat
 			sh = { "shfmt" },
 			tidal = { "ormolu" },
 			toml = { "tombi" },
+			vimdoc = { "vimdoc_ls_fmt" },
 			zig = { "zigfmt" },
 			zsh = { "shfmt" },
 		},
@@ -94,6 +95,11 @@ return { -- Autoformat
 			},
 			schemat = {
 				command = "schemat",
+				stdin = true,
+			},
+			vimdoc_ls_fmt = {
+				command = "vimdoc-language-server",
+				args = { "format" },
 				stdin = true,
 			},
 		},
