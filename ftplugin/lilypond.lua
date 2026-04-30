@@ -10,3 +10,13 @@ vim.opt.linebreak = true
 -- note space: ensures space between comment symbol and code
 -- https://github.com/numtostr/comment.nvim?tab=readme-ov-file#%EF%B8%8F-filetypes--languages
 vim.bo.commentstring = "% %s"
+
+vim.keymap.set("n", "<leader>b", function()
+	vim.system({ "./build" }, {}, function(obj)
+		if obj.code == 0 then
+			print("Lilypond: build success")
+		else
+			print("Lilypond: " .. obj.stderr)
+		end
+	end)
+end, { desc = "Lilypond: run `build` script in current working directory" })

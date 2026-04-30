@@ -14,6 +14,8 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	if server_name == "marksman" and is_notes_dir() ~= nil then
 		-- if obsidian root is in cwd/ancestor, don't also use marksman
 		-- this avoids "A" on grO
+	elseif server_name == "markdown_oxide" and is_notes_dir() == nil then
+		-- don't use moxide if not notes dir.
 	else
 		table.insert(lsp_configs, server_name)
 	end
