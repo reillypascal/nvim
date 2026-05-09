@@ -89,7 +89,6 @@ return {
 			builtin.current_buffer_fuzzy_find,
 			{ desc = "[/] Fuzzily search in current buffer" }
 		)
-		vim.keymap.set("n", "<leader>sr", builtin.oldfiles, { desc = "[S]earch [R]ecent Files" })
 		vim.keymap.set("n", "<leader>s.", builtin.resume, { desc = "[S]earch Resume" })
 		vim.keymap.set("n", "<leader>s/", function()
 			builtin.live_grep({
@@ -107,6 +106,8 @@ return {
 		vim.keymap.set("n", "<leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
 		end, { desc = "[S]earch [N]eovim files" })
+		vim.keymap.set("n", "<leader>so", builtin.oldfiles, { desc = "[S]earch [O]ldfiles" })
+		vim.keymap.set("n", "<leader>sr", builtin.registers, { desc = "[S]earch [R]egisters" })
 		vim.keymap.set("n", "<leader>ss", builtin.spell_suggest, { desc = "[S]earch [S]pell suggest" })
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 	end,
