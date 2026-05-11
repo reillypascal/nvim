@@ -1,7 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "algorave.nvim": { "branch": "main", "commit": "23ffb2edb7702a3a61b59df0aa5c6d2d18625b07" },
-  "blink-cmp-dictionary": { "branch": "master", "commit": "bb5f7fb31de1debbe3f7f618c03dd160412744ef" },
+  "blink-cmp-dictionary": { "branch": "master", "commit": "17ea03ba5c296310b9f74587b52fde1b04d84c1a" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "conform.nvim": { "branch": "master", "commit": "dca1a190aa85f9065979ef35802fb77131911106" },
   "gitsigns.nvim": { "branch": "main", "commit": "dd3f588bacbeb041be6facf1742e42097f62165d" },

@@ -100,10 +100,19 @@ end, {})
 
 -- uses https://github.com/simplyhexagonal/short-unique-id
 -- to create Obsidian-style block ids, save to system clipboard, and paste
-vim.api.nvim_create_user_command("Suid", function()
+vim.api.nvim_create_user_command("Obid", function()
 	-- :wait() makes it synchronous; otherwise async
-	local obj = vim.system({ "suid" }, { text = true }):wait()
-	local id = string.format("^%s", obj.stdout)
+	-- local obj = vim.system({ "suid" }, { text = true }):wait()
+	-- local id = string.format("^%s", string.gsub(obj.stdout, "[\n\r]", ""))
+	-- stylua: ignore start
+	-- make stylua ignore this array to keep on one line
+	local base36 = { "0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", }
+	-- stylua: ignore end
+	local id = "^"
+	local len = math.random(5, 7)
+	for _ = 1, len do
+		id = id .. base36[math.random(#base36)]
+	end
 	vim.fn.setreg("*", id)
 	vim.api.nvim_paste(id, false, -1)
 end, {})
