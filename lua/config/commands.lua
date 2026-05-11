@@ -56,7 +56,6 @@ vim.cmd([[cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%']])
 --     local out = (res.stderr ~= "" and res.stderr) or res.stdout or ""
 --     return { ok = res.code == 0, output = out }
 -- end
-
 vim.api.nvim_create_user_command("Mdp", function()
 	local os_name = vim.loop.os_uname().sysname
 
@@ -97,4 +96,14 @@ vim.api.nvim_create_user_command("Mdp", function()
 		end
 		handle:close()
 	end
+end, {})
+
+-- uses https://github.com/simplyhexagonal/short-unique-id
+-- to create Obsidian-style block ids, save to system clipboard, and paste
+vim.api.nvim_create_user_command("Suid", function()
+	-- :wait() makes it synchronous; otherwise async
+	local obj = vim.system({ "suid" }, { text = true }):wait()
+	local id = string.format("^%s", obj.stdout)
+	vim.fn.setreg("*", id)
+	vim.api.nvim_paste(id, false, -1)
 end, {})
