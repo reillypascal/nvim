@@ -646,3 +646,6 @@ façade
 REPL
 merch
 nat'l
+keymap
+stderr
+stdout
